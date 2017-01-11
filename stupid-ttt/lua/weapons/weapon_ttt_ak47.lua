@@ -17,7 +17,7 @@ SWEP.Base                = "weapon_tttbase"
 
 SWEP.Kind                = WEAPON_HEAVY
 
-SWEP.Primary.Damage      = 40
+SWEP.Primary.Damage      = 60
 SWEP.Primary.Delay       = 0.175
 SWEP.Primary.Cone        = 0.02
 SWEP.Primary.ClipSize    = 30
@@ -35,7 +35,7 @@ SWEP.UseHands            = true
 SWEP.ViewModel           = "models/weapons/cstrike/c_rif_ak47.mdl"
 SWEP.WorldModel          = "models/weapons/w_rif_ak47.mdl"
 
-SWEP.IronSightsPos = Vector( -6.05, -5, 2.4 )
+SWEP.IronSightsPos = Vector( -6.55, -5, 2.4 )
 SWEP.IronSightsAng = Vector( 2.2, -0.1, 0 )
 
 SWEP.DeploySpeed         = 1

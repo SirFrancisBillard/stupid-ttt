@@ -16,7 +16,7 @@ end
 SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Primary.Recoil        = 0.2
-SWEP.Primary.Damage        = 4
+SWEP.Primary.Damage        = 12
 SWEP.Primary.Delay         = 0.07
 SWEP.Primary.Cone          = 0.028
 SWEP.Primary.ClipSize      = 20
