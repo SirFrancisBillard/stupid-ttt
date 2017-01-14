@@ -68,10 +68,10 @@ end
 function SWEP:PrimaryAttack()
    if self.IsCharging then return end
 
-   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+   self:SetNextPrimaryFire( CurTime() + 0.01 )
    self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
 
-   self:FirePulse(600, 300)
+   self:FirePulse(600, 300, 1)
 end
 
 function SWEP:SecondaryAttack()
@@ -83,7 +83,7 @@ function SWEP:SecondaryAttack()
    self.IsCharging = true
 end
 
-function SWEP:FirePulse(force_fwd, force_up)
+function SWEP:FirePulse(force_fwd, force_up, c)
    if not IsValid(self.Owner) then return end
 
    self.Owner:SetAnimation( PLAYER_ATTACK1 )
@@ -92,8 +92,8 @@ function SWEP:FirePulse(force_fwd, force_up)
 
    self:SendWeaponAnim(ACT_VM_IDLE)
 
-   local cone = self.Primary.Cone or 0.1
-   local num = 6
+   local cone = c or self.Primary.Cone or 0.1
+   local num = 12
 
    local bullet = {}
    bullet.Num    = num
@@ -102,7 +102,7 @@ function SWEP:FirePulse(force_fwd, force_up)
    bullet.Spread = Vector( cone, cone, 0 )
    bullet.Tracer = 1
    bullet.Force  = force_fwd / 10
-   bullet.Damage = 1
+   bullet.Damage = 3
    bullet.TracerName = "AirboatGunHeavyTracer"
 
    local owner = self.Owner
@@ -152,7 +152,7 @@ function SWEP:ChargedAttack()
    self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
    self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
 
-   self:FirePulse(force_fwd, force_up)
+   self:FirePulse(force_fwd, force_up, 0)
 end
 
 function SWEP:PreDrop(death_drop)

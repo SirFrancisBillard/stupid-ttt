@@ -23,14 +23,14 @@ SWEP.Base                  = "weapon_tttbase"
 -- if I run out of ammo types, this weapon is one I could move to a custom ammo
 -- handling strategy, because you never need to pick up ammo for it
 SWEP.Primary.Ammo          = "AR2AltFire"
-SWEP.Primary.Recoil        = 4
-SWEP.Primary.Damage        = 7
-SWEP.Primary.Delay         = 1.0
+SWEP.Primary.Recoil        = 0.6
+SWEP.Primary.Damage        = 15
+SWEP.Primary.Delay         = 0.2
 SWEP.Primary.Cone          = 0.01
-SWEP.Primary.ClipSize      = 4
-SWEP.Primary.Automatic     = false
-SWEP.Primary.DefaultClip   = 4
-SWEP.Primary.ClipMax       = 4
+SWEP.Primary.ClipSize      = 30
+SWEP.Primary.Automatic     = true
+SWEP.Primary.DefaultClip   = 60
+SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Sound         = Sound( "Weapon_USP.SilencedShot" )
 
 SWEP.Kind                  = WEAPON_EQUIP
@@ -66,7 +66,7 @@ if CLIENT then
    local function ReceiveScorches()
       local ent = net.ReadEntity()
       local num = net.ReadUInt(8)
-      for i=1, num do
+      for  i = 1, num do
          util.PaintDown(net.ReadVector(), "FadingScorch", ent)
       end
 

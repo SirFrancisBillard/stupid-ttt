@@ -12,7 +12,7 @@ if CLIENT then
 
    SWEP.EquipMenuData = {
       type = "item_weapon",
-      desc = "vis_desc"
+      desc = "Crime scene visualization device.\n\nAnalyzes a corpse to show how the victim was killed, but only if they died of gunshot wounds.\n\nCan double as a land mine."
    };
 
    SWEP.Icon                = "vgui/ttt/icon_cse"

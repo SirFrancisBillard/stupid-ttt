@@ -113,7 +113,7 @@ if SERVER then
 
          local pos = self:GetPos()
 
-         util.BlastDamage(self, self:GetOwner(), pos, 300, 125)
+         util.BlastDamage(self, self:GetOwner(), pos, 600, 250)
 
          sound.Play(diesound, pos, 100, 100)
          self:Remove()
@@ -151,7 +151,7 @@ if SERVER then
 
             punchphys:AddVelocity(norm * vel)
 
-            util.BlastDamage(self, self:GetOwner(), self:GetPos(), 200, 50)
+            util.BlastDamage(self, self:GetOwner(), self:GetPos(), 400, 125)
 
             local effect = EffectData()
             effect:SetStart(self:GetPos())

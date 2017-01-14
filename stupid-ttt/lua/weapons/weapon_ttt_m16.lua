@@ -60,7 +60,7 @@ function SWEP:SecondaryAttack()
    self:SetIronsights( bIronsights )
 
    if SERVER then
-      self:SetZoom( bIronsights )
+      self:SetZoom( false )
    end
 
    self:SetNextSecondaryFire( CurTime() + 0.3 )

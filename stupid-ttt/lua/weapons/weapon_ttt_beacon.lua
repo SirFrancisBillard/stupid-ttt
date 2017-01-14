@@ -7,7 +7,7 @@
 -- entity to make it all work.
 
 --DISABLED
---AddCSLuaFile()
+AddCSLuaFile()
 
 SWEP.HoldType               = "normal"
 
@@ -46,7 +46,7 @@ SWEP.Secondary.Delay        = 1.0
 
 SWEP.Kind                   = WEAPON_EQUIP
 -- DISABLED
---SWEP.CanBuy = {ROLE_DETECTIVE} -- only detectives can buy
+SWEP.CanBuy = {ROLE_DETECTIVE} -- only detectives can buy
 SWEP.LimitedStock           = true -- only buyable once
 SWEP.WeaponID               = AMMO_BEACON
 
