@@ -20,13 +20,13 @@ end
 SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Primary.Recoil        = 0.1
-SWEP.Primary.Delay         = 1
+SWEP.Primary.Delay         = 0.2
 SWEP.Primary.Cone          = 0.02
-SWEP.Primary.ClipSize      = 6
-SWEP.Primary.DefaultClip   = 6
-SWEP.Primary.ClipMax       = 6
+SWEP.Primary.ClipSize      = 10
+SWEP.Primary.DefaultClip   = 100
+SWEP.Primary.ClipMax       = 100
 SWEP.Primary.Ammo          = "Gravity"
-SWEP.Primary.Automatic     = false
+SWEP.Primary.Automatic     = true
 SWEP.Primary.Sound         = Sound( "weapons/airboat/airboat_gun_energy1.wav" )
 
 SWEP.Secondary.Automatic   = false
@@ -198,7 +198,7 @@ end
 
 if SERVER then
 
-   local CHARGE_AMOUNT = 0.015
+   local CHARGE_AMOUNT = 0.015 * 20
    local CHARGE_DELAY = 0.025
 
    function SWEP:Think()

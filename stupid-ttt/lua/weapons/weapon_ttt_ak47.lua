@@ -9,7 +9,7 @@ if CLIENT then
    SWEP.ViewModelFlip    = false
    SWEP.ViewModelFOV     = 54
 
-   SWEP.Icon             = "vgui/ttt/icon_m16"
+   SWEP.Icon             = "vgui/ttt/icon_ak47.png"
    SWEP.IconLetter       = "l"
 end
 
@@ -18,7 +18,7 @@ SWEP.Base                = "weapon_tttbase"
 SWEP.Kind                = WEAPON_HEAVY
 
 SWEP.Primary.Damage      = 60
-SWEP.Primary.Delay       = 0.175
+SWEP.Primary.Delay       = 0.150
 SWEP.Primary.Cone        = 0.02
 SWEP.Primary.ClipSize    = 30
 SWEP.Primary.ClipMax     = 60

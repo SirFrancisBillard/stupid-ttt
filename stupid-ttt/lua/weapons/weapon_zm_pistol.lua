@@ -3,7 +3,7 @@ AddCSLuaFile()
 SWEP.HoldType              = "pistol"
 
 if CLIENT then
-   SWEP.PrintName          = "pistol_name"
+   SWEP.PrintName          = "Pistol"
    SWEP.Slot               = 1
 
    SWEP.ViewModelFlip      = false
@@ -19,12 +19,12 @@ SWEP.Kind                  = WEAPON_PISTOL
 SWEP.WeaponID              = AMMO_PISTOL
 
 SWEP.Primary.Recoil        = 1.2
-SWEP.Primary.Damage        = 5
-SWEP.Primary.Delay         = 0.25
+SWEP.Primary.Damage        = 35
+SWEP.Primary.Delay         = 0.2
 SWEP.Primary.Cone          = 0.02
 SWEP.Primary.ClipSize      = 20
 SWEP.Primary.Automatic     = true
-SWEP.Primary.DefaultClip   = 20
+SWEP.Primary.DefaultClip   = 60
 SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Sound         = Sound( "Weapon_FiveSeven.Single" )

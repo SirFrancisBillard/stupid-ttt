@@ -102,7 +102,7 @@ function SWEP:FirePulse(force_fwd, force_up, c)
    bullet.Spread = Vector( cone, cone, 0 )
    bullet.Tracer = 1
    bullet.Force  = force_fwd / 10
-   bullet.Damage = 3
+   bullet.Damage = 1
    bullet.TracerName = "AirboatGunHeavyTracer"
 
    local owner = self.Owner

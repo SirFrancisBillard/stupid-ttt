@@ -29,7 +29,7 @@ SWEP.Primary.ClipMax       = 300
 SWEP.Primary.DefaultClip   = 300
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Recoil        = 0.4
+SWEP.Primary.Recoil        = 0.4 * 0
 SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
 
 SWEP.UseHands              = true

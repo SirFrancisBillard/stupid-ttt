@@ -15,7 +15,7 @@ if CLIENT then
       desc  = "A taser that stuns and damages targets.\n\nLimited ammo."
    };
 
-   SWEP.Icon               = "vgui/ttt/icon_glock"
+   SWEP.Icon               = "vgui/ttt/icon_taser.png"
    SWEP.IconLetter         = "u"
 end
 
@@ -23,6 +23,11 @@ SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Kind                  = WEAPON_EQUIP1
 SWEP.CanBuy                = {ROLE_DETECTIVE}
+
+game.AddAmmoType({name = "taser"})
+if CLIENT then
+	language.Add("taser_ammo", "Taser Shots")
+end
 
 SWEP.Primary.Recoil        = 0
 SWEP.Primary.Damage        = 20
@@ -32,7 +37,7 @@ SWEP.Primary.ClipSize      = 1
 SWEP.Primary.Automatic     = false
 SWEP.Primary.DefaultClip   = 4
 SWEP.Primary.ClipMax       = 4
-SWEP.Primary.Ammo          = "AirboatGun"
+SWEP.Primary.Ammo          = "taser"
 SWEP.Primary.Sound         = Sound("ambient/energy/zap1.wav")
 
 SWEP.UseHands              = true

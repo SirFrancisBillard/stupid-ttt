@@ -15,8 +15,13 @@ if CLIENT then
       desc  = "A non-lethal spray used to stun targets.\n\nLimited ammo."
    };
 
-   SWEP.Icon               = "vgui/ttt/icon_nades"
+   SWEP.Icon               = "vgui/ttt/icon_pepper.png"
    SWEP.IconLetter         = "u"
+end
+
+game.AddAmmoType({name = "pepperspray"})
+if CLIENT then
+	language.Add("pepperspray_ammo", "Liquid Pepper")
 end
 
 SWEP.Base                  = "weapon_tttbase"
@@ -32,7 +37,7 @@ SWEP.Primary.ClipSize      = 20
 SWEP.Primary.Automatic     = true
 SWEP.Primary.DefaultClip   = 100
 SWEP.Primary.ClipMax       = 100
-SWEP.Primary.Ammo          = "AirboatGun"
+SWEP.Primary.Ammo          = "pepperspray"
 SWEP.Primary.Sound         = Sound("player/sprayer.wav")
 
 SWEP.UseHands              = true

@@ -5,7 +5,7 @@ if CLIENT then
 	SWEP.WepSelectIcon 		= surface.GetTextureID("vgui/killicons/smod_A35GL")
 end
 
-SWEP.HoldType            = "ar2"
+SWEP.HoldType            = "shotgun"
 
 if CLIENT then
    SWEP.PrintName        = "Grenade Launcher"
@@ -20,7 +20,7 @@ if CLIENT then
       desc  = "A grenade launcher.\n\nLimited ammo."
    };
 
-   SWEP.Icon             = "vgui/ttt/icon_m16"
+   SWEP.Icon             = "vgui/ttt/icon_gl.png"
    SWEP.IconLetter       = "l"
 end
 
@@ -29,6 +29,11 @@ SWEP.Base                = "weapon_tttbase"
 SWEP.CanBuy              = {ROLE_TRAITOR}
 SWEP.Kind                = WEAPON_EQUIP1
 
+game.AddAmmoType({name = "gl"})
+if CLIENT then
+	language.Add("gl_ammo", "Launchable Grenades")
+end
+
 SWEP.Primary.Damage      = 60
 SWEP.Primary.Delay       = 0.05
 SWEP.Primary.Cone        = 0.02
@@ -36,7 +41,7 @@ SWEP.Primary.ClipSize    = 6
 SWEP.Primary.ClipMax     = 18
 SWEP.Primary.DefaultClip = 18
 SWEP.Primary.Automatic   = true
-SWEP.Primary.Ammo        = "AirboatGun"
+SWEP.Primary.Ammo        = "gl"
 SWEP.Primary.Recoil      = 3.2
 SWEP.Primary.Sound       = Sound("weapons/grenade_launcher1.wav")
 
@@ -87,7 +92,6 @@ function SWEP:SetupDataTables()
 end
 
 function SWEP:Reload()
-
    --if self:GetNWBool( "reloading", false ) then return end
    if self.dt.reloading then return end
 
