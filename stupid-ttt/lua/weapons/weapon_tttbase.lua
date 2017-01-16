@@ -225,7 +225,6 @@ end
 
 -- Shooting functions largely copied from weapon_cs_base
 function SWEP:PrimaryAttack(worldsnd)
-
    self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
    self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
 
@@ -287,7 +286,6 @@ local function Sparklies(attacker, tr, dmginfo)
 end
 
 function SWEP:ShootBullet( dmg, recoil, numbul, cone )
-
    self:SendWeaponAnim(self.PrimaryAnim)
 
    self.Owner:MuzzleFlash()

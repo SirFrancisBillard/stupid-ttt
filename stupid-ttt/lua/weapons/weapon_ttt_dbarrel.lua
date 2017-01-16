@@ -49,6 +49,58 @@ function SWEP:CanPrimaryAttack()
    return true
 end
 
+local function IsGood(ent)
+	return IsValid(ent) and IsValid(ent.Owner) and ent.Owner:Alive() and IsValid(ent.Owner:GetActiveWeapon()) and ent.Owner:GetActiveWeapon():GetClass() == ent.ClassName
+end
+
+local function QueueSound(ent, time, snd)
+	timer.Simple(time, function()
+		if not IsGood(ent) then return end
+		sound.Play(snd, ent:GetPos(), ent.Primary.SoundLevel)
+	end)
+end
+
+local r_out = Sound("weapons/m4a1/m4a1_clipout.wav")
+local r_in = Sound("weapons/awp/awp_clipin.wav")
+
+function SWEP:Reload()
+	if self:DefaultReload(ACT_VM_RELOAD) and IsFirstTimePredicted() then
+		QueueSound(self, 0.4, r_out)
+		QueueSound(self, 1.2, r_in)
+	end
+end
+
+function SWEP:CanSecondaryAttack()
+   if self:Clip1() <= 1 then
+      self:EmitSound( "Weapon_Shotgun.Empty" )
+      self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
+      return false
+   end
+   return true
+end
+
+function SWEP:SecondaryAttack(worldsnd)
+   self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
+   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+
+   if not self:CanSecondaryAttack() then return end
+
+   if not worldsnd then
+      self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
+   elseif SERVER then
+      sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
+   end
+
+   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil * 2, self.Primary.NumShots * 2, self:GetPrimaryCone() )
+
+   self:TakePrimaryAmmo( 2 )
+
+   local owner = self.Owner
+   if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
+
+   owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
+end
+
 -- The shotgun's headshot damage multiplier is based on distance. The closer it
 -- is, the more damage it does. This reinforces the shotgun's role as short
 -- range weapon by reducing effectiveness at mid-range, where one could score

@@ -1,84 +1,46 @@
 AddCSLuaFile()
 
-SWEP.HoldType            = "shotgun"
-
 if CLIENT then
-   SWEP.PrintName        = "Grenade Launcher"
-   SWEP.Slot             = 6
+   SWEP.PrintName = "Boomstick"
 
-   SWEP.ViewModelFlip    = false
-   SWEP.ViewModelFOV     = 54
-
-   SWEP.EquipMenuData = {
-      type  = "item_weapon",
-      name  = "Grenade Launcher",
-      desc  = "A grenade launcher.\n\nLimited ammo."
-   };
-
-   SWEP.Icon             = "vgui/ttt/icon_gl.png"
-   SWEP.IconLetter       = "l"
+   SWEP.Slot = 6
+   SWEP.Icon = "vgui/ttt/icon_boomstick.png"
+   SWEP.IconLetter = "B"
 end
 
-SWEP.Base                = "weapon_tttbase"
+-- Standard GMod values
+SWEP.HoldType = "shotgun"
 
-SWEP.CanBuy              = {ROLE_TRAITOR}
-SWEP.Kind                = WEAPON_EQUIP1
+SWEP.Base				= "weapon_tttbase"
+SWEP.AutoSpawnable = false
+SWEP.Spawnable = false
 
-game.AddAmmoType({name = "gl"})
-if CLIENT then
-	language.Add("gl_ammo", "Launchable Grenades")
-end
+SWEP.Kind = WEAPON_EQUIP1
+SWEP.WeaponID = AMMO_SHOTGUN
 
-SWEP.Primary.Damage      = 60
-SWEP.Primary.Delay       = 0.05
-SWEP.Primary.Cone        = 0.02
-SWEP.Primary.ClipSize    = 6
-SWEP.Primary.ClipMax     = 18
-SWEP.Primary.DefaultClip = 18
-SWEP.Primary.Automatic   = true
-SWEP.Primary.Ammo        = "gl"
-SWEP.Primary.Recoil      = 3.2
-SWEP.Primary.Sound       = Sound("weapons/grenade_launcher1.wav")
+SWEP.Primary.Ammo = "Buckshot"
+SWEP.Primary.Damage = 20
+SWEP.Primary.Cone = 0.45
+SWEP.Primary.Delay = 0.76
+SWEP.Primary.ClipSize = 12
+SWEP.Primary.ClipMax = 36
+SWEP.Primary.DefaultClip = 12
+SWEP.Primary.Automatic = true
+SWEP.Primary.NumShots = 500
+SWEP.AmmoEnt = "item_box_buckshot_ttt"
 
-SWEP.UseHands            = true
-SWEP.ViewModel             = "models/weapons/cstrike/c_shot_xm1014.mdl"
-SWEP.WorldModel            = "models/weapons/w_shot_xm1014.mdl"
+SWEP.UseHands			= true
+SWEP.ViewModelFlip		= false
+SWEP.ViewModelFOV		= 54
+SWEP.ViewModel			= "models/weapons/cstrike/c_shot_m3super90.mdl"
+SWEP.WorldModel			= "models/weapons/w_shot_m3super90.mdl"
+SWEP.Primary.Sound			= Sound( "Weapon_XM1014.Single" )
+SWEP.Primary.Recoil			= 40
 
-SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
-SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
+SWEP.IronSightsPos = Vector(-6.881, -9.214, 2.66)
+SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 
-SWEP.DeploySpeed         = 1
-
-function SWEP:PrimaryAttack()
-	if not self:CanPrimaryAttack() then return end
-
-	self:SetNextPrimaryFire(CurTime() + 0.5)
-	self:SetNextSecondaryFire(CurTime() + 0.5)
-
-	self:ShootEffects()
-	self:TakePrimaryAmmo(1)
-	self:EmitSound(self.Primary.Sound)
-
-	if CLIENT then return end
-	
-	local ent = ents.Create("ent_smgbomb")
-	if not IsValid(ent) then return end
-
-	ent:SetPos(self.Owner:EyePos() + (self.Owner:GetAimVector() * 75))
-	ent:SetAngles(self.Owner:EyeAngles())
-	ent:Spawn()
-	ent:Activate()
-	ent:Fire()
-	ent:SetOwner(self.Owner)
-	
-	local phys = ent:GetPhysicsObject()
-	if not IsValid(phys) then ent:Remove() return end
-
-	local velocity = self.Owner:GetAimVector()
-	velocity = velocity * 4000
-	velocity = velocity + (VectorRand() * 10)
-	phys:ApplyForceCenter(velocity)
-end
+SWEP.reloadtimer = 0
 
 function SWEP:SetupDataTables()
    self:DTVar("Bool", 0, "reloading")
@@ -87,7 +49,6 @@ function SWEP:SetupDataTables()
 end
 
 function SWEP:Reload()
-   --if self:GetNWBool( "reloading", false ) then return end
    if self.dt.reloading then return end
 
    if not IsFirstTimePredicted() then return end
@@ -161,12 +122,34 @@ function SWEP:FinishReload()
 end
 
 function SWEP:CanPrimaryAttack()
-   if self:Clip1() <= 0 then
+   if self:Clip1() < (self.Primary.ClipSize / 2) then
       self:EmitSound( "Weapon_Shotgun.Empty" )
       self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
       return false
    end
    return true
+end
+
+function SWEP:PrimaryAttack(worldsnd)
+   self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
+   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+
+   if not self:CanPrimaryAttack() then return end
+
+   if not worldsnd then
+      self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
+   elseif SERVER then
+      sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
+   end
+
+   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil, self.Primary.NumShots, self:GetPrimaryCone() )
+
+   self:TakePrimaryAmmo( self.Primary.ClipSize / 2 )
+
+   local owner = self.Owner
+   if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
+
+   owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
 end
 
 function SWEP:Think()
@@ -177,7 +160,6 @@ function SWEP:Think()
       end
 
       if self.reloadtimer <= CurTime() then
-
          if self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0 then
             self:FinishReload()
          elseif self:Clip1() < self.Primary.ClipSize then
@@ -219,3 +201,24 @@ function SWEP:SecondaryAttack()
 
    self:SetNextSecondaryFire(CurTime() + 0.3)
 end
+
+-- Equipment menu information is only needed on the client
+if CLIENT then
+   -- Text shown in the equip menu
+   SWEP.EquipMenuData = {
+      type = "Weapon",
+      desc = "Fires an insane amount of rounds with extreme damage output at closer ranges.\n\nRequires six shells per shot and has an extremely slow reload."
+   }
+end
+
+-- If LimitedStock is true, you can only buy one per round.
+SWEP.LimitedStock = true
+
+-- If AllowDrop is false, players can't manually drop the gun with Q
+SWEP.AllowDrop = true
+
+
+-- CanBuy is a table of ROLE_* entries like ROLE_TRAITOR and ROLE_DETECTIVE. If
+-- a role is in this table, those players can buy this.
+SWEP.CanBuy = { ROLE_DETECTIVE, ROLE_TRAITOR }
+

@@ -18,6 +18,8 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_SHOTGUN
 
+SWEP.Tracer                = "AR2Tracer"
+
 SWEP.Primary.Ammo          = "Buckshot"
 SWEP.Primary.Damage        = 10
 SWEP.Primary.Cone          = 0.04
