@@ -31,7 +31,7 @@ SWEP.Primary.ClipSize      = -1
 SWEP.Primary.Automatic     = true
 SWEP.Primary.DefaultClip   = -1
 SWEP.Primary.ClipMax       = -1
-SWEP.Primary.Sound         = Sound("weapons/drink/open.wav")
+SWEP.Primary.Sound         = Sound("npc/barnacle/barnacle_gulp1.wav")
 
 SWEP.Kind                  = WEAPON_EQUIP
 SWEP.CanBuy                = {ROLE_TRAITOR} -- only traitors can buy
