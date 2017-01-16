@@ -3,33 +3,38 @@ AddCSLuaFile()
 SWEP.HoldType              = "crossbow"
 
 if CLIENT then
-   SWEP.PrintName          = "Fuckin' HUGE"
-   SWEP.Slot               = 2
+   SWEP.PrintName          = "Negev"
+   SWEP.Slot               = 6
 
    SWEP.ViewModelFlip      = false
    SWEP.ViewModelFOV       = 54
 
-   SWEP.Icon               = "vgui/ttt/icon_m249"
+   SWEP.EquipMenuData = {
+      type = "item_weapon",
+      desc = "An accurate, powerful machine gun.\n\nNo downsides really."
+   };
+
+   SWEP.Icon               = "vgui/ttt/icon_negev.png"
    SWEP.IconLetter         = "z"
 end
 
 SWEP.Base                  = "weapon_tttbase"
 
-SWEP.Spawnable             = true
-SWEP.AutoSpawnable         = true
+SWEP.Spawnable             = false
+SWEP.AutoSpawnable         = false
 
-SWEP.Kind                  = WEAPON_HEAVY
-SWEP.WeaponID              = AMMO_M249
+SWEP.CanBuy = {ROLE_DETECTIVE, ROLE_TRAITOR}
+SWEP.Kind                  = WEAPON_EQUIP
 
-SWEP.Primary.Damage        = 12
+SWEP.Primary.Damage        = 40
 SWEP.Primary.Delay         = 0.04
-SWEP.Primary.Cone          = 0.07
+SWEP.Primary.Cone          = 0.01
 SWEP.Primary.ClipSize      = 300
 SWEP.Primary.ClipMax       = 300
 SWEP.Primary.DefaultClip   = 300
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Recoil        = 0.4
+SWEP.Primary.Recoil        = 0.1
 SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
 
 SWEP.UseHands              = true
