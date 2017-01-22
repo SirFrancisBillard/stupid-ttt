@@ -22,7 +22,7 @@ ENT.CanPickup = false
 
 ENT.WeaponID = AMMO_KNIFE
 
-ENT.Damage = 150
+ENT.Damage = 1337
 
 function ENT:Initialize()
    self:SetModel(self.Model)
