@@ -8,7 +8,7 @@ if( CLIENT ) then
     SWEP.Slot = 7;
     SWEP.DrawAmmo = false;
     SWEP.DrawCrosshair = false;
-    SWEP.Icon = "VGUI/ttt/lykrast/icon_cloak";
+    SWEP.Icon = "VGUI/ttt/icon_cloak.png";
  
    SWEP.EquipMenuData = {
       type = "item_weapon",

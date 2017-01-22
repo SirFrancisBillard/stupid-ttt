@@ -8,8 +8,11 @@ if CLIENT then
 
    SWEP.ViewModelFlip      = false
    SWEP.ViewModelFOV       = 54
-
-   SWEP.Icon               = "vgui/ttt/icon_dbarrel.png"
+   if TTT_USE_CUSTOM_MODELS then
+      SWEP.Icon = "vgui/ttt/icon_dbarrel.png"
+   else
+      SWEP.Icon = "vgui/ttt/icon_shotgun"
+   end
    SWEP.IconLetter         = "B"
 end
 
@@ -33,9 +36,167 @@ SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
 
-SWEP.UseHands              = false
-SWEP.ViewModel 				= "models/weapons/v_sawedoff.mdl"
-SWEP.WorldModel				= "models/weapons/w_sawedoff.mdl"
+if TTT_USE_CUSTOM_MODELS then
+	SWEP.UseHands               = false
+	SWEP.ViewModel 				= "models/weapons/v_sawedoff.mdl"
+	SWEP.WorldModel				= "models/weapons/w_sawedoff.mdl"
+
+	local function IsGood(ent)
+		return IsValid(ent) and IsValid(ent.Owner) and ent.Owner:Alive() and IsValid(ent.Owner:GetActiveWeapon()) and ent.Owner:GetActiveWeapon():GetClass() == ent.ClassName
+	end
+
+	local function QueueSound(ent, time, snd)
+		timer.Simple(time, function()
+			if not IsGood(ent) then return end
+			sound.Play(snd, ent:GetPos(), ent.Primary.SoundLevel)
+		end)
+	end
+
+	local r_out = Sound("weapons/m4a1/m4a1_clipout.wav")
+	local r_in = Sound("weapons/awp/awp_clipin.wav")
+
+	function SWEP:Reload()
+		if self:DefaultReload(ACT_VM_RELOAD) and IsFirstTimePredicted() then
+			QueueSound(self, 0.4, r_out)
+			QueueSound(self, 1.2, r_in)
+		end
+	end
+else
+	SWEP.UseHands               = true
+	SWEP.ViewModel 				= "models/weapons/cstrike/c_shot_xm1014.mdl"
+	SWEP.WorldModel				= "models/weapons/w_shot_xm1014.mdl"
+
+	SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
+	SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
+
+	SWEP.reloadtimer           = 0
+
+	function SWEP:SetupDataTables()
+	   self:DTVar("Bool", 0, "reloading")
+
+	   return self.BaseClass.SetupDataTables(self)
+	end
+
+	function SWEP:Reload()
+
+	   --if self:GetNWBool( "reloading", false ) then return end
+	   if self.dt.reloading then return end
+
+	   if not IsFirstTimePredicted() then return end
+
+	   if self:Clip1() < self.Primary.ClipSize and self.Owner:GetAmmoCount( self.Primary.Ammo ) > 0 then
+
+		  if self:StartReload() then
+			 return
+		  end
+	   end
+
+	end
+
+	function SWEP:StartReload()
+	   --if self:GetNWBool( "reloading", false ) then
+	   if self.dt.reloading then
+		  return false
+	   end
+
+	   self:SetIronsights( false )
+
+	   if not IsFirstTimePredicted() then return false end
+
+	   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+
+	   local ply = self.Owner
+
+	   if not ply or ply:GetAmmoCount(self.Primary.Ammo) <= 0 then
+		  return false
+	   end
+
+	   local wep = self
+
+	   if wep:Clip1() >= self.Primary.ClipSize then
+		  return false
+	   end
+
+	   wep:SendWeaponAnim(ACT_SHOTGUN_RELOAD_START)
+
+	   self.reloadtimer =  CurTime() + wep:SequenceDuration()
+
+	   --wep:SetNWBool("reloading", true)
+	   self.dt.reloading = true
+
+	   return true
+	end
+
+	function SWEP:PerformReload()
+	   local ply = self.Owner
+
+	   -- prevent normal shooting in between reloads
+	   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+
+	   if not ply or ply:GetAmmoCount(self.Primary.Ammo) <= 0 then return end
+
+	   if self:Clip1() >= self.Primary.ClipSize then return end
+
+	   self.Owner:RemoveAmmo( 1, self.Primary.Ammo, false )
+	   self:SetClip1( self:Clip1() + 1 )
+
+	   self:SendWeaponAnim(ACT_VM_RELOAD)
+
+	   self.reloadtimer = CurTime() + self:SequenceDuration()
+	end
+
+	function SWEP:FinishReload()
+	   self.dt.reloading = false
+	   self:SendWeaponAnim(ACT_SHOTGUN_RELOAD_FINISH)
+
+	   self.reloadtimer = CurTime() + self:SequenceDuration()
+	end
+
+	function SWEP:CanPrimaryAttack()
+	   if self:Clip1() <= 0 then
+		  self:EmitSound( "Weapon_Shotgun.Empty" )
+		  self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+		  return false
+	   end
+	   return true
+	end
+
+	function SWEP:Think()
+	   if self.dt.reloading and IsFirstTimePredicted() then
+		  if self.Owner:KeyDown(IN_ATTACK) then
+			 self:FinishReload()
+			 return
+		  end
+
+		  if self.reloadtimer <= CurTime() then
+
+			 if self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0 then
+				self:FinishReload()
+			 elseif self:Clip1() < self.Primary.ClipSize then
+				self:PerformReload()
+			 else
+				self:FinishReload()
+			 end
+			 return
+		  end
+	   end
+	end
+
+	function SWEP:Deploy()
+	   self.dt.reloading = false
+	   self.reloadtimer = 0
+	   return self.BaseClass.Deploy(self)
+	end
+
+	function SWEP:SecondaryAttack()
+	   if self.NoSights or (not self.IronSightsPos) or self.dt.reloading then return end
+	   --if self:GetNextSecondaryFire() > CurTime() then return end
+
+	   self:SetIronsights(not self:GetIronsights())
+
+	   self:SetNextSecondaryFire(CurTime() + 0.3)
+	end
+end
 
 SWEP.IronSightsPos         = Vector(-5.2, -9.214, 2.66)
 SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
@@ -47,27 +208,6 @@ function SWEP:CanPrimaryAttack()
       return false
    end
    return true
-end
-
-local function IsGood(ent)
-	return IsValid(ent) and IsValid(ent.Owner) and ent.Owner:Alive() and IsValid(ent.Owner:GetActiveWeapon()) and ent.Owner:GetActiveWeapon():GetClass() == ent.ClassName
-end
-
-local function QueueSound(ent, time, snd)
-	timer.Simple(time, function()
-		if not IsGood(ent) then return end
-		sound.Play(snd, ent:GetPos(), ent.Primary.SoundLevel)
-	end)
-end
-
-local r_out = Sound("weapons/m4a1/m4a1_clipout.wav")
-local r_in = Sound("weapons/awp/awp_clipin.wav")
-
-function SWEP:Reload()
-	if self:DefaultReload(ACT_VM_RELOAD) and IsFirstTimePredicted() then
-		QueueSound(self, 0.4, r_out)
-		QueueSound(self, 1.2, r_in)
-	end
 end
 
 function SWEP:CanSecondaryAttack()

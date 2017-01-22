@@ -38,9 +38,15 @@ SWEP.CanBuy                = {ROLE_TRAITOR} -- only traitors can buy
 
 SWEP.Tracer                = "AR2Tracer"
 
-SWEP.UseHands              = false
-SWEP.ViewModel 				= "models/weapons/v_p_drink.mdl"
-SWEP.WorldModel				= "models/weapons/w_p_drink.mdl"
+if TTT_USE_CUSTOM_MODELS then
+	SWEP.UseHands               = false
+	SWEP.ViewModel 				= "models/weapons/v_p_drink.mdl"
+	SWEP.WorldModel				= "models/weapons/w_p_drink.mdl"
+else
+	SWEP.UseHands               = true
+	SWEP.ViewModel 				= "models/weapons/c_grenade.mdl"
+	SWEP.WorldModel				= "models/weapons/w_grenade.mdl"
+end
 
 function SWEP:Deploy()
 	self:SendWeaponAnim(ACT_VM_DEPLOY)

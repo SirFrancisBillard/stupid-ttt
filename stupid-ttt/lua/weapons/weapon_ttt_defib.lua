@@ -1,7 +1,3 @@
-if SERVER then
-  resource.AddFile("materials/vgui/ttt/icon_rg_defibrillator.png")
-end
-
 local STATE_NONE, STATE_PROGRESS, STATE_ERROR = 0, 1, 2
 local color_red = Color(255, 0, 0)
 
@@ -14,19 +10,19 @@ SWEP.WorldModel = Model("models/weapons/w_c4.mdl")
 --- TTT Vars
 SWEP.Kind = WEAPON_EQUIP2
 SWEP.AutoSpawnable = false
-SWEP.CanBuy = {ROLE_TRAITOR}
+SWEP.CanBuy = {ROLE_TRAITOR, ROLE_DETECTIVE}
 SWEP.LimitedStock = true
 
 if CLIENT then
   SWEP.PrintName = "Defibrillator"
   SWEP.Slot = 7
 
-  SWEP.Icon = "vgui/ttt/icon_rg_defibrillator.png"
+  SWEP.Icon = "vgui/ttt/icon_defib.png"
 
   SWEP.EquipMenuData = {
     type = "item_weapon",
     name = "Defribrillator",
-    desc = "Resurrect dead mates with this one!"
+    desc = "Can be used to bring someone back from the dead."
   }
 
   surface.CreateFont("DefibText", {

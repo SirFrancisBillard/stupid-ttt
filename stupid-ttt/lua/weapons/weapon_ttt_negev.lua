@@ -28,13 +28,13 @@ SWEP.Kind                  = WEAPON_EQUIP
 
 SWEP.Primary.Damage        = 40
 SWEP.Primary.Delay         = 0.04
-SWEP.Primary.Cone          = 0.01
+SWEP.Primary.Cone          = 0.035
 SWEP.Primary.ClipSize      = 300
 SWEP.Primary.ClipMax       = 300
 SWEP.Primary.DefaultClip   = 300
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Recoil        = 0.1
+SWEP.Primary.Recoil        = 3.5
 SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
 
 SWEP.UseHands              = true
