@@ -46,13 +46,6 @@ end
 function SWEP:Initialize()
 	self:SetHoldType(self.HoldType)
 
-	util.PrecacheSound( "weapons/jihad/allahuackbar1.wav" )
-	util.PrecacheSound( "weapons/jihad/allahuackbar2.wav" )
-	util.PrecacheSound( "weapons/jihad/allahuackbar3.wav" )
-	util.PrecacheSound( "weapons/jihad/allahuackbar4.wav" )   
-	util.PrecacheSound( "weapons/jihad/jihad_explosion.wav" )
-	util.PrecacheSound( "weapons/jihad/jihad_beep.wav" )
-	
 	util.PrecacheModel("models/Humans/Charple01.mdl")
 	util.PrecacheModel("models/Humans/Charple02.mdl")
 	util.PrecacheModel("models/Humans/Charple03.mdl")
@@ -75,13 +68,13 @@ function SWEP:PrimaryAttack()
 	if (SERVER) then
 		timer.Simple(3, function() self:Explode() end )
 		timer.Simple(2, function() self:Scream() end)
-		self.Owner:EmitSound("weapons/jihad/jihad_beep.wav", 125, math.random(95,105))
+		self.Owner:EmitSound("weapons/c4/c4_beep1.wav", 125, math.random(95,105))
 	end
 end
 
 function SWEP:Scream()
 	if (self.Owner:IsValid()) then
-		self.Owner:EmitSound("weapons/jihad/allahuackbar" .. math.random(1,4) .. ".wav", 150, math.random(95,105))
+		self.Owner:EmitSound("stupid-ttt/allahu/akbar_" .. math.random(1, 10) .. ".wav", 150, math.random(95,105))
 	end
 end
 
@@ -95,7 +88,7 @@ function SWEP:Explode()
 		explosion:SetKeyValue( "iMagnitude", "200" )
 		explosion:Spawn()
 		explosion:Fire( "Explode", 0, 0 )
-		explosion:EmitSound( "weapons/jihad/jihad_explosion.wav", 200, math.random(100,150))
+		explosion:EmitSound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100,150))
 		self:Remove()
 		player:SetModel("models/Humans/Charple0" .. math.random(1,4) .. ".mdl")
 		player:SetColor(COLOR_WHITE)

@@ -5,6 +5,7 @@ for i = 1, 10 do
 end
 
 if TTT_USE_CUSTOM_MODELS then
+	print("Adding TTT models...")
 	resource.AddFile("models/weapons/v_sawedoff.mdl")
 	resource.AddFile("models/weapons/w_sawedoff.mdl")
 	resource.AddFile("materials/models/weapons/v_sawedoff/barrel.vtf")
@@ -18,15 +19,8 @@ if TTT_USE_CUSTOM_MODELS then
 	resource.AddFile("models/weapons/w_p_drink.mdl")
 	resource.AddFile("materials/models/weapons/pdrink/m_drink_normal.vtf")
 	resource.AddFile("materials/models/weapons/pdrink/p_drink_sheet.vtf")
+	print("TTT models added!")
 end
-
-resource.AddFile("sound/weapons/jihad/allahuackbar1.wav")
-resource.AddFile("sound/weapons/jihad/allahuackbar2.wav")
-resource.AddFile("sound/weapons/jihad/allahuackbar3.wav")
-resource.AddFile("sound/weapons/jihad/allahuackbar4.wav")
-resource.AddFile("sound/weapons/jihad/jihad_explosion.wav")
-resource.AddFile("sound/weapons/jihad/jihad_beep.wav")
-
 
 resource.AddFile("materials/vgui/ttt/icon_ak47.png")
 resource.AddFile("materials/vgui/ttt/icon_aug.png")
