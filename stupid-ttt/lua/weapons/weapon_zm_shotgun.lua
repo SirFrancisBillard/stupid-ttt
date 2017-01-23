@@ -25,14 +25,14 @@ SWEP.WeaponID              = AMMO_SHOTGUN
 SWEP.Tracer                = "AR2Tracer"
 
 SWEP.Primary.Ammo          = "Buckshot"
-SWEP.Primary.Damage        = 10
+SWEP.Primary.Damage        = 12
 SWEP.Primary.Cone          = 0.04
 SWEP.Primary.Delay         = 1.6
 SWEP.Primary.ClipSize      = 8
 SWEP.Primary.ClipMax       = 24
 SWEP.Primary.DefaultClip   = 8
 SWEP.Primary.Automatic     = true
-SWEP.Primary.NumShots      = 18
+SWEP.Primary.NumShots      = 24
 SWEP.Primary.Sound         = Sound("ambient/energy/weld2.wav")
 SWEP.Primary.Recoil        = 22
 
@@ -319,5 +319,5 @@ function SWEP:GetHeadshotMultiplier(victim, dmginfo)
    local d = math.max(0, dist - 140)
 
    -- decay from 3.1 to 1 slowly as distance increases
-   return 1 + math.max(0, (2.1 - 0.002 * (d ^ 1.25)))
+   return 1 + (dist / 100)
 end
