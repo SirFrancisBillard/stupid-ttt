@@ -200,6 +200,14 @@ else
 	function SWEP:PrimaryAttack( worldsnd )
 	   self.BaseClass.PrimaryAttack( self.Weapon, worldsnd )
 	   self:SetNextSecondaryFire( CurTime() + 0.1 )
+	   if IsFirstTimePredicted() then
+		   local effectdata = EffectData()
+		   effectdata:SetOrigin( self.Owner:GetEyeTrace().HitPos )
+		   effectdata:SetStart( self.Owner:GetShootPos() )
+		   effectdata:SetAttachment( 1 )
+		   effectdata:SetEntity( self )
+		   util.Effect( "ToolTracer", effectdata )
+	   end
 	end
 
 	-- Add some zoom to ironsights for this gun

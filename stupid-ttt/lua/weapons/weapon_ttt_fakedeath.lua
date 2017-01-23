@@ -19,7 +19,7 @@ if CLIENT then
 	SWEP.DrawCrosshair	= false
 	SWEP.Author			= "Exho"
 
-	SWEP.Icon = "vgui/ttt/icon_rock"
+	SWEP.Icon = "vgui/ttt/icon_hitler.png"
 
 	SWEP.EquipMenuData = {
 		type = "item_weapon",
