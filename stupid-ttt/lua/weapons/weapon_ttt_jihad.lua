@@ -2,7 +2,7 @@ AddCSLuaFile()
 
 if CLIENT then
 	SWEP.PrintName = "Jihad Bomb"
-	SWEP.Slot = 6
+	SWEP.Slot = 7
 	SWEP.Icon = "vgui/ttt/icon_jihad.png"
 end
 

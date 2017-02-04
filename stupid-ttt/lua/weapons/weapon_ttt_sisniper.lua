@@ -11,10 +11,10 @@ if CLIENT then
 
    SWEP.EquipMenuData = {
       type = "item_weapon",
-      desc = "A silenced rifle with a one-bullet capacity."
+      desc = "Low-noise rifle, uses standard rifle\nammo.\nVictims will not scream when killed."
    };
 
-   SWEP.Icon               = "vgui/ttt/icon_rifle"
+   SWEP.Icon               = "vgui/ttt/icon_scout"
    SWEP.IconLetter         = "a"
 end
 
