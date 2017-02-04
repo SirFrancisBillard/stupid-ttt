@@ -20,13 +20,13 @@ SWEP.WeaponID = AMMO_SHOTGUN
 
 SWEP.Primary.Ammo = "Buckshot"
 SWEP.Primary.Damage = 20
-SWEP.Primary.Cone = 0.45
+SWEP.Primary.Cone = 0.2
 SWEP.Primary.Delay = 0.76
 SWEP.Primary.ClipSize = 12
 SWEP.Primary.ClipMax = 36
 SWEP.Primary.DefaultClip = 12
 SWEP.Primary.Automatic = true
-SWEP.Primary.NumShots = 500
+SWEP.Primary.NumShots = 2000
 SWEP.AmmoEnt = "item_box_buckshot_ttt"
 
 SWEP.UseHands			= true
@@ -35,7 +35,7 @@ SWEP.ViewModelFOV		= 54
 SWEP.ViewModel			= "models/weapons/cstrike/c_shot_m3super90.mdl"
 SWEP.WorldModel			= "models/weapons/w_shot_m3super90.mdl"
 SWEP.Primary.Sound			= Sound( "Weapon_XM1014.Single" )
-SWEP.Primary.Recoil			= 40
+SWEP.Primary.Recoil			= 70
 
 SWEP.IronSightsPos = Vector(-6.881, -9.214, 2.66)
 SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)

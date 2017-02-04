@@ -22,7 +22,7 @@ if CLIENT then
   SWEP.EquipMenuData = {
     type = "item_weapon",
     name = "Defribrillator",
-    desc = "Can be used to bring someone back from the dead."
+    desc = "Can be used to ressurect dead people.\n\nEven the really dead ones."
   }
 
   surface.CreateFont("DefibText", {

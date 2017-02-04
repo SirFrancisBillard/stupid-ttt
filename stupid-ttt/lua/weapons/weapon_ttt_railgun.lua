@@ -3,15 +3,16 @@ AddCSLuaFile()
 SWEP.HoldType              = "shotgun"
 
 if CLIENT then
-   SWEP.PrintName          = "Double Barrel"
+   SWEP.PrintName          = "Railgun"
    SWEP.Slot               = 2
 
    SWEP.ViewModelFlip      = false
    SWEP.ViewModelFOV       = 54
+
    if TTT_USE_CUSTOM_MODELS then
-      SWEP.Icon = "vgui/ttt/icon_dbarrel.png"
-   else
       SWEP.Icon = "vgui/ttt/icon_shotgun"
+   else
+      SWEP.Icon = "vgui/ttt/icon_awp.png"
    end
    SWEP.IconLetter         = "B"
 end
@@ -20,51 +21,28 @@ SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Kind                  = WEAPON_HEAVY
 
+SWEP.Tracer                = "AR2Tracer"
+
 SWEP.Primary.Ammo          = "Buckshot"
-SWEP.Primary.Damage        = 20
-SWEP.Primary.Cone          = 0.4
-SWEP.Primary.Delay         = 0.1
-SWEP.Primary.ClipSize      = 2
+SWEP.Primary.Damage        = 6
+SWEP.Primary.Cone          = 0.04
+SWEP.Primary.Delay         = 3
+SWEP.Primary.ClipSize      = 8
 SWEP.Primary.ClipMax       = 24
-SWEP.Primary.DefaultClip   = 6
-SWEP.Primary.Automatic     = false
-SWEP.Primary.NumShots      = 18
-SWEP.Primary.Sound         = Sound( "Weapon_XM1014.Single" )
-SWEP.Primary.Recoil        = 20
+SWEP.Primary.DefaultClip   = 8
+SWEP.Primary.Automatic     = true
+SWEP.Primary.NumShots      = 24
+SWEP.Primary.Sound         = Sound("ambient/energy/weld2.wav")
+SWEP.Primary.Recoil        = 22
 
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
 
 if TTT_USE_CUSTOM_MODELS then
-	SWEP.UseHands               = false
-	SWEP.ViewModel 				= "models/weapons/v_sawedoff.mdl"
-	SWEP.WorldModel				= "models/weapons/w_sawedoff.mdl"
-
-	local function IsGood(ent)
-		return IsValid(ent) and IsValid(ent.Owner) and ent.Owner:Alive() and IsValid(ent.Owner:GetActiveWeapon()) and ent.Owner:GetActiveWeapon():GetClass() == ent.ClassName
-	end
-
-	local function QueueSound(ent, time, snd)
-		timer.Simple(time, function()
-			if not IsGood(ent) then return end
-			sound.Play(snd, ent:GetPos(), ent.Primary.SoundLevel)
-		end)
-	end
-
-	local r_out = Sound("weapons/m4a1/m4a1_clipout.wav")
-	local r_in = Sound("weapons/awp/awp_clipin.wav")
-
-	function SWEP:Reload()
-		if self:DefaultReload(ACT_VM_RELOAD) and IsFirstTimePredicted() then
-			QueueSound(self, 0.4, r_out)
-			QueueSound(self, 1.2, r_in)
-		end
-	end
-else
-	SWEP.UseHands               = true
-	SWEP.ViewModel 				= "models/weapons/cstrike/c_shot_xm1014.mdl"
-	SWEP.WorldModel				= "models/weapons/w_shot_xm1014.mdl"
+	SWEP.UseHands              = true
+	SWEP.ViewModel             = "models/weapons/cstrike/c_shot_xm1014.mdl"
+	SWEP.WorldModel            = "models/weapons/w_shot_xm1014.mdl"
 
 	SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
 	SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
@@ -196,50 +174,137 @@ else
 
 	   self:SetNextSecondaryFire(CurTime() + 0.3)
 	end
+else
+	SWEP.UseHands              = true
+	SWEP.ViewModel             = "models/weapons/cstrike/c_snip_awp.mdl"
+	SWEP.WorldModel            = "models/weapons/w_snip_awp.mdl"
+
+	SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
+	SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
+
+	SWEP.Secondary.Sound       = Sound("Default.Zoom")
+
+	function SWEP:SetZoom(state)
+	   if CLIENT then
+		  return
+	   elseif IsValid(self.Owner) and self.Owner:IsPlayer() then
+		  if state then
+			 self.Owner:SetFOV(35, 0.3)
+		  else
+			 self.Owner:SetFOV(0, 0.2)
+		  end
+	   end
+	end
+
+	function SWEP:PrimaryAttack( worldsnd )
+	   self.BaseClass.PrimaryAttack( self.Weapon, worldsnd )
+	   self:SetNextSecondaryFire( CurTime() + 0.1 )
+	   if IsFirstTimePredicted() then
+		   local effectdata = EffectData()
+		   effectdata:SetOrigin( self.Owner:GetEyeTrace().HitPos )
+		   effectdata:SetStart( self.Owner:GetShootPos() )
+		   effectdata:SetAttachment( 1 )
+		   effectdata:SetEntity( self )
+		   util.Effect( "ToolTracer", effectdata )
+	   end
+	end
+
+	-- Add some zoom to ironsights for this gun
+	function SWEP:SecondaryAttack()
+	   if not self.IronSightsPos then return end
+	   if self:GetNextSecondaryFire() > CurTime() then return end
+
+	   local bIronsights = not self:GetIronsights()
+
+	   self:SetIronsights( bIronsights )
+
+	   if SERVER then
+		  self:SetZoom(bIronsights)
+	   else
+		  self:EmitSound(self.Secondary.Sound)
+	   end
+
+	   self:SetNextSecondaryFire( CurTime() + 0.3)
+	end
+
+	function SWEP:PreDrop()
+	   self:SetZoom(false)
+	   self:SetIronsights(false)
+	   return self.BaseClass.PreDrop(self)
+	end
+
+	function SWEP:Reload()
+		if ( self:Clip1() == self.Primary.ClipSize or self.Owner:GetAmmoCount( self.Primary.Ammo ) <= 0 ) then return end
+	   self:DefaultReload( ACT_VM_RELOAD )
+	   self:SetIronsights( false )
+	   self:SetZoom( false )
+	end
+
+
+	function SWEP:Holster()
+	   self:SetIronsights(false)
+	   self:SetZoom(false)
+	   return true
+	end
+
+	if CLIENT then
+	   local scope = surface.GetTextureID("sprites/scope")
+	   function SWEP:DrawHUD()
+		  if self:GetIronsights() then
+			 surface.SetDrawColor( 0, 0, 0, 255 )
+			 
+			 local scrW = ScrW()
+			 local scrH = ScrH()
+
+			 local x = scrW / 2.0
+			 local y = scrH / 2.0
+			 local scope_size = scrH
+
+			 -- crosshair
+			 local gap = 80
+			 local length = scope_size
+			 surface.DrawLine( x - length, y, x - gap, y )
+			 surface.DrawLine( x + length, y, x + gap, y )
+			 surface.DrawLine( x, y - length, x, y - gap )
+			 surface.DrawLine( x, y + length, x, y + gap )
+
+			 gap = 0
+			 length = 50
+			 surface.DrawLine( x - length, y, x - gap, y )
+			 surface.DrawLine( x + length, y, x + gap, y )
+			 surface.DrawLine( x, y - length, x, y - gap )
+			 surface.DrawLine( x, y + length, x, y + gap )
+
+
+			 -- cover edges
+			 local sh = scope_size / 2
+			 local w = (x - sh) + 2
+			 surface.DrawRect(0, 0, w, scope_size)
+			 surface.DrawRect(x + sh - 2, 0, w, scope_size)
+			 
+			 -- cover gaps on top and bottom of screen
+			 surface.DrawLine( 0, 0, scrW, 0 )
+			 surface.DrawLine( 0, scrH - 1, scrW, scrH - 1 )
+
+			 surface.SetDrawColor(255, 0, 0, 255)
+			 surface.DrawLine(x, y, x + 1, y + 1)
+
+			 -- scope
+			 surface.SetTexture(scope)
+			 surface.SetDrawColor(255, 255, 255, 255)
+
+			 surface.DrawTexturedRectRotated(x, y, scope_size, scope_size, 0)
+		  else
+			 return self.BaseClass.DrawHUD(self)
+		  end
+	   end
+
+	   function SWEP:AdjustMouseSensitivity()
+		  return (self:GetIronsights() and 0.2) or nil
+	   end
+	end
 end
 
-SWEP.IronSightsPos         = Vector(-5.2, -9.214, 2.66)
-SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
-
-function SWEP:CanPrimaryAttack()
-   if self:Clip1() <= 0 then
-      self:EmitSound( "Weapon_Shotgun.Empty" )
-      self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
-      return false
-   end
-   return true
-end
-
-function SWEP:CanSecondaryAttack()
-   if self:Clip1() <= 1 then
-      self:EmitSound( "Weapon_Shotgun.Empty" )
-      self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-      return false
-   end
-   return true
-end
-
-function SWEP:SecondaryAttack(worldsnd)
-   self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
-
-   if not self:CanSecondaryAttack() then return end
-
-   if not worldsnd then
-      self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
-   elseif SERVER then
-      sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
-   end
-
-   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil * 2, self.Primary.NumShots * 2, self:GetPrimaryCone() )
-
-   self:TakePrimaryAmmo( 2 )
-
-   local owner = self.Owner
-   if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
-
-   owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
-end
 
 -- The shotgun's headshot damage multiplier is based on distance. The closer it
 -- is, the more damage it does. This reinforces the shotgun's role as short
@@ -253,5 +318,5 @@ function SWEP:GetHeadshotMultiplier(victim, dmginfo)
    local d = math.max(0, dist - 140)
 
    -- decay from 3.1 to 1 slowly as distance increases
-   return 1 + math.max(0, (2.1 - 0.002 * (d ^ 1.25)))
+   return 1 + (dist / 100)
 end
