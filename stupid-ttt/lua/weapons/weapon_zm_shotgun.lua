@@ -25,7 +25,6 @@ SWEP.Primary.Ammo          = "Buckshot"
 SWEP.Primary.Damage        = 8
 SWEP.Primary.Cone          = 0.2
 SWEP.Primary.ClipMax       = 24
-SWEP.Primary.DefaultClip   = 8
 SWEP.Primary.Automatic     = true
 SWEP.Primary.NumShots      = 18
 SWEP.Primary.Sound         = Sound( "Weapon_XM1014.Single" )
@@ -43,6 +42,7 @@ if TTT_USE_CUSTOM_MODELS then
 	SWEP.WorldModel				= "models/weapons/w_sawedoff.mdl"
 
 	SWEP.Primary.ClipSize		= 2
+	SWEP.Primary.DefaultClip    = 2
 	SWEP.Primary.Delay			= 0.1
 
 	SWEP.IronSightsPos			= Vector(-5.2, -9.214, 2.66)
@@ -112,6 +112,7 @@ else
 	SWEP.reloadtimer           = 0
 
 	SWEP.Primary.ClipSize      = 8
+	SWEP.Primary.DefaultClip   = 8
 	SWEP.Primary.Delay         = 0.5
 
 	function SWEP:SetupDataTables()

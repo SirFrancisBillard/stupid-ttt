@@ -20,18 +20,18 @@ SWEP.Kind                = WEAPON_HEAVY
 SWEP.Primary.Damage      = 18
 SWEP.Primary.Delay       = 0.150
 SWEP.Primary.Cone        = 0.01
-SWEP.Primary.ClipSize    = 30
+SWEP.Primary.ClipSize    = 20
 SWEP.Primary.ClipMax     = 60
-SWEP.Primary.DefaultClip = 30
+SWEP.Primary.DefaultClip = 20
 SWEP.Primary.Automatic   = true
-SWEP.Primary.Ammo        = "smg1"
+SWEP.Primary.Ammo        = "Pistol"
 SWEP.Primary.Recoil      = 4
 SWEP.Primary.Sound       = Sound( "Weapon_Aug.Single" )
 
 SWEP.Secondary.Sound       = Sound("Default.Zoom")
 
 SWEP.AutoSpawnable       = true
-SWEP.AmmoEnt             = "item_ammo_smg1_ttt"
+SWEP.AmmoEnt             = "item_ammo_pistol_ttt"
 
 SWEP.UseHands            = true
 SWEP.ViewModel           = "models/weapons/cstrike/c_rif_aug.mdl"
