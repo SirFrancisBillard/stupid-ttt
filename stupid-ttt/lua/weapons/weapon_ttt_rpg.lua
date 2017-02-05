@@ -2,14 +2,14 @@ AddCSLuaFile()
 
 if ( CLIENT ) then
    SWEP.PrintName = "RPG"
-   SWEP.Slot = 7
+   SWEP.Slot = 6
    SWEP.SlotPos	= 0
    
    SWEP.EquipMenuData = {
       type="Weapon",
       model="models/weapons/w_eq_fraggrenade_thrown.mdl",
       name="RPG",
-      desc="Launches a powerful rocket that deals high damage in a small radius.\n\nLimited ammo."
+      desc="Launches a powerful rocket that deals\nhigh damage in a small radius.\nLimited ammo."
    };
 
    SWEP.Icon = "vgui/ttt/icon_rpg"       

@@ -23,11 +23,7 @@ if CLIENT then
 
 	SWEP.EquipMenuData = {
 		type = "item_weapon",
-		desc = [[Fool the innocents into thinking you are dead!
-		Left Mouse button to create the body.
-		-Change role with Right Mouse.
-		-Change death type with Reload.
-]]
+		desc = "Creates a fake body to fool the innocents.\nUse secondary fire and reload to change\nrole and cause of death."
 	}
 end
  

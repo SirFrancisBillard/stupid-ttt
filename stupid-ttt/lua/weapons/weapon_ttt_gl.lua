@@ -12,7 +12,7 @@ if CLIENT then
    SWEP.EquipMenuData = {
       type  = "item_weapon",
       name  = "Grenade Launcher",
-      desc  = "A grenade launcher.\n\nLimited ammo."
+      desc  = "A grenade launcher.\nLimited ammo."
    };
 
    SWEP.Icon             = "vgui/ttt/icon_gl.png"
@@ -26,7 +26,7 @@ SWEP.Kind                = WEAPON_EQUIP1
 
 game.AddAmmoType({name = "gl"})
 if CLIENT then
-	language.Add("gl_ammo", "Launchable Grenades")
+	language.Add("ammo_gl", "Launchable Grenades")
 end
 
 SWEP.Primary.Damage      = 60

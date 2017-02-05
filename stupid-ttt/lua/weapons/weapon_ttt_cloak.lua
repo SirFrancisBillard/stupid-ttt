@@ -1,9 +1,6 @@
-if SERVER then
-   AddCSLuaFile( "shared.lua" )
-   resource.AddFile("materials/VGUI/ttt/lykrast/icon_cloak.vmt")
-end
+AddCSLuaFile()
 
-if( CLIENT ) then
+if CLIENT then
     SWEP.PrintName = "Cloaking Device";
     SWEP.Slot = 7;
     SWEP.DrawAmmo = false;
@@ -12,7 +9,7 @@ if( CLIENT ) then
  
    SWEP.EquipMenuData = {
       type = "item_weapon",
-      desc = "Hold it to become nearly invisible.\n\nDoesn't hide your name, shadow or\nbloodstains on your body."
+      desc = "Hold it to become nearly invisible.\nDoesn't hide your name, shadow or\nbloodstains on your body."
    };
 
 end
