@@ -102,3 +102,11 @@ function SWEP:Explode()
 		self:Remove()
 	end
 end
+
+function SWEP:SecondaryAttack()	
+	self:SetNextSecondaryFire( CurTime() + 3 )
+	local snd = Sound("stupid-ttt/emotes/random_" .. math.random(1, 13) .. ".wav")
+	self:EmitSound(snd)
+	if CLIENT then return end
+	self:EmitSound(snd)
+end

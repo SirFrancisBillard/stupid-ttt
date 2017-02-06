@@ -4,7 +4,7 @@ SWEP.HoldType            = "pistol"
 
 if CLIENT then
    SWEP.PrintName        = "Uzi"
-   SWEP.Slot             = 2
+   SWEP.Slot             = 1
 
    SWEP.ViewModelFlip    = false
    SWEP.ViewModelFOV     = 54
@@ -15,7 +15,7 @@ end
 
 SWEP.Base                = "weapon_tttbase"
 
-SWEP.Kind                = WEAPON_HEAVY
+SWEP.Kind                = WEAPON_PISTOL
 
 SWEP.Primary.Damage      = 12
 SWEP.Primary.Delay       = 0.02

@@ -4,6 +4,14 @@ for i = 1, 10 do
 	resource.AddFile("sound/stupid-ttt/allahu/akbar_" .. i .. ".wav")
 end
 
+for i = 1, 12 do
+	resource.AddFile("sound/stupid-ttt/bullets/snap_" .. i .. ".wav")
+end
+
+for i = 1, 13 do
+	resource.AddFile("sound/stupid-ttt/emotes/random_" .. i .. ".wav")
+end
+
 if TTT_USE_CUSTOM_MODELS then
 	print("Adding TTT models...")
 	resource.AddFile("models/weapons/v_sawedoff.mdl")
@@ -33,6 +41,7 @@ resource.AddFile("materials/vgui/ttt/icon_deathstation.png")
 resource.AddFile("materials/vgui/ttt/icon_defib.png")
 resource.AddFile("materials/vgui/ttt/icon_dualies.png")
 resource.AddFile("materials/vgui/ttt/icon_gl.png")
+resource.AddFile("materials/vgui/ttt/icon_hitler.png")
 resource.AddFile("materials/vgui/ttt/icon_jihad.png")
 resource.AddFile("materials/vgui/ttt/icon_mp5.png")
 resource.AddFile("materials/vgui/ttt/icon_negev.png")

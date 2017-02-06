@@ -26,7 +26,7 @@ SWEP.Kind                = WEAPON_EQUIP1
 
 game.AddAmmoType({name = "gl"})
 if CLIENT then
-	language.Add("ammo_gl", "Launchable Grenades")
+	LANG.AddToLanguage("english", "ammo_gl", "SMG Grenades")
 end
 
 SWEP.Primary.Damage      = 60
@@ -48,6 +48,14 @@ SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
 SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
 
 SWEP.DeploySpeed         = 1
+
+function SWEP:SecondaryAttack()	
+	self:SetNextSecondaryFire( CurTime() + 3 )
+	local snd = Sound("stupid-ttt/emotes/random_" .. math.random(1, 13) .. ".wav")
+	self:EmitSound(snd)
+	if CLIENT then return end
+	self:EmitSound(snd)
+end
 
 function SWEP:PrimaryAttack()
 	if not self:CanPrimaryAttack() then return end
@@ -209,13 +217,4 @@ function SWEP:GetHeadshotMultiplier(victim, dmginfo)
 
    -- decay from 3.1 to 1 slowly as distance increases
    return 1 + math.max(0, (2.1 - 0.002 * (d ^ 1.25)))
-end
-
-function SWEP:SecondaryAttack()
-   if self.NoSights or (not self.IronSightsPos) or self.dt.reloading then return end
-   --if self:GetNextSecondaryFire() > CurTime() then return end
-
-   self:SetIronsights(not self:GetIronsights())
-
-   self:SetNextSecondaryFire(CurTime() + 0.3)
 end

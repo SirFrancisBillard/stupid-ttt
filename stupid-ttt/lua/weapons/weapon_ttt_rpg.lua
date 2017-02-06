@@ -58,54 +58,37 @@ SWEP.Secondary.Automatic        = false
 SWEP.Secondary.Ammo             = "none"
 SWEP.AllowDrop = true
 
-
 function SWEP:PrimaryAttack()
-
-
-        self.Weapon:SetNextPrimaryFire( CurTime() + 0.2 )
+        self:SetNextPrimaryFire( CurTime() + 0.2 )
         if not self:CanPrimaryAttack() then return end  
-        self.Weapon:EmitSound("Weapon_RPG.Single")
-        self.Weapon:SetNextPrimaryFire(CurTime() + 1)
-        self.Weapon:SetNextSecondaryFire(CurTime() + 1)
-        self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-        self.Weapon:TakePrimaryAmmo(1)
+        self:EmitSound("Weapon_RPG.Single")
+        self:SetNextPrimaryFire(CurTime() + 1)
+        self:SetNextSecondaryFire(CurTime() + 1)
+        self:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+        self:TakePrimaryAmmo(1)
 
-        if ( SERVER ) then
-        
-        
-                local grenade = ents.Create( "rpg_rocket" )
-                        grenade:SetPos( self.Owner:GetShootPos() )
-                        grenade:SetOwner( self.Owner )
-                        grenade.FlyAngle = self.Owner:GetAimVector():Angle()
-                grenade:Spawn()
+        if SERVER then
+            local grenade = ents.Create( "rpg_rocket" )
+            grenade:SetPos( self.Owner:GetShootPos() )
+            grenade:SetOwner( self.Owner )
+            grenade.FlyAngle = self.Owner:GetAimVector():Angle()
+            grenade:Spawn()
                 
-                local phys = grenade:GetPhysicsObject()
-                if (phys:IsValid()) then
-                        phys:SetVelocity( self.Owner:GetAimVector() * 3000 )
-                end
-              
-                
+            local phys = grenade:GetPhysicsObject()
+            if (phys:IsValid()) then
+                    phys:SetVelocity( self.Owner:GetAimVector() * 3000 )
+            end
         end
-
-
 end
 
 function SWEP:SecondaryAttack()	
-	
-	self.Weapon:SetNextSecondaryFire( CurTime() + 3 )
-	
-	local TauntSound = table.Random( { Sound("vo/Streetwar/sniper/male01/c17_09_help02.wav"), Sound("vo/npc/male01/overhere01.wav") } )
-
-
-	self.Weapon:EmitSound( TauntSound )
-	
-	if (!SERVER) then return end
-	
-	self.Weapon:EmitSound( TauntSound )
-
-
+	self:SetNextSecondaryFire( CurTime() + 3 )
+	local snd = Sound("stupid-ttt/emotes/random_" .. math.random(1, 13) .. ".wav")
+	self:EmitSound(snd)
+	if CLIENT then return end
+	self:EmitSound(snd)
 end
 
 function SWEP:Reload()
-	self.Weapon:DefaultReload( ACT_VM_RELOAD );
+	self:DefaultReload( ACT_VM_RELOAD )
 end	
