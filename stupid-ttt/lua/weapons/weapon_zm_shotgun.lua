@@ -22,31 +22,32 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_SHOTGUN
 
 SWEP.Primary.Ammo          = "Buckshot"
-SWEP.Primary.Damage        = 8
-SWEP.Primary.Cone          = 0.2
 SWEP.Primary.ClipMax       = 24
+SWEP.Primary.Cone = 0.2
 SWEP.Primary.Automatic     = true
 SWEP.Primary.NumShots      = 18
-SWEP.Primary.Sound         = Sound( "Weapon_XM1014.Single" )
+SWEP.Primary.Sound         = Sound("Weapon_XM1014.Single")
 SWEP.Primary.Recoil        = 20
 
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
 
+SWEP.UseHands = true
+
 if TTT_USE_CUSTOM_MODELS then
-	SWEP.PrintName = "Double Barrel Shotgun"
+	SWEP.PrintName = "Super Shotgun"
+	
+	SWEP.ViewModel = "models/weapons/tfa_doom/c_ssg.mdl"
+	SWEP.WorldModel = "models/weapons/tfa_doom/w_ssg.mdl"
 
-	SWEP.UseHands               = false
-	SWEP.ViewModel 				= "models/weapons/v_sawedoff.mdl"
-	SWEP.WorldModel				= "models/weapons/w_sawedoff.mdl"
+	SWEP.Primary.ClipSize = 2
+	SWEP.Primary.Damage = 18
+	SWEP.Primary.DefaultClip = 2
+	SWEP.Primary.Delay = 0.4
 
-	SWEP.Primary.ClipSize		= 2
-	SWEP.Primary.DefaultClip    = 2
-	SWEP.Primary.Delay			= 0.1
-
-	SWEP.IronSightsPos			= Vector(-5.2, -9.214, 2.66)
-	SWEP.IronSightsAng			= Vector(-0.101, -0.7, -0.201)
+	SWEP.IronSightsPos = Vector(-1.5, 0, 1.159)
+	SWEP.IronSightsAng = Vector(0.6, 0.219, 0.127)
 
 	local function IsGood(ent)
 		return IsValid(ent) and IsValid(ent.Owner) and ent.Owner:Alive() and IsValid(ent.Owner:GetActiveWeapon()) and ent.Owner:GetActiveWeapon():GetClass() == ent.ClassName
@@ -54,8 +55,8 @@ if TTT_USE_CUSTOM_MODELS then
 
 	local function QueueSound(ent, time, snd)
 		timer.Simple(time, function()
-			if not IsGood(ent) then return end
-			sound.Play(snd, ent:GetPos(), ent.Primary.SoundLevel)
+			if not IsGood(ent) or SERVER then return end
+			surface.PlaySound(snd)
 		end)
 	end
 
@@ -64,56 +65,26 @@ if TTT_USE_CUSTOM_MODELS then
 
 	function SWEP:Reload()
 		if self:DefaultReload(ACT_VM_RELOAD) and IsFirstTimePredicted() then
-			QueueSound(self, 0.4, r_out)
-			QueueSound(self, 1.2, r_in)
+			self:SetIronsights(false)
+			QueueSound(self, 0.2, r_out)
+			QueueSound(self, 0.6, r_in)
 		end
-	end
-
-	function SWEP:CanSecondaryAttack()
-	   if self:Clip1() <= 1 then
-		  self:EmitSound( "Weapon_Shotgun.Empty" )
-		  self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-		  return false
-	   end
-	   return true
-	end
-
-	function SWEP:SecondaryAttack(worldsnd)
-	   self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-	   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
-
-	   if not self:CanSecondaryAttack() then return end
-
-	   if not worldsnd then
-		  self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
-	   elseif SERVER then
-		  sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
-	   end
-
-	   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil * 2, self.Primary.NumShots * 2, self:GetPrimaryCone() )
-
-	   self:TakePrimaryAmmo( 2 )
-
-	   local owner = self.Owner
-	   if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
-
-	   owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
 	end
 else
 	SWEP.PrintName = "Shotgun"
 
-	SWEP.UseHands               = true
-	SWEP.ViewModel 				= "models/weapons/cstrike/c_shot_xm1014.mdl"
-	SWEP.WorldModel				= "models/weapons/w_shot_xm1014.mdl"
+	SWEP.ViewModel = "models/weapons/cstrike/c_shot_xm1014.mdl"
+	SWEP.WorldModel = "models/weapons/w_shot_xm1014.mdl"
 
-	SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
-	SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
+	SWEP.IronSightsPos = Vector(-6.881, -9.214, 2.66)
+	SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 
-	SWEP.reloadtimer           = 0
+	SWEP.reloadtimer = 0
 
-	SWEP.Primary.ClipSize      = 8
-	SWEP.Primary.DefaultClip   = 8
-	SWEP.Primary.Delay         = 0.5
+	SWEP.Primary.ClipSize = 8
+	SWEP.Primary.Damage = 8
+	SWEP.Primary.DefaultClip = 8
+	SWEP.Primary.Delay = 0.5
 
 	function SWEP:SetupDataTables()
 	   self:DTVar("Bool", 0, "reloading")

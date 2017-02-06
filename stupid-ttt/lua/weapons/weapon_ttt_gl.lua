@@ -28,25 +28,25 @@ if CLIENT then
 	LANG.AddToLanguage("english", "ammo_gl", "SMG Grenades")
 end
 
-SWEP.Primary.Damage      = 60
-SWEP.Primary.Delay       = 0.05
-SWEP.Primary.Cone        = 0.02
-SWEP.Primary.ClipSize    = 6
-SWEP.Primary.ClipMax     = 18
+SWEP.Primary.Damage = 60
+SWEP.Primary.Delay = 0.05
+SWEP.Primary.Cone = 0.02
+SWEP.Primary.ClipSize = 6
+SWEP.Primary.ClipMax = 18
 SWEP.Primary.DefaultClip = 18
-SWEP.Primary.Automatic   = true
-SWEP.Primary.Ammo        = "gl"
-SWEP.Primary.Recoil      = 3.2
-SWEP.Primary.Sound       = Sound("weapons/grenade_launcher1.wav")
+SWEP.Primary.Automatic = true
+SWEP.Primary.Ammo = "gl"
+SWEP.Primary.Recoil = 3.2
+SWEP.Primary.Sound = Sound("weapons/grenade_launcher1.wav")
 
-SWEP.UseHands            = true
-SWEP.ViewModel             = "models/weapons/cstrike/c_shot_xm1014.mdl"
-SWEP.WorldModel            = "models/weapons/w_shot_xm1014.mdl"
+SWEP.UseHands = true
+SWEP.ViewModel = "models/weapons/cstrike/c_shot_xm1014.mdl"
+SWEP.WorldModel = "models/weapons/w_shot_xm1014.mdl"
 
-SWEP.IronSightsPos         = Vector(-6.881, -9.214, 2.66)
-SWEP.IronSightsAng         = Vector(-0.101, -0.7, -0.201)
+SWEP.IronSightsPos = Vector(-6.881, -9.214, 2.66)
+SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 
-SWEP.DeploySpeed         = 1
+SWEP.DeploySpeed = 1
 
 function SWEP:SecondaryAttack()	
 	self:SetNextSecondaryFire( CurTime() + 3 )

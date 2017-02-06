@@ -60,7 +60,7 @@ function SWEP:PrimaryAttack()
     effectdata:SetScale(1)
     effectdata:SetRadius(20)
     self.BaseClass.ShootEffects(self)
-    self:SetHoldType('melee')
+    self:SetHoldType("slam")
 
     if (SERVER) then
         timer.Simple(3, function()
@@ -82,20 +82,21 @@ function SWEP:Scream()
 end
 
 function SWEP:Explode()
-    local player = self.Owner
     local explosion = ents.Create("env_explosion")
 
-    if (player:IsValid()) then
+	local dmg = DamageInfo()
+	dmg:SetAttacker(self.Owner)
+    if (self.Owner:IsValid()) then
         explosion:SetPos(self:GetPos())
         explosion:SetOwner(self.Owner)
-        explosion:SetKeyValue("iMagnitude", "200")
+        explosion:SetKeyValue("iMagnitude", "800")
         explosion:Spawn()
         explosion:Fire("Explode", 0, 0)
         explosion:EmitSound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150))
         self:Remove()
-        player:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
-        player:SetColor(COLOR_WHITE)
-        player:Kill()
+        self.Owner:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
+        self.Owner:SetColor(COLOR_WHITE)
+        self.Owner:Kill()
     else
         explosion:SetPos(self:GetPos())
         explosion:SetKeyValue("iMagnitude", "50")
