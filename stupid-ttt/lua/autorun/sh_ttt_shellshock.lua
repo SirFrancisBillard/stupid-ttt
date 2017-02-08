@@ -2,8 +2,6 @@
 local shockDistance = 50 -- Maximum distance, within which you will be effected.	
 local maxShock = 10 -- Maximum shocked you can be.  Probably don't change this.
 local defaultFadeSpeed = 2 -- Speed at which shock goes away.
-local lastCrack = CurTime() -- The last crack that hit the player
-local crackDelay = 0.1 -- Time in between cracks
 
 if SERVER then
 	CreateConVar( "shell_fadespeed", defaultFadeSpeed, _, "How quickly should shellshock fade away?"  )
@@ -45,6 +43,10 @@ if SERVER then
 		ply:SetNWFloat( "ShellshockLevel", 0 )
 	end)
 else -- CLIENT
+	-- These variables are only needed on the client
+	local lastCrack = CurTime() -- The last crack that hit the player
+	local crackDelay = 0.1 -- Time in between cracks
+
 	-- Handles near miss sounds
 	net.Receive( "ShotAt", function()
 		if not IsValid( LocalPlayer() ) or CurTime() - lastCrack < crackDelay then return end
