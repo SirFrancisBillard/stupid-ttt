@@ -19,7 +19,7 @@ SWEP.Kind = WEAPON_EQUIP1
 SWEP.WeaponID = AMMO_SHOTGUN
 
 SWEP.Primary.Ammo = "Buckshot"
-SWEP.Primary.Damage = 20
+SWEP.Primary.Damage = 35
 SWEP.Primary.Cone = 0.2
 SWEP.Primary.Delay = 0.76
 SWEP.Primary.ClipSize = 12
@@ -34,7 +34,7 @@ SWEP.ViewModelFlip		= false
 SWEP.ViewModelFOV		= 54
 SWEP.ViewModel			= "models/weapons/cstrike/c_shot_m3super90.mdl"
 SWEP.WorldModel			= "models/weapons/w_shot_m3super90.mdl"
-SWEP.Primary.Sound		= Sound( "Weapon_M3.Single" )
+SWEP.Primary.Sound		= Sound("Weapon_M3.Single")
 SWEP.Primary.Recoil		= 70
 
 SWEP.IronSightsPos		= Vector(-7.64, -8.898, 3.559)
@@ -62,7 +62,6 @@ function SWEP:Reload()
 end
 
 function SWEP:StartReload()
-	--if self:GetNWBool( "reloading", false ) then
 	if self.dt.reloading then
 		return false
 	end
@@ -89,7 +88,6 @@ function SWEP:StartReload()
 
 	self.reloadtimer =  CurTime() + wep:SequenceDuration()
 
-	--wep:SetNWBool("reloading", true)
 	self.dt.reloading = true
 
 	return true
@@ -194,7 +192,6 @@ end
 
 function SWEP:SecondaryAttack()
 	if self.NoSights or (not self.IronSightsPos) or self.dt.reloading then return end
-	--if self:GetNextSecondaryFire() > CurTime() then return end
 
 	self:SetIronsights(not self:GetIronsights())
 
@@ -216,8 +213,6 @@ SWEP.LimitedStock = true
 -- If AllowDrop is false, players can't manually drop the gun with Q
 SWEP.AllowDrop = true
 
-
 -- CanBuy is a table of ROLE_* entries like ROLE_TRAITOR and ROLE_DETECTIVE. If
 -- a role is in this table, those players can buy this.
 SWEP.CanBuy = { ROLE_DETECTIVE, ROLE_TRAITOR }
-
