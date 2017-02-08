@@ -1,7 +1,9 @@
 
 local shockDistance = 50 -- Maximum distance, within which you will be effected.	
 local maxShock = 10 -- Maximum shocked you can be.  Probably don't change this.
-local defaultFadeSpeed = 1 -- Speed at which shock goes away.
+local defaultFadeSpeed = 2 -- Speed at which shock goes away.
+local lastCrack = CurTime() -- The last crack that hit the player
+local crackDelay = 0.1 -- Time in between cracks
 
 if SERVER then
 	CreateConVar( "shell_fadespeed", defaultFadeSpeed, _, "How quickly should shellshock fade away?"  )
@@ -45,7 +47,8 @@ if SERVER then
 else -- CLIENT
 	-- Handles near miss sounds
 	net.Receive( "ShotAt", function()
-		if not IsValid( LocalPlayer() ) then return end
+		if not IsValid( LocalPlayer() ) or CurTime() - lastCrack < crackDelay then return end
+		lastCrack = CurTime()
 		surface.PlaySound( "stupid-ttt/bullets/snap_" .. math.random(1, 12) .. ".wav")
 	end)
 	
