@@ -2,7 +2,7 @@ AddCSLuaFile()
 
 if CLIENT then
     SWEP.PrintName = "Uzi"
-    SWEP.Slot = 1
+    SWEP.Slot = 2
     SWEP.ViewModelFlip = false
     SWEP.ViewModelFOV = 54
     SWEP.Icon = "vgui/ttt/icon_mac"
@@ -11,7 +11,7 @@ end
 
 SWEP.Base = "weapon_tttbase"
 
-SWEP.Kind = WEAPON_PISTOL
+SWEP.Kind = WEAPON_HEAVY
 
 SWEP.Primary.Damage = 12
 SWEP.Primary.Delay = 0.02
