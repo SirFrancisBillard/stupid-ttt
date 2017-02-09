@@ -21,21 +21,12 @@ end
 SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Primary.Recoil        = 5
-<<<<<<< HEAD
 SWEP.Primary.Damage        = 150
 SWEP.Primary.Delay         = 1.5
 SWEP.Primary.Cone          = 0.005
 SWEP.Primary.ClipSize      = 2
 SWEP.Primary.Automatic     = true
 SWEP.Primary.DefaultClip   = 2
-=======
-SWEP.Primary.Damage        = 75
-SWEP.Primary.Delay         = 1.5
-SWEP.Primary.Cone          = 0.005
-SWEP.Primary.ClipSize      = 1
-SWEP.Primary.Automatic     = true
-SWEP.Primary.DefaultClip   = 1
->>>>>>> origin/master
 SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Ammo          = "357"
 SWEP.Primary.Sound         = Sound( "Weapon_USP.SilencedShot" )

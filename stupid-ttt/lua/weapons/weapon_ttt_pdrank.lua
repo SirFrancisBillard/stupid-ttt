@@ -34,21 +34,9 @@ SWEP.CanBuy = {ROLE_TRAITOR}
 SWEP.Tracer = "AR2Tracer"
 SWEP.HoldType = "slam"
 
-<<<<<<< HEAD
 SWEP.UseHands = true
 SWEP.ViewModel = "models/weapons/c_grenade.mdl"
 SWEP.WorldModel = "models/weapons/w_grenade.mdl"
-=======
-if TTT_USE_CUSTOM_MODELS then
-    SWEP.UseHands = false
-    SWEP.ViewModel = "models/weapons/v_p_drink.mdl"
-    SWEP.WorldModel = "models/weapons/w_p_drink.mdl"
-else
-    SWEP.UseHands = true
-    SWEP.ViewModel = "models/weapons/c_grenade.mdl"
-    SWEP.WorldModel = "models/weapons/w_grenade.mdl"
-end
->>>>>>> origin/master
 
 function SWEP:Deploy()
     self:SendWeaponAnim(ACT_VM_DEPLOY)
