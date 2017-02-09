@@ -11,7 +11,7 @@ if CLIENT then
 
    SWEP.EquipMenuData = {
       type = "item_weapon",
-      desc = "Looks like a health station, but will explode upon use."
+      desc = "Looks like a health station, but will\nexplode upon use."
    };
 
    SWEP.Icon                = "vgui/ttt/icon_deathstation.png"

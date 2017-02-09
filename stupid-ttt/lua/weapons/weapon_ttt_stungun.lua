@@ -26,7 +26,7 @@ SWEP.CanBuy                = {ROLE_DETECTIVE}
 SWEP.LimitedStock          = false
 SWEP.AmmoEnt               = "item_ammo_smg1_ttt"
 
-SWEP.Primary.Damage        = 9
+SWEP.Primary.Damage        = 14
 SWEP.Primary.Delay         = 0.1
 SWEP.Primary.Cone          = 0.02
 SWEP.Primary.ClipSize      = 30
@@ -44,7 +44,7 @@ SWEP.WorldModel            = "models/weapons/w_smg_ump45.mdl"
 SWEP.IronSightsPos         = Vector(-8.735, -10, 4.039)
 SWEP.IronSightsAng         = Vector(-1.201, -0.201, -2)
 
-SWEP.HeadshotMultiplier    = 16 -- brain fizz
+SWEP.HeadshotMultiplier    = 4 -- brain fizz
 --SWEP.DeploySpeed = 3
 
 function SWEP:ShootBullet( dmg, recoil, numbul, cone )

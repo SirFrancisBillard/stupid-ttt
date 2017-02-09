@@ -22,11 +22,11 @@ SWEP.Primary.Delay         = 1.5
 SWEP.Primary.Recoil        = 7
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "357"
-SWEP.Primary.Damage        = 1250
+SWEP.Primary.Damage        = 95
 SWEP.Primary.Cone          = 0.005
-SWEP.Primary.ClipSize      = 10
+SWEP.Primary.ClipSize      = 5
 SWEP.Primary.ClipMax       = 20 -- keep mirrored to ammo
-SWEP.Primary.DefaultClip   = 10
+SWEP.Primary.DefaultClip   = 5
 SWEP.Primary.Sound         = Sound("Weapon_Scout.Single")
 
 SWEP.Secondary.Sound       = Sound("Default.Zoom")

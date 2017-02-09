@@ -19,7 +19,7 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_M16
 
 SWEP.Primary.Delay         = 0.08
-SWEP.Primary.Recoil        = 1.6
+SWEP.Primary.Recoil        = 3.2
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Damage        = 16
@@ -37,8 +37,8 @@ SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/cstrike/c_rif_m4a1.mdl"
 SWEP.WorldModel            = "models/weapons/w_rif_m4a1.mdl"
 
-SWEP.IronSightsPos         = Vector(-7.58, -9.2, 0.55)
-SWEP.IronSightsAng         = Vector(2.599, -1.3, -3.6)
+SWEP.IronSightsPos         = Vector(-7.72, -6.064, 0.72)
+SWEP.IronSightsAng         = Vector(2, -1.3, -3.031)
 
 function SWEP:SetZoom(state)
    if CLIENT then return end
