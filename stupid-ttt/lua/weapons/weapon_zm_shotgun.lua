@@ -42,7 +42,11 @@ if TTT_USE_CUSTOM_MODELS then
 	SWEP.WorldModel = "models/weapons/tfa_doom/w_ssg.mdl"
 
 	SWEP.Primary.ClipSize = 2
+<<<<<<< HEAD
 	SWEP.Primary.Damage = 26
+=======
+	SWEP.Primary.Damage = 18
+>>>>>>> origin/master
 	SWEP.Primary.DefaultClip = 2
 	SWEP.Primary.Delay = 0.4
 

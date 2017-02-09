@@ -47,8 +47,12 @@ function SWEP:SetZoom(state)
       return
    elseif IsValid(self.Owner) and self.Owner:IsPlayer() then
       if state then
+<<<<<<< HEAD
 	     self.Owner:DrawViewModel(false)
          self.Owner:SetFOV(20, 0.3)
+=======
+         self.Owner:SetFOV(35, 0.3)
+>>>>>>> origin/master
       else
 	     self.Owner:DrawViewModel(true)
          self.Owner:SetFOV(0, 0.2)
