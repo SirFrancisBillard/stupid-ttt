@@ -48,12 +48,11 @@ SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 
 SWEP.DeploySpeed = 1
 
-function SWEP:SecondaryAttack()	
-	self:SetNextSecondaryFire( CurTime() + 3 )
-	local snd = Sound("stupid-ttt/emotes/random_" .. math.random(1, 13) .. ".wav")
-	self:EmitSound(snd)
-	if CLIENT then return end
-	self:EmitSound(snd)
+function SWEP:SecondaryAttack()
+    self:SetNextSecondaryFire(CurTime() + 3)
+    if SERVER then
+		SendTaunt(self)
+	end
 end
 
 function SWEP:PrimaryAttack()

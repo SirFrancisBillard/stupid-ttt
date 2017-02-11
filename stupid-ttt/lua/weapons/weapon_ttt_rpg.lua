@@ -13,6 +13,21 @@ if (CLIENT) then
     }
 
     SWEP.Icon = "vgui/ttt/icon_rpg"
+
+	net.Receive("PlaySyncedTaunt", function(len)
+		local origin = net.ReadEntity()
+		local soundNum = net.ReadInt(5)
+		origin:EmitSound(Sound("stupid-ttt/emotes/random_" .. soundNum .. ".wav"))
+	end)
+else
+	util.AddNetworkString("PlaySyncedTaunt")
+
+	function SendTaunt(ent)
+		net.Start("PlaySyncedTaunt")
+		net.WriteEntity(ent.Owner)
+		net.WriteInt(math.random(1, 13), 5)
+		net.Broadcast()
+	end
 end
 
 SWEP.Base = "weapon_tttbase"
@@ -85,10 +100,9 @@ end
 
 function SWEP:SecondaryAttack()
     self:SetNextSecondaryFire(CurTime() + 3)
-    local snd = Sound("stupid-ttt/emotes/random_" .. math.random(1, 13) .. ".wav")
-    self:EmitSound(snd)
-    if CLIENT then return end
-    self:EmitSound(snd)
+    if SERVER then
+		SendTaunt(self)
+	end
 end
 
 function SWEP:Reload()
