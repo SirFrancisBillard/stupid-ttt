@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 if CLIENT then
-	SWEP.PrintName = "Boomstick"
+	SWEP.PrintName = "Pump Shotgun"
 
 	SWEP.Slot = 6
 	SWEP.Icon = "vgui/ttt/icon_boomstick.png"
@@ -11,22 +11,21 @@ end
 -- Standard GMod values
 SWEP.HoldType = "shotgun"
 
-SWEP.Base				= "weapon_tttbase"
-SWEP.AutoSpawnable = false
+SWEP.Base = "weapon_tttbase"
+SWEP.AutoSpawnable = true
 SWEP.Spawnable = false
 
-SWEP.Kind = WEAPON_EQUIP1
-SWEP.WeaponID = AMMO_SHOTGUN
+SWEP.Kind = WEAPON_HEAVY
 
 SWEP.Primary.Ammo = "Buckshot"
-SWEP.Primary.Damage = 35
-SWEP.Primary.Cone = 0.2
-SWEP.Primary.Delay = 0.76
-SWEP.Primary.ClipSize = 12
-SWEP.Primary.ClipMax = 36
-SWEP.Primary.DefaultClip = 12
+SWEP.Primary.Damage = 16
+SWEP.Primary.Cone = 0.085
+SWEP.Primary.Delay = 1.2
+SWEP.Primary.ClipSize = 8
+SWEP.Primary.ClipMax = 24
+SWEP.Primary.DefaultClip = 8
 SWEP.Primary.Automatic = true
-SWEP.Primary.NumShots = 2000
+SWEP.Primary.NumShots = 8
 SWEP.AmmoEnt = "item_box_buckshot_ttt"
 
 SWEP.UseHands			= true
@@ -35,7 +34,7 @@ SWEP.ViewModelFOV		= 54
 SWEP.ViewModel			= "models/weapons/cstrike/c_shot_m3super90.mdl"
 SWEP.WorldModel			= "models/weapons/w_shot_m3super90.mdl"
 SWEP.Primary.Sound		= Sound("Weapon_M3.Single")
-SWEP.Primary.Recoil		= 70
+SWEP.Primary.Recoil		= 7
 
 SWEP.IronSightsPos		= Vector(-7.64, -8.898, 3.559)
 SWEP.IronSightsAng		= Vector(0, 0, 0)
@@ -197,22 +196,3 @@ function SWEP:SecondaryAttack()
 
 	self:SetNextSecondaryFire(CurTime() + 0.3)
 end
-
--- Equipment menu information is only needed on the client
-if CLIENT then
-	-- Text shown in the equip menu
-	SWEP.EquipMenuData = {
-		type = "Weapon",
-		desc = "Fires an insane amount of rounds with\nextreme damage output at closer ranges.\nRequires six shells per shot and has an\nextremely slow reload."
-	}
-end
-
--- If LimitedStock is true, you can only buy one per round.
-SWEP.LimitedStock = true
-
--- If AllowDrop is false, players can't manually drop the gun with Q
-SWEP.AllowDrop = true
-
--- CanBuy is a table of ROLE_* entries like ROLE_TRAITOR and ROLE_DETECTIVE. If
--- a role is in this table, those players can buy this.
-SWEP.CanBuy = { ROLE_DETECTIVE, ROLE_TRAITOR }

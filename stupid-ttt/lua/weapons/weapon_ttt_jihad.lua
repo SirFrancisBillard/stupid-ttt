@@ -82,32 +82,22 @@ function SWEP:Scream()
 end
 
 function SWEP:Explode()
-	if not IsValid(self.Owner) or not self.Owner:Alive() then return end
+	if not IsValid(self) or not IsValid(self.Owner) or not self.Owner:Alive() then return end
 
     local explosion = ents.Create("env_explosion")
 	local dmg = DamageInfo()
 	
 	dmg:SetAttacker(self.Owner)
-    if (self.Owner:IsValid()) then
-        explosion:SetPos(self:GetPos())
-        explosion:SetOwner(self.Owner)
-        explosion:SetKeyValue("iMagnitude", "200")
-        explosion:Spawn()
-        explosion:Fire("Explode", 0, 0)
-        explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
-        self.Owner:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
-        self.Owner:SetColor(COLOR_WHITE)
-		util.BlastDamage(self, self.Owner, self:GetPos(), 800, 300)
-		self:Remove()
-    else
-        explosion:SetPos(self:GetPos())
-        explosion:SetKeyValue("iMagnitude", "200")
-        explosion:Spawn()
-        explosion:Fire("Explode", 0, 0)
-        explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
-		util.BlastDamage(self, self, self:GetPos(), 800, 300)
-        self:Remove()
-    end
+	explosion:SetPos(self:GetPos())
+	explosion:SetOwner(self.Owner)
+	explosion:SetKeyValue("iMagnitude", "200")
+	explosion:Spawn()
+	explosion:Fire("Explode", 0, 0)
+	explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
+	self.Owner:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
+	self.Owner:SetColor(COLOR_WHITE)
+	util.BlastDamage(self, self.Owner, self:GetPos(), 800, 300)
+	self:Remove()
 end
 
 function SWEP:SecondaryAttack()
