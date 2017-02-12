@@ -32,8 +32,8 @@ SWEP.Primary.Damage = 60
 SWEP.Primary.Delay = 0.05
 SWEP.Primary.Cone = 0.02
 SWEP.Primary.ClipSize = 6
-SWEP.Primary.ClipMax = 18
-SWEP.Primary.DefaultClip = 18
+SWEP.Primary.ClipMax = 54
+SWEP.Primary.DefaultClip = 54
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "gl"
 SWEP.Primary.Recoil = 3.2
@@ -70,12 +70,12 @@ function SWEP:PrimaryAttack()
 	local ent = ents.Create("ent_smgbomb")
 	if not IsValid(ent) then return end
 
-	ent:SetPos(self.Owner:EyePos() + (self.Owner:GetAimVector() * 75))
+	ent:SetPos(self.Owner:EyePos())
 	ent:SetAngles(self.Owner:EyeAngles())
+	ent:SetOwner(self.Owner)
 	ent:Spawn()
 	ent:Activate()
 	ent:Fire()
-	ent:SetOwner(self.Owner)
 	
 	local phys = ent:GetPhysicsObject()
 	if not IsValid(phys) then ent:Remove() return end

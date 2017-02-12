@@ -21,7 +21,7 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.Tracer                = "AR2Tracer"
 
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Damage        = 4
+SWEP.Primary.Damage        = 3
 SWEP.Primary.Cone          = 0.004
 SWEP.Primary.Delay         = 0.01
 SWEP.Primary.ClipSize      = 1000
@@ -29,7 +29,7 @@ SWEP.Primary.ClipMax       = 1000
 SWEP.Primary.DefaultClip   = 1000
 SWEP.Primary.Automatic     = true
 SWEP.Primary.NumShots      = 1
-SWEP.Primary.Sound         = Sound("weapons/ar2/ar2_altfire.wav")
+SWEP.Primary.Sound         = Sound("weapons/ar2/npc_ar2_altfire.wav")
 SWEP.Primary.Recoil        = 0.1
 
 SWEP.AutoSpawnable         = true

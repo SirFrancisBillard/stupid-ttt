@@ -5,3 +5,16 @@ hook.Add("EntityTakeDamage", "TTTBulletDamageScale", function(ent, dmg)
 		dmg:ScaleDamage(scale:GetFloat())
 	end
 end)
+
+hook.Add("EntityTakeDamage", "TTTGrenadeJumping", function(ent, dmg)
+	if IsValid(ent) and ent:IsPlayer() and dmg:GetDamageType() == DMG_BLAST then
+		local wep = dmg:GetInflictor()
+		if not IsValid(wep) or not wep.CanBeUsedToRocketJump then return end
+		local ply = wep:GetOwner()
+		-- gotta check if an entity is a number because garry
+		if IsValid(ply) and ply == ent then
+			dmg:ScaleDamage(0.1)
+			ply:SetVelocity(Vector(0, 0, dmg:GetDamage() * 100))
+		end
+	end
+end)

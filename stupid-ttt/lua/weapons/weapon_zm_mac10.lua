@@ -58,12 +58,12 @@ function SWEP:SecondaryAttack()
 	local ent = ents.Create("ent_smgbomb")
 	if not IsValid(ent) then return end
 
-	ent:SetPos(self.Owner:EyePos() + (self.Owner:GetAimVector() * 75))
+	ent:SetPos(self.Owner:EyePos())
 	ent:SetAngles(self.Owner:EyeAngles())
+	ent:SetOwner(self.Owner)
 	ent:Spawn()
 	ent:Activate()
 	ent:Fire()
-	ent:SetOwner(self.Owner)
 	
 	local phys = ent:GetPhysicsObject()
 	if not IsValid(phys) then ent:Remove() return end

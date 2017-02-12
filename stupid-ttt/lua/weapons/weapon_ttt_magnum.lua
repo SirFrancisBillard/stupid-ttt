@@ -3,7 +3,7 @@ AddCSLuaFile()
 SWEP.HoldType              = "pistol"
 
 if CLIENT then
-   SWEP.PrintName          = "Handheld Grenade Launcher"
+   SWEP.PrintName          = "Handheld GL"
    SWEP.Slot               = 1
 
    SWEP.ViewModelFlip      = false
@@ -56,12 +56,13 @@ function SWEP:PrimaryAttack()
 	local ent = ents.Create("ent_smgbomb")
 	if not IsValid(ent) then return end
 
-	ent:SetPos(self.Owner:EyePos() + (self.Owner:GetAimVector() * 75))
+	ent:SetPos(self.Owner:EyePos())
 	ent:SetAngles(self.Owner:EyeAngles())
+	ent:SetOwner(self.Owner)
 	ent:Spawn()
 	ent:Activate()
 	ent:Fire()
-	ent:SetOwner(self.Owner)
+	
 	
 	local phys = ent:GetPhysicsObject()
 	if not IsValid(phys) then ent:Remove() return end

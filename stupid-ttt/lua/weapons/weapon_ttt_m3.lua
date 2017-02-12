@@ -3,7 +3,7 @@ AddCSLuaFile()
 if CLIENT then
 	SWEP.PrintName = "Pump Shotgun"
 
-	SWEP.Slot = 6
+	SWEP.Slot = 2
 	SWEP.Icon = "vgui/ttt/icon_boomstick.png"
 	SWEP.IconLetter = "B"
 end
@@ -20,7 +20,7 @@ SWEP.Kind = WEAPON_HEAVY
 SWEP.Primary.Ammo = "Buckshot"
 SWEP.Primary.Damage = 16
 SWEP.Primary.Cone = 0.085
-SWEP.Primary.Delay = 1.2
+SWEP.Primary.Delay = 1
 SWEP.Primary.ClipSize = 8
 SWEP.Primary.ClipMax = 24
 SWEP.Primary.DefaultClip = 8
@@ -118,34 +118,12 @@ function SWEP:FinishReload()
 end
 
 function SWEP:CanPrimaryAttack()
-	if self:Clip1() < (self.Primary.ClipSize / 2) then
+	if self:Clip1() < 1 then
 		self:EmitSound( "Weapon_Shotgun.Empty" )
 		self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
 		return false
 	end
 	return true
-end
-
-function SWEP:PrimaryAttack(worldsnd)
-	self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-	self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
-
-	if not self:CanPrimaryAttack() then return end
-
-	if not worldsnd then
-		self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
-	elseif SERVER then
-		sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
-	end
-
-	self:ShootBullet( self.Primary.Damage, self.Primary.Recoil, self.Primary.NumShots, self:GetPrimaryCone() )
-
-	self:TakePrimaryAmmo( self.Primary.ClipSize / 2 )
-
-	local owner = self.Owner
-	if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
-
-	owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
 end
 
 function SWEP:Think()

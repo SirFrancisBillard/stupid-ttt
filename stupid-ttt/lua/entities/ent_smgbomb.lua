@@ -4,6 +4,8 @@ ENT.Type = "anim"
 ENT.Base = "base_entity"
 ENT.PrintName = "SMG Grenade"
 
+ENT.CanBeUsedToRocketJump = true
+
 function ENT:SetupDataTables()
 	self:NetworkVar("Entity", 0, "Shooter")
 end
@@ -17,6 +19,7 @@ function ENT:Initialize()
 	local phys = self:GetPhysicsObject()
 	if phys:IsValid() then
 		phys:Wake()
+		phys:SetBuoyancyRatio(0)
 	end
 
 	self.SpawnTime = CurTime()
@@ -30,7 +33,7 @@ function ENT:Initialize()
 end
 
 if SERVER then
-	function ENT:PhysicsCollide(data, ent)
+	function ENT:Explode()
 		util.BlastDamage(self, self:GetOwner(), self:GetPos(), 256, 50)
 
 		local boom = EffectData()
@@ -38,6 +41,10 @@ if SERVER then
 		util.Effect("Explosion", boom)
 
 		SafeRemoveEntity(self)
+	end
+
+	function ENT:PhysicsCollide(data, ent)
+		self:Explode()
 	end
 end
 
