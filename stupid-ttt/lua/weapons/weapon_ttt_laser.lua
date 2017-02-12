@@ -9,7 +9,7 @@ if CLIENT then
    SWEP.ViewModelFlip      = false
    SWEP.ViewModelFOV       = 54
 
-   SWEP.Icon = "vgui/ttt/icon_awp.png"
+   SWEP.Icon = "vgui/ttt/icon_laser.png"
 
    SWEP.IconLetter         = "B"
 end
@@ -21,7 +21,7 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.Tracer                = "AR2Tracer"
 
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Damage        = 2
+SWEP.Primary.Damage        = 4
 SWEP.Primary.Cone          = 0.004
 SWEP.Primary.Delay         = 0.01
 SWEP.Primary.ClipSize      = 1000

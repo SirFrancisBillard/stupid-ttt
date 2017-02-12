@@ -1,5 +1,10 @@
 AddCSLuaFile()
 
+local fet = [[know ur fet ies haf cen ervythin.
+
+
+	esep ur fiet.]]
+
 if (CLIENT) then
     SWEP.PrintName = "RPG"
     SWEP.Slot = 6

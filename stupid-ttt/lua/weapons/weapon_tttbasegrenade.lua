@@ -1,5 +1,16 @@
 -- common code for all types of grenade
 
+local lemins = [[wen live giv ur lemis, dunt mak lemade.
+	mak live taek teh lemis back, ge mad.
+	i dun wan ur dem lemis, way i supsed 2 do wi thes?
+	demen 2 c live magnger.
+	maek live roo teh dey it tot it coud giv cav joson lemis.
+	do u now ho i am?
+	im teh mna wos guna brun ur hose doon.
+
+
+	wi de lemis]]
+
 AddCSLuaFile()
 
 SWEP.HoldReady             = "grenade"
@@ -14,6 +25,21 @@ if CLIENT then
    SWEP.DrawCrosshair      = false
 
    SWEP.Icon               = "vgui/ttt/icon_nades"
+
+   net.Receive("PraiseSyncedAllah", function(len)
+		local origin = net.ReadEntity()
+		local soundNum = net.ReadInt(5)
+		origin:EmitSound(Sound("stupid-ttt/allahu/akbar_" .. soundNum .. ".wav"))
+	end)
+else
+	util.AddNetworkString("PraiseSyncedAllah")
+
+	function PraiseAllah(ent)
+		net.Start("PraiseSyncedAllah")
+		net.WriteEntity(ent.Owner)
+		net.WriteInt(math.random(1, 10), 5)
+		net.Broadcast()
+	end
 end
 
 SWEP.Base                  = "weapon_tttbase"
@@ -63,6 +89,10 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
+    self:SetNextSecondaryFire(CurTime() + 3)
+    if SERVER then
+		PraiseAllah(self)
+	end
 end
 
 function SWEP:PullPin()
@@ -141,7 +171,7 @@ function SWEP:Throw()
    elseif SERVER then
       local ply = self.Owner
       if not IsValid(ply) then return end
-	  ply:EmitSound("stupid-ttt/allahu/akbar_" .. math.random(1, 10) .. ".wav")
+	  PraiseAllah(self)
 
       if self.was_thrown then return end
 
