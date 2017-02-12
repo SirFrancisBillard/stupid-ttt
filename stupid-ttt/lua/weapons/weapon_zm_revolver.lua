@@ -3,7 +3,7 @@ AddCSLuaFile()
 SWEP.HoldType              = "pistol"
 
 if CLIENT then
-   SWEP.PrintName          = "Hand Cannon"
+   SWEP.PrintName          = "Deagle"
    SWEP.Slot               = 1
 
    SWEP.ViewModelFlip      = false
@@ -18,15 +18,15 @@ SWEP.Kind                  = WEAPON_PISTOL
 SWEP.WeaponID              = AMMO_DEAGLE
 
 SWEP.Primary.Ammo          = "AlyxGun" -- hijack an ammo type we don't use otherwise
-SWEP.Primary.Recoil        = 40
-SWEP.Primary.Damage        = 140
+SWEP.Primary.Recoil        = 4
+SWEP.Primary.Damage        = 45
 SWEP.Primary.Delay         = 0.6
 SWEP.Primary.Cone          = 0.02
-SWEP.Primary.ClipSize      = 1
+SWEP.Primary.ClipSize      = 7
 SWEP.Primary.ClipMax       = 36
-SWEP.Primary.DefaultClip   = 1
+SWEP.Primary.DefaultClip   = 7
 SWEP.Primary.Automatic     = true
-SWEP.Primary.Sound         = Sound( "Weapon_AWP.Single" )
+SWEP.Primary.Sound         = Sound("Weapon_Deagle.Single")
 
 SWEP.HeadshotMultiplier    = 3
 
