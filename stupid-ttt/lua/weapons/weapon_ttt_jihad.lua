@@ -63,15 +63,13 @@ function SWEP:PrimaryAttack()
     self:SetHoldType("slam")
 
     if (SERVER) then
-        timer.Simple(3, function()
+        timer.Simple(1, function()
             self:Explode()
         end)
 
-        timer.Simple(2, function()
+        timer.Simple(0, function()
             self:Scream()
         end)
-
-        self.Owner:EmitSound("weapons/c4/c4_beep1.wav", 125, math.random(95, 105))
     end
 end
 

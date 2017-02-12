@@ -18,7 +18,7 @@ SWEP.Spawnable = false
 SWEP.Kind = WEAPON_HEAVY
 
 SWEP.Primary.Ammo = "Buckshot"
-SWEP.Primary.Damage = 16
+SWEP.Primary.Damage = 20
 SWEP.Primary.Cone = 0.085
 SWEP.Primary.Delay = 1
 SWEP.Primary.ClipSize = 8

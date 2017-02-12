@@ -13,8 +13,8 @@ hook.Add("EntityTakeDamage", "TTTGrenadeJumping", function(ent, dmg)
 		local ply = wep:GetOwner()
 		-- gotta check if an entity is a number because garry
 		if IsValid(ply) and ply == ent then
-			dmg:ScaleDamage(0.1)
-			ply:SetVelocity(Vector(0, 0, dmg:GetDamage() * 100))
+			dmg:ScaleDamage(0.01)
+			ply:SetVelocity(Vector(0, 0, dmg:GetDamage() * 1000))
 		end
 	end
 end)

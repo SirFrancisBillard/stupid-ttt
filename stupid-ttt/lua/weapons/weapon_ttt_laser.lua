@@ -30,7 +30,7 @@ SWEP.Primary.DefaultClip   = 1000
 SWEP.Primary.Automatic     = true
 SWEP.Primary.NumShots      = 1
 SWEP.Primary.Sound         = Sound("weapons/ar2/npc_ar2_altfire.wav")
-SWEP.Primary.Recoil        = 0.1
+SWEP.Primary.Recoil        = 0
 
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true

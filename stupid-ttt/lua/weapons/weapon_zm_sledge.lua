@@ -18,7 +18,7 @@ SWEP.AutoSpawnable = true
 SWEP.Kind = WEAPON_HEAVY
 SWEP.WeaponID = AMMO_M249
 
-SWEP.Primary.Damage = 12
+SWEP.Primary.Damage = 25
 SWEP.Primary.Delay = 0.04
 SWEP.Primary.Cone = 0.05
 SWEP.Primary.ClipSize = 250
@@ -26,7 +26,7 @@ SWEP.Primary.ClipMax = 250
 SWEP.Primary.DefaultClip = 250
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "AirboatGun"
-SWEP.Primary.Recoil = 1
+SWEP.Primary.Recoil = 0.2
 SWEP.Primary.Sound = Sound("Weapon_m249.Single")
 
 SWEP.UseHands = true
@@ -92,6 +92,13 @@ function SWEP:Deploy()
 	self.Spinning = CreateSound(self.Owner, spin)
 	self.FireSound = CreateSound(self.Owner, "NPC_CombineGunship.CannonSound")//"NPC_AttackHelicopter.FireGun"
 	return self.BaseClass.Deploy(self)
+end
+
+function SWEP:PreDrop()
+	self.Windup:Stop()
+	self.Spinning:Stop()
+	self.FireSound:Stop()
+   self.BaseClass.PreDrop(self)
 end
 
 function SWEP:StopCasting() end
@@ -166,14 +173,6 @@ function SWEP:PrimaryAttack()
 		--self:TakePrimaryAmmo(1)
 		--self:EmitSound(self.Primary.Sound)
 		local Owner = self.Owner
-		
-		if Owner.ViewPunch then Owner:ViewPunch( Angle(self.Primary.Recoil * -0.12, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0) ) end
-		if ( ( game.SinglePlayer() && SERVER ) || ( !game.SinglePlayer() && CLIENT && IsFirstTimePredicted() ) ) then
-			local eyeang = self.Owner:EyeAngles()
-			local recoil = self.Primary.Recoil//math.Rand( 0.1, 0.2 )
-			eyeang.pitch = eyeang.pitch - recoil*0.12
-			self.Owner:SetEyeAngles( eyeang )
-		end
 		
 		self:ShootBullet( self.Primary.Damage, self.Primary.NumShots, self.Primary.Cone )
 		
