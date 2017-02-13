@@ -24,9 +24,9 @@ SWEP.Primary.Ammo          = "AirboatGun"
 SWEP.Primary.Damage        = 3
 SWEP.Primary.Cone          = 0.004
 SWEP.Primary.Delay         = 0.01
-SWEP.Primary.ClipSize      = 1000
-SWEP.Primary.ClipMax       = 1000
-SWEP.Primary.DefaultClip   = 1000
+SWEP.Primary.ClipSize      = 250
+SWEP.Primary.ClipMax       = 250
+SWEP.Primary.DefaultClip   = 250
 SWEP.Primary.Automatic     = true
 SWEP.Primary.NumShots      = 1
 SWEP.Primary.Sound         = Sound("weapons/ar2/npc_ar2_altfire.wav")
@@ -59,9 +59,40 @@ function SWEP:SetZoom(state)
    end
 end
 
-function SWEP:PrimaryAttack( worldsnd )
-   self.BaseClass.PrimaryAttack( self.Weapon, worldsnd )
-   self:SetNextSecondaryFire( CurTime() + 0.1 )
+local LaserSounds = {
+	Sound("ambient/energy/spark1.wav"),
+	Sound("ambient/energy/spark2.wav"),
+	Sound("ambient/energy/spark3.wav"),
+	Sound("ambient/energy/spark4.wav"),
+	Sound("ambient/energy/spark5.wav"),
+	Sound("ambient/energy/spark6.wav")
+}
+
+function SWEP:PrimaryAttack(worldsnd)
+	if not self:CanPrimaryAttack() then return end
+	local bullet = {}
+		bullet.Num = self.Primary.NumShots
+		bullet.Src = self.Owner:GetShootPos()
+		bullet.Dir = self.Owner:GetAimVector()
+		bullet.Spread = Vector( self.Primary.Cone / 90, self.Primary.Cone / 90, 0 )
+		bullet.Tracer = self.Primary.Tracer	
+		bullet.TracerName = "ToolTracer"
+		bullet.Force = self.Primary.Force
+		bullet.Damage = self.Primary.Damage
+		bullet.AmmoType = self.Primary.Ammo
+		bullet.Callback = function(attacker, trace, dmginfo)
+			dmginfo:SetDamageType(DMG_BULLET)
+			dmginfo:ScaleDamage(1)
+		end
+	self.Owner:FireBullets(bullet)
+	self.Weapon:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
+	self.Owner:MuzzleFlash()
+	self.Owner:SetAnimation(PLAYER_ATTACK1)
+	self.Owner:EmitSound(LaserSounds[math.random(1, #LaserSounds)], 100, 100)
+	self.Owner:ViewPunch(Angle(-self.Primary.Recoil, 0, 0 ))
+
+	self:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
+	self:SetNextSecondaryFire(CurTime() + 0.1)
 end
 
 -- Add some zoom to ironsights for this gun
@@ -89,10 +120,10 @@ function SWEP:PreDrop()
 end
 
 function SWEP:Reload()
-	if ( self:Clip1() == self.Primary.ClipSize or self.Owner:GetAmmoCount( self.Primary.Ammo ) <= 0 ) then return end
-   self:DefaultReload( ACT_VM_RELOAD )
-   self:SetIronsights( false )
-   self:SetZoom( false )
+	if self:Clip1() == self.Primary.ClipSize or self.Owner:GetAmmoCount( self.Primary.Ammo ) <= 0 then return end
+   self:DefaultReload(ACT_VM_RELOAD)
+   self:SetIronsights(false)
+   self:SetZoom(false)
 end
 
 
