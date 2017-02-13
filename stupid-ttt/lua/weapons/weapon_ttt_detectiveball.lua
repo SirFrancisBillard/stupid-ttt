@@ -16,7 +16,7 @@ SWEP.ViewModelFlip = true
 
 SWEP.EquipMenuData = {
    type = "item_weapon",
-   desc = "Innocent to Detective/Heal/Traitor unmasker.\n\nAcquiring this was extremely painful."
+   desc = "Turns innocents into Detectives or unmasks traitors.\nWill also heal innocents.\nAcquiring this was extremely painful."
 };
 
 SWEP.DrawCrosshair = false

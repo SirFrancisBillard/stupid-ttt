@@ -12,7 +12,7 @@ if CLIENT then
    SWEP.EquipMenuData = {
       type  = "item_weapon",
       name  = "Taser",
-      desc  = "A taser that stuns and damages targets.\n\nLimited ammo."
+      desc  = "A taser that stuns and damages targets.\nLimited ammo."
    };
 
    SWEP.Icon               = "vgui/ttt/icon_taser.png"

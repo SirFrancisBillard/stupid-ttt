@@ -22,12 +22,14 @@ end
 
 -- Sounds
 resource.AddFile("sound/stupid-ttt/headshot.wav")
+resource.AddFile("sound/stupid-ttt/homerun.wav")
 
 -- Icons
 resource.AddFile("materials/vgui/ttt/icon_ak47.png")
 resource.AddFile("materials/vgui/ttt/icon_aug.png")
 resource.AddFile("materials/vgui/ttt/icon_awp.png")
 resource.AddFile("materials/vgui/ttt/icon_ball.png")
+resource.AddFile("materials/vgui/ttt/icon_bat.png")
 resource.AddFile("materials/vgui/ttt/icon_boomstick.png")
 resource.AddFile("materials/vgui/ttt/icon_cloak.png")
 resource.AddFile("materials/vgui/ttt/icon_dbarrel.png")

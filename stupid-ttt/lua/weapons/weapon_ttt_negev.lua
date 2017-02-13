@@ -4,15 +4,10 @@ SWEP.HoldType              = "crossbow"
 
 if CLIENT then
    SWEP.PrintName          = "Negev"
-   SWEP.Slot               = 6
+   SWEP.Slot               = 2
 
    SWEP.ViewModelFlip      = false
    SWEP.ViewModelFOV       = 54
-
-   SWEP.EquipMenuData = {
-      type = "item_weapon",
-      desc = "An accurate machine gun with\nnearly endless capacity.\nNo downsides really."
-   };
 
    SWEP.Icon               = "vgui/ttt/icon_negev.png"
    SWEP.IconLetter         = "z"
@@ -23,19 +18,18 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Spawnable             = false
 SWEP.AutoSpawnable         = false
 
-SWEP.CanBuy = {ROLE_DETECTIVE, ROLE_TRAITOR}
-SWEP.Kind                  = WEAPON_EQUIP
+SWEP.Kind                  = WEAPON_HEAVY
 
-SWEP.Primary.Damage        = 6
-SWEP.Primary.Delay         = 0.02
-SWEP.Primary.Cone          = 0.035
-SWEP.Primary.ClipSize      = 2500
-SWEP.Primary.ClipMax       = 2500
-SWEP.Primary.DefaultClip   = 2500
+SWEP.Primary.Damage        = 75
+SWEP.Primary.Delay         = 0.1
+SWEP.Primary.Cone          = 0.12
+SWEP.Primary.ClipSize      = 150
+SWEP.Primary.ClipMax       = 150
+SWEP.Primary.DefaultClip   = 150
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Recoil        = 0.6
-SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
+SWEP.Primary.Recoil        = 10
+SWEP.Primary.Sound         = Sound("Weapon_M249.Single")
 
 SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/cstrike/c_mach_m249para.mdl"

@@ -12,7 +12,7 @@ if CLIENT then
    SWEP.EquipMenuData = {
       type  = "item_weapon",
       name  = "Pepper Spray",
-      desc  = "A non-lethal spray used to stun targets.\n\nLimited ammo."
+      desc  = "A non-lethal spray used to stun targets.\nLimited ammo."
    };
 
    SWEP.Icon               = "vgui/ttt/icon_pepper.png"
