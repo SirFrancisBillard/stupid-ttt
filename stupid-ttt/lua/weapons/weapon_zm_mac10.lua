@@ -20,16 +20,16 @@ SWEP.Base                = "weapon_tttbase"
 SWEP.Kind                = WEAPON_HEAVY
 SWEP.WeaponID            = AMMO_MAC10
 
-SWEP.Primary.Damage      = 12
-SWEP.Primary.Delay       = 0.065
-SWEP.Primary.Cone        = 0.02
+SWEP.Primary.Damage      = 16
+SWEP.Primary.Delay       = 0.1
+SWEP.Primary.Cone        = 0.03
 SWEP.Primary.ClipSize    = 30
 SWEP.Primary.ClipMax     = 60
 SWEP.Primary.DefaultClip = 30
 SWEP.Primary.Automatic   = true
 SWEP.Primary.Ammo        = "smg1"
 SWEP.Primary.Recoil      = 0.8
-SWEP.Primary.Sound       = Sound("Weapon_mp5navy.Single")
+SWEP.Primary.Sound       = Sound("Weapon_MP5Navy.Single")
 
 SWEP.NadeSound           = Sound("weapons/grenade_launcher1.wav")
 
@@ -43,14 +43,22 @@ SWEP.WorldModel          = "models/weapons/w_smg_mp5.mdl"
 SWEP.IronSightsPos       = Vector(-8.921, -9.528, 2.9)
 SWEP.IronSightsAng       = Vector(0.699, -5.301, -7)
 
+function SWEP:Reload()
+	if self:Clip1() == self.Primary.ClipSize or self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0 then return end
+	self:DefaultReload(self.ReloadAnim)
+	self:SetIronsights(false)
+	self.FiredNadeYet = false
+end
+
 function SWEP:SecondaryAttack()
-	if self:Clip1() < self.Primary.ClipSize then return end
+	if self:Clip1() < 1 or self.FiredNadeYet then return end
+	self.FiredNadeYet = true
 
 	self:SetNextPrimaryFire(CurTime() + 0.1)
 	self:SetNextSecondaryFire(CurTime() + 0.1)
 
 	self:ShootEffects()
-	self:TakePrimaryAmmo(self.Primary.ClipSize)
+	self:TakePrimaryAmmo(1)
 	self:EmitSound(self.NadeSound)
 
 	if CLIENT then return end

@@ -365,8 +365,10 @@ function SWEP:OnRemove()
 	if self.Spinning then
 		self.Spinning:Stop()
 	end
-	self:StopCasting()  
-    self.BaseClass.OnRemove(self)
+	self:StopCasting()
+	if IsValid(self.BaseClass) then
+		self.BaseClass.OnRemove(self)
+	end
 end
 
 SWEP.wSpinRate = 0

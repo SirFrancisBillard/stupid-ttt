@@ -379,7 +379,6 @@ function SWEP:Reload()
    self:SetIronsights( false )
 end
 
-
 function SWEP:OnRestore()
    self.NextSecondaryAttack = 0
    self:SetIronsights( false )

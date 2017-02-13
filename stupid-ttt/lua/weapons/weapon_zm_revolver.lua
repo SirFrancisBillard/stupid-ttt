@@ -19,7 +19,7 @@ SWEP.WeaponID              = AMMO_DEAGLE
 
 SWEP.Primary.Ammo          = "AlyxGun" -- hijack an ammo type we don't use otherwise
 SWEP.Primary.Recoil        = 4
-SWEP.Primary.Damage        = 45
+SWEP.Primary.Damage        = 65
 SWEP.Primary.Delay         = 0.6
 SWEP.Primary.Cone          = 0.02
 SWEP.Primary.ClipSize      = 7
