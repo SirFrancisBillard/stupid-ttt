@@ -16,12 +16,17 @@ sound.Add({
 })
 
 if CLIENT then
-    SWEP.PrintName = "Jihad Bomb"
-    SWEP.Slot = 7
-    SWEP.Icon = "vgui/ttt/icon_jihad.png"
+	SWEP.Slot = 7
+	SWEP.Icon = "vgui/ttt/icon_jihad.png"
+	SWEP.EquipMenuData = {
+		name = "Jihad Bomb",
+		type = "item_weapon",
+		desc = "Sacrifice your life for Allah."
+	}
 end
 
 -- SWEP STUFF
+SWEP.PrintName = "Jihad Bomb"
 SWEP.Base = "weapon_tttbase"
 SWEP.HoldType = "slam"
 SWEP.Primary.Ammo = "none"
@@ -36,38 +41,32 @@ SWEP.ViewModelFlip = false
 SWEP.ViewModelFOV = 54
 SWEP.ViewModel = "models/weapons/cstrike/c_c4.mdl"
 SWEP.WorldModel = "models/weapons/w_c4.mdl"
+
 -- TTT CONFIGURATION
 SWEP.Kind = WEAPON_EQUIP2
 SWEP.AutoSpawnable = false
 SWEP.CanBuy = {ROLE_TRAITOR}
-SWEP.InLoadoutFor = {nil}
+SWEP.InLoadoutFor = nil
 SWEP.LimitedStock = true
 SWEP.AllowDrop = false
 SWEP.NoSights = true
 
-if CLIENT then
-    SWEP.EquipMenuData = {
-        name = "Jihad Bomb",
-        type = "item_weapon",
-        desc = "Sacrifice your life for Allah."
-    }
-end
-
 function SWEP:Reload()
-    return false
+	return false
 end
 
 function SWEP:Initialize()
-    self:SetHoldType(self.HoldType)
+	self:SetHoldType(self.HoldType)
 
-    util.PrecacheModel("models/Humans/Charple01.mdl")
-    util.PrecacheModel("models/Humans/Charple02.mdl")
-    util.PrecacheModel("models/Humans/Charple03.mdl")
-    util.PrecacheModel("models/Humans/Charple04.mdl")
+	util.PrecacheModel("models/Humans/Charple01.mdl")
+	util.PrecacheModel("models/Humans/Charple02.mdl")
+	util.PrecacheModel("models/Humans/Charple03.mdl")
+	util.PrecacheModel("models/Humans/Charple04.mdl")
 end
 
 function SWEP:PrimaryAttack()
 	self:SetNextPrimaryFire(CurTime() + 2)
+
 	if SERVER then
 		-- todo: consider moving these first four functions outside of SERVER to minimize networking?
 
@@ -99,8 +98,9 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-    self:SetNextSecondaryFire(CurTime() + 3)
-    if SERVER then
+	self:SetNextSecondaryFire(CurTime() + 3)
+
+	if SERVER then
 		SendTaunt(self)
 	end
 end
