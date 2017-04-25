@@ -1,5 +1,20 @@
 AddCSLuaFile()
 
+local JihadSounds = {}
+
+for i = 1, 10 do
+	table.insert(JihadSounds, "stupid-ttt/allahu/akbar_" .. i .. ".wav")
+end
+
+sound.Add({
+	name = "Jihad.Scream",
+	channel = CHAN_AUTO,
+	volume = 1.0,
+	level = 150, -- literally as loud as Saturn V taking off
+	pitch = {95, 110},
+	sound = JihadSounds
+})
+
 if CLIENT then
     SWEP.PrintName = "Jihad Bomb"
     SWEP.Slot = 7
@@ -44,6 +59,7 @@ end
 
 function SWEP:Initialize()
     self:SetHoldType(self.HoldType)
+
     util.PrecacheModel("models/Humans/Charple01.mdl")
     util.PrecacheModel("models/Humans/Charple02.mdl")
     util.PrecacheModel("models/Humans/Charple03.mdl")
@@ -51,51 +67,35 @@ function SWEP:Initialize()
 end
 
 function SWEP:PrimaryAttack()
-    self.AllowDrop = false
-    self:SetNextPrimaryFire(CurTime() + 5)
-    local effectdata = EffectData()
-    effectdata:SetOrigin(self:GetPos())
-    effectdata:SetNormal(self:GetPos())
-    effectdata:SetMagnitude(8)
-    effectdata:SetScale(1)
-    effectdata:SetRadius(20)
-    self.BaseClass.ShootEffects(self)
-    self:SetHoldType("slam")
+	self:SetNextPrimaryFire(CurTime() + 2)
+	if SERVER then
+		-- todo: consider moving these first four functions outside of SERVER to minimize networking?
 
-    if (SERVER) then
-        timer.Simple(1, function()
-            self:Explode()
-        end)
+		self.Owner:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)
+		BroadcastLua([[Entity(]] .. self.Owner:EntIndex() .. [[):AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)]])
 
-        timer.Simple(0, function()
-            self:Scream()
-        end)
-    end
-end
+		self:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
+		self.Owner:EmitSound("Jihad.Scream")
 
-function SWEP:Scream()
-    if (self.Owner:IsValid()) then
-        self.Owner:EmitSound("stupid-ttt/allahu/akbar_" .. math.random(1, 10) .. ".wav", 150, math.random(95, 105))
-    end
-end
+		SafeRemoveEntityDelayed(self, 0.99)
+		local ply = self.Owner
+		timer.Simple(1, function()
+			if not IsValid(ply) or not ply:Alive() then return end
 
-function SWEP:Explode()
-	if not IsValid(self) or not IsValid(self.Owner) or not self.Owner:Alive() then return end
+			local explosion = ents.Create("env_explosion")
+			explosion:SetPos(ply:GetPos())
+			explosion:SetOwner(ply)
+			explosion:SetKeyValue("iMagnitude", "200")
+			explosion:Spawn()
+			explosion:Fire("Explode", 0, 0)
+			explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
 
-    local explosion = ents.Create("env_explosion")
-	local dmg = DamageInfo()
-	
-	dmg:SetAttacker(self.Owner)
-	explosion:SetPos(self:GetPos())
-	explosion:SetOwner(self.Owner)
-	explosion:SetKeyValue("iMagnitude", "200")
-	explosion:Spawn()
-	explosion:Fire("Explode", 0, 0)
-	explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
-	self.Owner:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
-	self.Owner:SetColor(COLOR_WHITE)
-	util.BlastDamage(self, self.Owner, self:GetPos(), 800, 300)
-	self:Remove()
+			ply:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
+			ply:SetColor(color_white)
+
+			util.BlastDamage(ply, ply, ply:GetPos(), 400, 300)
+		end)
+	end
 end
 
 function SWEP:SecondaryAttack()
