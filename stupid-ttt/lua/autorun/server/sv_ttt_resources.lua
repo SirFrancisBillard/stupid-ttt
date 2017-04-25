@@ -15,9 +15,7 @@ end
 
 -- Models
 if TTT_USE_CUSTOM_MODELS then
-	print("Adding TTT models...")
-	resource.AddWorkshop("858272541")
-	print("TTT models added!")
+	resource.AddWorkshop("858272541") -- Doom SSG
 end
 
 -- Sounds
