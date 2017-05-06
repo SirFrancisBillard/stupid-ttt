@@ -5,11 +5,11 @@ for i = 1, 10 do
 	resource.AddFile("sound/stupid-ttt/allahu/akbar_" .. i .. ".wav")
 end
 
-for i = 1, 12 do
+for i = 1, 4 do
 	resource.AddFile("sound/stupid-ttt/bullets/snap_" .. i .. ".wav")
 end
 
-for i = 1, 13 do
+for i = 1, 18 do
 	resource.AddFile("sound/stupid-ttt/emotes/random_" .. i .. ".wav")
 end
 

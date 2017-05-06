@@ -5,6 +5,8 @@ local fet = [[know ur fet ies haf cen ervythin.
 
 	esep ur fiet.]]
 
+TTT_TAUNT_DELAY = CreateConVar("ttt_taunt_delay", "6", {FCVAR_ARCHIVE}, "Time in seconds between taunting.")
+
 if (CLIENT) then
     SWEP.PrintName = "RPG"
     SWEP.Slot = 6
@@ -21,7 +23,7 @@ if (CLIENT) then
 
 	net.Receive("PlaySyncedTaunt", function(len)
 		local origin = net.ReadEntity()
-		local soundNum = net.ReadInt(5)
+		local soundNum = net.ReadInt(6)
 		origin:EmitSound(Sound("stupid-ttt/emotes/random_" .. soundNum .. ".wav"))
 	end)
 else
@@ -30,7 +32,7 @@ else
 	function SendTaunt(ent)
 		net.Start("PlaySyncedTaunt")
 		net.WriteEntity(ent.Owner)
-		net.WriteInt(math.random(1, 13), 5)
+		net.WriteInt(math.random(1, 18), 6)
 		net.Broadcast()
 	end
 end
@@ -104,7 +106,8 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-    self:SetNextSecondaryFire(CurTime() + 3)
+    self:SetNextSecondaryFire(CurTime() + TTT_TAUNT_DELAY:GetInt())
+
     if SERVER then
 		SendTaunt(self)
 	end

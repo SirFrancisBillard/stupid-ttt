@@ -10,7 +10,7 @@ if SERVER then
 	util.AddNetworkString( "ShotAt" )
 
 	-- Handles whether or not a player or NPC should be effected by a bullet
-	hook.Add( "EntityFireBullets", "ShellshockGettingBullets", function( ent, data)
+	hook.Add( "EntityFireBullets", "StupidTTT.Shellshock", function( ent, data)
 		if ( not IsValid( ent ) or not GetConVar( "shell_enabled" ):GetBool() ) then return end
 		data.Callback = function( ply, tr, dmginfo )
 			-- Handles players getting shot at
@@ -51,7 +51,7 @@ else -- CLIENT
 	net.Receive( "ShotAt", function()
 		if not IsValid( LocalPlayer() ) or CurTime() - lastCrack < crackDelay then return end
 		lastCrack = CurTime()
-		surface.PlaySound( "stupid-ttt/bullets/snap_" .. math.random(1, 12) .. ".wav")
+		surface.PlaySound( "stupid-ttt/bullets/snap_" .. math.random(1, 5) .. ".wav")
 	end)
 	
 	-- Draws the screen effects

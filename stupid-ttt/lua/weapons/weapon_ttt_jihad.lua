@@ -98,7 +98,7 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-	self:SetNextSecondaryFire(CurTime() + 3)
+	self:SetNextSecondaryFire(CurTime() + TTT_TAUNT_DELAY:GetInt())
 
 	if SERVER then
 		SendTaunt(self)

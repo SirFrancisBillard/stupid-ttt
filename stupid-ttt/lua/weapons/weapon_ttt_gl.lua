@@ -49,7 +49,8 @@ SWEP.IronSightsAng = Vector(-0.101, -0.7, -0.201)
 SWEP.DeploySpeed = 1
 
 function SWEP:SecondaryAttack()
-    self:SetNextSecondaryFire(CurTime() + 3)
+    self:SetNextSecondaryFire(CurTime() + TTT_TAUNT_DELAY:GetInt())
+
     if SERVER then
 		SendTaunt(self)
 	end
@@ -176,18 +177,4 @@ function SWEP:Deploy()
     self.reloadtimer = 0
 
     return self.BaseClass.Deploy(self)
-end
-
--- The shotgun's headshot damage multiplier is based on distance. The closer it
--- is, the more damage it does. This reinforces the shotgun's role as short
--- range weapon by reducing effectiveness at mid-range, where one could score
--- lucky headshots relatively easily due to the spread.
-function SWEP:GetHeadshotMultiplier(victim, dmginfo)
-    local att = dmginfo:GetAttacker()
-    if not IsValid(att) then return 3 end
-    local dist = victim:GetPos():Distance(att:GetPos())
-    local d = math.max(0, dist - 140)
-    -- decay from 3.1 to 1 slowly as distance increases
-
-    return 1 + math.max(0, 2.1 - 0.002 * (d ^ 1.25))
 end

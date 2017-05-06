@@ -12,7 +12,7 @@ sound.Add({
 if SERVER then
 	util.AddNetworkString("PlayHeadshotSoundOnClient") -- good name
 
-	hook.Add("EntityTakeDamage", "PlayHeadshotSoundOnClient", function(ply, dmg)
+	hook.Add("EntityTakeDamage", "StupidTTT.Headshot", function(ply, dmg)
 		if IsValid(ply) and ply:IsPlayer() and dmg:IsBulletDamage() and ply:LastHitGroup() == HITGROUP_HEAD then
 			net.Start("PlayHeadshotSoundOnClient")
 			net.Send(ply)

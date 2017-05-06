@@ -21,9 +21,9 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.Tracer                = "AR2Tracer"
 
 SWEP.Primary.Ammo          = "AirboatGun"
-SWEP.Primary.Damage        = 3
-SWEP.Primary.Cone          = 0.004
-SWEP.Primary.Delay         = 0.01
+SWEP.Primary.Damage        = 8
+SWEP.Primary.Cone          = 0
+SWEP.Primary.Delay         = 0.1
 SWEP.Primary.ClipSize      = 250
 SWEP.Primary.ClipMax       = 250
 SWEP.Primary.DefaultClip   = 250
@@ -74,7 +74,7 @@ function SWEP:PrimaryAttack(worldsnd)
 		bullet.Num = self.Primary.NumShots
 		bullet.Src = self.Owner:GetShootPos()
 		bullet.Dir = self.Owner:GetAimVector()
-		bullet.Spread = Vector( self.Primary.Cone / 90, self.Primary.Cone / 90, 0 )
+		bullet.Spread = Vector(self.Primary.Cone / 90, self.Primary.Cone / 90, 0)
 		bullet.Tracer = self.Primary.Tracer	
 		bullet.TracerName = "ToolTracer"
 		bullet.Force = self.Primary.Force
