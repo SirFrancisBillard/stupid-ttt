@@ -1,4 +1,4 @@
-include("../sh_ttt_models.lua")
+include("../sh_ttt_config.lua")
 
 -- Bulk sounds
 for i = 1, 10 do
