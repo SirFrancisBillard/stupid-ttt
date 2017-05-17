@@ -174,14 +174,24 @@ function ENT:OnTakeDamage(dmginfo)
 end
 
 if SERVER then
-   -- recharge
-   local nextcharge = 0
-   function ENT:Think()
-      if nextcharge < CurTime() then
-         self:AddToStorage(self.RechargeRate)
+	-- recharge
+	local nextcharge = 0
+	function ENT:Think()
+		if nextcharge < CurTime() then
+			self:AddToStorage(self.RechargeRate)
 
-         nextcharge = CurTime() + self.RechargeFreq
-      end
-   end
+			nextcharge = CurTime() + self.RechargeFreq
+		end
+	end
+
+	-- trap existing health stations (but only one)
+	function ENT:Touch(other)
+		if not self.poisoned_hstation and other.IsHealthStation then
+			self.poisoned_hstation = true
+			SafeRemoveEntity(other)
+
+			-- save cpu
+			self.Touch = nil
+		end
+	end
 end
-
