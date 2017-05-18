@@ -13,6 +13,10 @@ for i = 1, 18 do
 	resource.AddFile("sound/stupid-ttt/emotes/random_" .. i .. ".wav")
 end
 
+for i = 1, 3 do
+	resource.AddFile("sound/stupid-ttt/earrape/earrape_" .. i .. ".wav")
+end
+
 -- Models
 if TTT_USE_CUSTOM_MODELS then
 	resource.AddWorkshop("858272541") -- Doom SSG
@@ -35,6 +39,7 @@ resource.AddFile("materials/vgui/ttt/icon_dbarrel.png")
 resource.AddFile("materials/vgui/ttt/icon_deathstation.png")
 resource.AddFile("materials/vgui/ttt/icon_defib.png")
 resource.AddFile("materials/vgui/ttt/icon_dualies.png")
+resource.AddFile("materials/vgui/ttt/icon_earrape.png")
 resource.AddFile("materials/vgui/ttt/icon_gl.png")
 resource.AddFile("materials/vgui/ttt/icon_hitler.png")
 resource.AddFile("materials/vgui/ttt/icon_jihad.png")
