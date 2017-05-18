@@ -1,4 +1,4 @@
-local scale = CreateConVar("ttt_bullet_damage_scale", "0.5", {FCVAR_ARCHIVE}, "How much bullet damage you take.")
+local scale = CreateConVar("ttt_bullet_damage_scale", "0.8", {FCVAR_ARCHIVE}, "How much bullet damage you take.")
 local force = CreateConVar("ttt_explosive_jump_force", "250", {FCVAR_ARCHIVE}, "The power of explosive jumping.")
 
 hook.Add("EntityTakeDamage", "StupidTTT.BulletDamageScale", function(ent, dmg)
@@ -41,7 +41,7 @@ hook.Add("EntityTakeDamage", "StupidTTT.EarRape", function(ent, dmg)
 	if IsValid(ent) and ent:IsPlayer() and IsValid(wep) and wep.EarRape then
 		timer.Simple(math.random(3, 5), function()
 			if IsValid(ent) and ent:IsPlayer() and ent:Alive() then
-				ent:SendLua("play stupid-ttt/earrape/" .. math.random(1, 3) .. ".wav")
+				ent:SendLua("play stupid-ttt/earrape/earrape_" .. math.random(1, 3) .. ".wav")
 			end
 		end)
 	end
