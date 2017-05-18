@@ -14,8 +14,8 @@ AccessorFunc(ENT, "dmg", "Dmg", FORCE_NUMBER)
 function ENT:Initialize()	
 	self:SetModel(self.Model)
 
-	if not self:GetRadius() then self:SetRadius(750) end
-	if not self:GetDmg() then self:SetDmg(50) end 
+	if not self:GetRadius() then self:SetRadius(math.random(300, 500)) end
+	if not self:GetDmg() then self:SetDmg(math.random(45, 75)) end 
 
 	local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
@@ -24,7 +24,8 @@ function ENT:Initialize()
 
 	local temps = math.random(2, 3)
 
-	timer.Simple(temps - 1, function() if SERVER and IsValid(self) then PraiseAllah(self) end end)
+	-- have some fun with it
+	timer.Simple(temps - math.random(0.5, 1.5), function() if SERVER and IsValid(self) then PraiseAllah(self) end end)
 	timer.Simple(temps, function() if IsValid(self) then self:Explode() end end)
 
 	return self.BaseClass.Initialize(self)
