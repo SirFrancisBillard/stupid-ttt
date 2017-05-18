@@ -646,13 +646,13 @@ L.tip1 = "Traitors can search a corpse silently, without confirming the death, b
 
 L.tip2 = "Arming a C4 explosive with a longer timer will increase the number of wires that cause it to explode instantly when an innocent attempts to disarm it. It will also beep softer and less often."
 
-L.tip3 = "Detectives can search a corpse to find who is 'reflected in its eyes'. This is the last person the dead guy saw. That does not have to be the killer if they were shot in the back."
+L.tip3 = "For some fucking stupid reason, Detectives can search a corpse to find who is 'reflected in its eyes'. This is the last person the dead guy saw. That does not have to be the killer if they were shot in the back."
 
 L.tip4 = "No one will know you have died until they find your dead body and identify you by searching it. No fucking shit sherlock."
 
 L.tip5 = "When a Traitor kills a Detective, they instantly receive a credit reward."
 
-L.tip6 = "When a Traitor dies, all Detectives are rewarded equipment credits."
+L.tip6 = "When a Traitor dies, all Detectives are rewarded equipment credits because that's balanced."
 
 L.tip7 = "When the Traitors have made significant progress in killing innocents, they will receive an equipment credit as reward."
 
@@ -660,7 +660,7 @@ L.tip8 = "Traitors and Detectives can collect unspent equipment credits from the
 
 L.tip9 = "The Poltergeist can turn any physics object into a fucking useless projectile. Each punch is accompanied by a blast of energy hurting anyone nearby for maybe 1 or 2 damage. Seriously, don't use the Poltergeist. It sucks."
 
-L.tip10 = "As Traitor or Detective, keep an eye on red messages in the top right. These will be important for you."
+L.tip10 = "As Traitor or Detective, keep an eye on red messages in the top right. That's why they're written in bold red font, dipshit.."
 
 L.tip11 = "As Traitor or Detective, keep in mind you are rewarded extra equipment credits if you and your comrades perform well. Make sure you remember to spend them!"
 
@@ -668,15 +668,15 @@ L.tip12 = "The Detectives' DNA Scanner can be used to gather DNA samples from we
 
 L.tip13 = "When you are close to someone you kill, some of your DNA is left on the corpse. This DNA can be used with a Detective's DNA Scanner to find your current location. Better hide the body after you knife someone!"
 
-L.tip14 = "The further you are away from someone you kill, the faster your DNA sample on their body will decay."
+L.tip14 = "The further you are away from someone you kill, the faster your DNA sample on their body will decay. Because I guess that's realistic?"
 
-L.tip15 = "Are you Traitor and going sniping? Consider trying out the Disguiser. If you miss a shot, run away to a safe spot, disable the Disguiser, and no one will know it was you who was shooting at them."
+L.tip15 = "Are you Traitor and going sniping? Consider trying out the Disguiser. If you miss a shot, run away to a safe spot, disable the Disguiser, and no one will know it was you who was shooting at them. Better yet, don't use the disguiser because it sucks shit."
 
-L.tip16 = "As Traitor, the Teleporter can help you escape when chased, and allows you to quickly travel across a big map. Make sure you always have a safe position marked."
+L.tip16 = "As Traitor, the Teleporter can help you escape when chased, and allows you to quickly travel across a big map. No shit."
 
-L.tip17 = "Are the innocents all grouped up and hard to pick off? Consider throwing shit at them."
+L.tip17 = "Are the innocents all grouped up and hard to pick off? Consider throwing bombs and shit at them. ISIS does it, so why shouldn't you?"
 
-L.tip18 = "Using the Radio as Traitor, you can drop the Radio off the side of the map because it is fucking useless. Why did you waste credits on that piece of shit?"
+L.tip18 = "Using the Radio as Traitor, you can drop the Radio off the side of the map because it is fucking useless. Why did you waste credits on such a piece of shit?"
 
 L.tip19 = "As Detective, if you have leftover credits you could give a trusted Innocent a Defuser. Or you could spend your credits on something actually useful you dumb motherfucker."
 
@@ -700,7 +700,7 @@ L.tip28 = "Spectators can press {mutekey} to cycle through muting other spectato
 
 L.tip29 = "If the server has installed additional languages, you can switch to a different language at any time in the Settings menu."
 
-L.tip30 = "Quickchat or 'radio' commands can be used by pressing {zoomkey}."
+L.tip30 = "The fucking useless quickchat or 'radio' commands can be used by pressing {zoomkey}."
 
 L.tip31 = "As Spectator, press {duckkey} to unlock your mouse cursor and click the buttons on this tips panel. Press {duckkey} again to go back to mouseview."
 
@@ -708,7 +708,7 @@ L.tip32 = "The Crowbar's secondary fire will push other players. If you didn't k
 
 L.tip33 = "Firing through the ironsights of a weapon will slightly increase your accuracy and decrease recoil. Crouching does not, so stop crouching you cunt."
 
-L.tip34 = "Smoke grenades are fucking useless and should never be used."
+L.tip34 = "Smoke grenades are somehow less useful than an unborn fetus and should never be used."
 
 L.tip35 = "As Traitor, remember you can carry dead bodies and hide them from the prying eyes of the innocent and their Detectives."
 
@@ -718,7 +718,7 @@ L.tip37 = "On the scoreboard, click the name of a living player and you can sele
 
 L.tip38 = "Many of the placeable equipment items (such as C4, Radio) can be stuck on walls using secondary fire. Only fucking assholes stick stuff to walls though, so you should drop it instead."
 
-L.tip39 = "C4 that explodes due to a mistake in disarming it has a smaller explosion than C4 that reaches zero on its timer. So defuse it, you fucking asshole."
+L.tip39 = "C4 that explodes due to a mistake in disarming it has a smaller explosion than C4 that reaches zero on its timer. So defuse it, asshat."
 
 L.tip40 = "If it says 'HASTE MODE' above the round timer, the round will at first be only a few minutes long, but with every death the available time increases (like capturing a point in TF2). This mode puts the pressure on the traitors to keep things moving. Pretty self-explanatory, isn't it, dumbshit?"
 
@@ -851,7 +851,7 @@ L.aw_all2_title = "Lone Wolf"
 L.aw_all2_text  = "was responsible for every kill made by a traitor this round."
 
 L.aw_nkt1_title = "I Got One, Boss!"
-L.aw_nkt1_text  = "managed to kill a single innocent. Sweet!"
+L.aw_nkt1_text  = "managed to do one thing right in his goddamn life, finally."
 
 L.aw_nkt2_title = "A Bullet For Two"
 L.aw_nkt2_text  = "showed the first one was not a lucky shot by killing another."
