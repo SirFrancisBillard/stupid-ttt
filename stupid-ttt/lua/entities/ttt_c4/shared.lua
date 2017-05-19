@@ -248,6 +248,8 @@ function ENT:Explode(tr)
       util.Effect("Explosion", effect, true, true)
       util.Effect("HelicopterMegaBomb", effect, true, true)
 
+		ParticleEffect("explosion_huge", pos, vector_up:Angle())
+
       timer.Simple(0.1, function() sound.Play(c4boom, pos, 100, 100) end)
 
       -- extra push
