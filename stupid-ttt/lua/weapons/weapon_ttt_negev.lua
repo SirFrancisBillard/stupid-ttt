@@ -15,12 +15,12 @@ end
 
 SWEP.Base                  = "weapon_tttbase"
 
-SWEP.Spawnable             = false
-SWEP.AutoSpawnable         = false
+SWEP.Spawnable             = true
+SWEP.AutoSpawnable         = true
 
 SWEP.Kind                  = WEAPON_HEAVY
 
-SWEP.Primary.Damage        = 75
+SWEP.Primary.Damage        = 45
 SWEP.Primary.Delay         = 0.1
 SWEP.Primary.Cone          = 0.12
 SWEP.Primary.ClipSize      = 150

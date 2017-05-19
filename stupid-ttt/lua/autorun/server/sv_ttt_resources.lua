@@ -9,18 +9,25 @@ for i = 1, 4 do
 	resource.AddFile("sound/stupid-ttt/bullets/snap_" .. i .. ".wav")
 end
 
+for i = 1, 3 do
+	resource.AddFile("sound/stupid-ttt/earrape/earrape_" .. i .. ".wav")
+end
+
 for i = 1, 18 do
 	resource.AddFile("sound/stupid-ttt/emotes/random_" .. i .. ".wav")
 end
 
-for i = 1, 3 do
-	resource.AddFile("sound/stupid-ttt/earrape/earrape_" .. i .. ".wav")
+for i = 1, 2 do
+	resource.AddFile("sound/stupid-ttt/jihad/jihad_" .. i .. ".wav")
 end
 
 -- Models
 if TTT_USE_CUSTOM_MODELS then
 	resource.AddWorkshop("858272541") -- Doom SSG
 end
+
+-- Music
+resource.AddFile("sound/stupid-ttt/music/islam.wav")
 
 -- Sounds
 resource.AddFile("sound/stupid-ttt/headshot.wav")

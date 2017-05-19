@@ -18,16 +18,16 @@ SWEP.AutoSpawnable = true
 SWEP.Kind = WEAPON_HEAVY
 SWEP.WeaponID = AMMO_M249
 
-SWEP.Primary.Damage = 25
-SWEP.Primary.Delay = 0.04
-SWEP.Primary.Cone = 0.05
+SWEP.Primary.Damage = 12
+SWEP.Primary.Delay = 0.03
+SWEP.Primary.Cone = 0.2
 SWEP.Primary.ClipSize = 250
 SWEP.Primary.ClipMax = 250
 SWEP.Primary.DefaultClip = 250
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "AirboatGun"
-SWEP.Primary.Recoil = 0.2
-SWEP.Primary.Sound = Sound("Weapon_m249.Single")
+SWEP.Primary.Recoil = 0
+SWEP.Primary.Sound = Sound("Weapon_M249.Single")
 
 SWEP.UseHands = true
 SWEP.ViewModel			= Model ( "models/weapons/c_physcannon.mdl" )
