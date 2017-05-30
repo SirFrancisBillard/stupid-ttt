@@ -1,22 +1,21 @@
-
 AddCSLuaFile()
 
 SWEP.HoldType              = "normal"
 
 if CLIENT then
-   SWEP.PrintName          = "decoy_name"
-   SWEP.Slot               = 7
+	SWEP.PrintName          = "decoy_name"
+	SWEP.Slot               = 7
 
-   SWEP.ViewModelFOV       = 10
-   SWEP.ViewModelFlip      = false
-   SWEP.DrawCrosshair      = false
+	SWEP.ViewModelFOV       = 10
+	SWEP.ViewModelFlip      = false
+	SWEP.DrawCrosshair      = false
 
-   SWEP.EquipMenuData = {
-      type = "item_weapon",
-      desc = "decoy_desc"
-   };
+	SWEP.EquipMenuData = {
+		type = "item_weapon",
+		desc = "decoy_desc"
+	};
 
-   SWEP.Icon                = "vgui/ttt/icon_beacon"
+	SWEP.Icon                = "vgui/ttt/icon_beacon"
 end
 
 SWEP.Base                   = "weapon_tttbase"
