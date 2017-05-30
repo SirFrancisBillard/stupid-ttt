@@ -1,6 +1,4 @@
-if SERVER then
-   AddCSLuaFile("shared.lua")
-end
+AddCSLuaFile()
 
 ENT.Type = "anim"
 ENT.Base = "ttt_basegrenade_proj"
@@ -13,59 +11,59 @@ ENT.ExplosionRadius = 0
 ENT.TurtleCount 	= 6
 
 
-TurtleNPCClass 		= "npc_headcrab_fast"
+TurtleNPCClass = "npc_headcrab_fast"
 TurtleInnocentDamage  = 10
-TurtleTraitorDamage   = 5
+TurtleTraitorDamage	= 5
 
 AccessorFunc( ENT, "radius", "Radius", FORCE_NUMBER )
 AccessorFunc( ENT, "dmg", "Dmg", FORCE_NUMBER )
 
 function ENT:Initialize()
-   if not self:GetRadius() then self:SetRadius(256) end
-   if not self:GetDmg() then self:SetDmg(0) end
-   
-   self.BaseClass.Initialize(self)
-   
+	self:SetModel(self.Model)
+	if not self:GetRadius() then self:SetRadius(256) end
+	if not self:GetDmg() then self:SetDmg(0) end
+	
+	self.BaseClass.Initialize(self)
+	
 	local phys = self:GetPhysicsObject()
 	if phys:IsValid() then phys:SetMass(350) end
 end
 
 function ENT:Explode(tr)
-
-   if SERVER then
-      self.Entity:SetNoDraw(true)
-      self.Entity:SetSolid(SOLID_NONE)
+	if SERVER then
+		self.Entity:SetNoDraw(true)
+		self.Entity:SetSolid(SOLID_NONE)
 
 	  local pos = self.Entity:GetPos()
 	  
-      -- pull out of the surface
-      if tr.Fraction != 1.0 then
-         self.Entity:SetPos(tr.HitPos + tr.HitNormal * 0.6)
-      end
+		-- pull out of the surface
+		if tr.Fraction != 1.0 then
+			self.Entity:SetPos(tr.HitPos + tr.HitNormal * 0.6)
+		end
 
-      --[[if util.PointContents(pos) == CONTENTS_WATER then
-         self:Remove()
-         return
-      end]]--
+		--[[if util.PointContents(pos) == CONTENTS_WATER then
+			self:Remove()
+			return
+		end]]--
 
-      local effect = EffectData()
-      effect:SetStart(pos)
-      effect:SetOrigin(pos)
-      effect:SetScale(self.ExplosionRadius * 0.3)
-      effect:SetRadius(self.ExplosionRadius)
-      effect:SetMagnitude(self.ExplosionDamage)
+		local effect = EffectData()
+		effect:SetStart(pos)
+		effect:SetOrigin(pos)
+		effect:SetScale(self.ExplosionRadius * 0.3)
+		effect:SetRadius(self.ExplosionRadius)
+		effect:SetMagnitude(self.ExplosionDamage)
 
-      if tr.Fraction != 1.0 then
-         effect:SetNormal(tr.HitNormal)
-      end
+		if tr.Fraction != 1.0 then
+			effect:SetNormal(tr.HitNormal)
+		end
 
-      util.Effect("Explosion", effect, true, true)
+		util.Effect("Explosion", effect, true, true)
 
-      util.BlastDamage(self, self:GetThrower(), pos, self.ExplosionRadius,self.ExplosionDamage)--self.ExplosionRadius, self.ExplosionDamage)
+		util.BlastDamage(self, self:GetThrower(), pos, self.ExplosionRadius,self.ExplosionDamage)--self.ExplosionRadius, self.ExplosionDamage)
 
-      self:SetDetonateExact(0)	
+		self:SetDetonateExact(0)	
 
-	     for i=1,self.TurtleCount do
+		  for i=1,self.TurtleCount do
 			local spos = pos+Vector(math.random(-75,75),math.random(-75,75),math.random(0,50))
 			local contents = util.PointContents( spos )
 			local _i = 0
@@ -93,15 +91,15 @@ function ENT:Explode(tr)
 			headturtle:SetHealth(1000)
 		end
 	  
-      self:Remove()
-   else
-   
-      local spos = self.Entity:GetPos()
-      local trs = util.TraceLine({start=spos + Vector(0,0,64), endpos=spos + Vector(0,0,-128), filter=self})
-      util.Decal("Scorch", trs.HitPos + trs.HitNormal, trs.HitPos - trs.HitNormal)      
+		self:Remove()
+	else
+	
+		local spos = self.Entity:GetPos()
+		local trs = util.TraceLine({start=spos + Vector(0,0,64), endpos=spos + Vector(0,0,-128), filter=self})
+		util.Decal("Scorch", trs.HitPos + trs.HitNormal, trs.HitPos - trs.HitNormal)		
 
-      self:SetDetonateExact(0)
-   end
+		self:SetDetonateExact(0)
+	end
 
 end
 

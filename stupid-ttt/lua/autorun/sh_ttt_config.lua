@@ -1,5 +1,8 @@
 
-local GAMEMODE = GAMEMODE or GM
+print(GM)
+print(GAMEMODE)
+
+local GAMEMODE = GM or GAMEMODE
 
 GAMEMODE.OnDamagedByExplosion = function() end
 
