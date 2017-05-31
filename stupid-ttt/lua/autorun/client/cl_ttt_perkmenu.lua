@@ -24,7 +24,7 @@ function PERKMENU:Build()
 	ServerTitle:SetFont("PerkMenu_ServerTitleFont")
 	ServerTitle:SetSize(ScrW(), ScrH() / 5)
 	
-	local text = "Welcome to " .. GetHostName() .. ", " .. LocalPlayer():Nick() .. "."
+	local text = "Choose a Perk"
 	surface.SetFont("PerkMenu_ServerTitleFont")
 	local offset = surface.GetTextSize(text) / 2
 	ServerTitle:SetText(text)
