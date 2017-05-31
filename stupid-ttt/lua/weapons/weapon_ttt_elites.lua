@@ -18,7 +18,7 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Kind                  = WEAPON_PISTOL
 
 SWEP.Primary.Ammo          = "smg1"
-SWEP.Primary.Damage        = 30
+SWEP.Primary.Damage        = 17
 SWEP.Primary.Cone          = 0.025
 SWEP.Primary.Delay         = 0.15
 SWEP.Primary.ClipSize      = 30

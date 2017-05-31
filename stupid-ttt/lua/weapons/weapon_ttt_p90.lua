@@ -17,7 +17,7 @@ SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Kind                  = WEAPON_HEAVY
 
-SWEP.Primary.Delay         = 0.04
+SWEP.Primary.Delay         = 0.1
 SWEP.Primary.Recoil        = 1
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "smg1"
