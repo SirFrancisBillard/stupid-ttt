@@ -82,7 +82,7 @@ else
 	SWEP.reloadtimer = 0
 
 	SWEP.Primary.ClipSize = 8
-	SWEP.Primary.Damage = 8
+	SWEP.Primary.Damage = 6
 	SWEP.Primary.DefaultClip = 8
 	SWEP.Primary.Delay = 0.5
 

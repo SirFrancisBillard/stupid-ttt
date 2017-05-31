@@ -21,7 +21,7 @@ SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 30
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "smg1"
-SWEP.Primary.Recoil = 8.5
+SWEP.Primary.Recoil = 1
 SWEP.Primary.Sound = Sound("Weapon_ak47.Single")
 
 SWEP.AutoSpawnable = true

@@ -14,7 +14,7 @@ if CLIENT then
 		desc = "Shoot someone to distorient them\nwith ear rape."
 	};
 
-	SWEP.Icon               = "vgui/ttt/icon_silenced"
+	SWEP.Icon               = "vgui/ttt/icon_earrape.png"
 	SWEP.IconLetter         = "a"
 end
 

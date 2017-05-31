@@ -15,7 +15,7 @@ SWEP.Kind = WEAPON_HEAVY
 
 SWEP.Primary.Damage = 18
 SWEP.Primary.Delay = 0.02
-SWEP.Primary.Cone = 0.1
+SWEP.Primary.Cone = 0.15
 SWEP.Primary.ClipSize = 30
 SWEP.Primary.ClipMax = 120
 SWEP.Primary.DefaultClip = 30

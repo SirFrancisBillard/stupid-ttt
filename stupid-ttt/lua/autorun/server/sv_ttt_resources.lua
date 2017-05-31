@@ -21,6 +21,15 @@ for i = 1, 2 do
 	resource.AddFile("sound/stupid-ttt/jihad/jihad_" .. i .. ".wav")
 end
 
+-- Materials
+resource.AddFile("materials/vgui/perks/billard.png")
+resource.AddFile("materials/vgui/perks/blaze.png")
+resource.AddFile("materials/vgui/perks/jeremy.png")
+resource.AddFile("materials/vgui/perks/nathaniel.png")
+resource.AddFile("materials/vgui/perks/tayte.png")
+resource.AddFile("materials/vgui/perks/tielar.png")
+resource.AddFile("materials/vgui/perks/victor.png")
+
 -- Models
 if TTT_USE_CUSTOM_MODELS then
 	resource.AddWorkshop("858272541") -- Doom SSG
@@ -57,6 +66,7 @@ resource.AddFile("materials/vgui/ttt/icon_p90.png")
 resource.AddFile("materials/vgui/ttt/icon_pdrank.png")
 resource.AddFile("materials/vgui/ttt/icon_pepper.png")
 resource.AddFile("materials/vgui/ttt/icon_python.png")
+resource.AddFile("materials/vgui/ttt/icon_slam.png")
 resource.AddFile("materials/vgui/ttt/icon_taser.png")
 resource.AddFile("materials/vgui/ttt/icon_tmp.png")
 resource.AddFile("materials/vgui/ttt/icon_turtle.png")
