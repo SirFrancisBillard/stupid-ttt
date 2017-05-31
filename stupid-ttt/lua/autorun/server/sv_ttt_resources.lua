@@ -22,6 +22,7 @@ for i = 1, 2 do
 end
 
 -- Materials
+resource.AddFile("materials/vgui/perks/agra.png")
 resource.AddFile("materials/vgui/perks/billard.png")
 resource.AddFile("materials/vgui/perks/blaze.png")
 resource.AddFile("materials/vgui/perks/jeremy.png")

@@ -6,6 +6,25 @@ function RegisterPerk(tbl)
 end
 
 RegisterPerk({
+	ID = "agra",
+	Name = "Agra",
+	Desc = [[Being the fatass you are, you always carry some chocolate around.
+		When you are low on health, you can eat chocolate to regenerate.]],
+	Image = "agra.png",
+	Init = function()
+		timer.Create("StupidTTT.Perks.Agra", 2, 0, function()
+			for k, v in pairs(player.GetAll()) do
+				if IsValid(v) and v:IsPlayer() and v:GetPerk() == "agra" and v:GetHealth() < (v:GetMaxHealth() / 4) then
+					v:SetHealth(math.min(v:Health() + 2, v:GetMaxHealth() / 4))
+				end
+			end
+		end)
+	end,
+	OnEquip = function(ply) end,
+	OnHolster = function(ply) end
+})
+
+RegisterPerk({
 	ID = "billard",
 	Name = "Sir Francis Billard",
 	Desc = [[Being the fatass you are, you always carry some chocolate around.

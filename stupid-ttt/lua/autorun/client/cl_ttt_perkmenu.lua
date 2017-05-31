@@ -30,12 +30,28 @@ function PERKMENU:Build()
 	ServerTitle:SetText(text)
 	ServerTitle:SetPos(ScrW() / 2 - offset, (ScrH() / 2) * 0.3)
 
-	local CloseButton = vgui.Create("DButton", self.Panel)
-	CloseButton:SetText("Close")
-	CloseButton:SetPos(ScrW() / 2 - ScrW() * 0.1, (ScrH() / 2) * 1.5)
-	CloseButton:SetSize(ScrW() * 0.2, ScrH() * 0.1)
-	CloseButton.DoClick = function()
-		self:Destroy()
+	local bw = 50
+	local marge = 16
+	local IsEven = (#gPerks % 2) == 0
+	local MainCenterOffset = IsEven and (marge / 2) or ((bw / 2) + marge)
+	local b_x = ScrH() / 2
+	local b_y = ScrW() / 2
+	local b_w = 50
+	local b_h = 50
+	local WidthOfEachThingy = ScrW() / (#gPerks / 2)
+
+	local PerkButtons = {}
+
+	for k, v in pairs(gPerks) do
+		PerkButtons[#PerkButtons + 1] = vgui.Create("DButton", self.Panel)
+		PerkButtons[#PerkButtons]:SetText(v.Name)
+		PerkButtons[#PerkButtons]:SetTooltip(v.Desc)
+		PerkButtons[#PerkButtons]:SetPos(b_x, b_y)
+		PerkButtons[#PerkButtons]:SetSize(b_w, b_h)
+		PerkButtons[#PerkButtons].DoClick = function()
+			SetMyPerk(v.ID)
+			self:Destroy()
+		end
 	end
 end
 
