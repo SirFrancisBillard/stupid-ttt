@@ -9,49 +9,45 @@ surface.CreateFont("PerkMenu_ServerTitleFont", {
 	font = "Arial"
 })
 
+function PERKMENU:SendPerk(perk)
+	net.Start("ttt_sendperk")
+	net.WriteString(perk)
+	net.SendToServer()
+end
+
 function PERKMENU:Build()
 	self:Destroy()
 
-	self.Panel = vgui.Create("DPanel")
-	self.Panel:SetSize(ScrW(), ScrH())
+	self.Panel = vgui.Create("DFrame")
+	self.Panel:SetTitle("Select Perk")
+	self.Panel:SetSize(1000, 600)
 	self.Panel:Center()
 	self.Panel:MakePopup()
-	self.Panel.Paint = function(pnl, w, h)
-		draw.RoundedBox(0, 0, 0, w, h, Color(50, 50, 50, 200))
-	end
 
-	local ServerTitle = vgui.Create("DLabel", self.Panel)
-	ServerTitle:SetFont("PerkMenu_ServerTitleFont")
-	ServerTitle:SetSize(ScrW(), ScrH() / 5)
-	
-	local text = "Choose a Perk"
-	surface.SetFont("PerkMenu_ServerTitleFont")
-	local offset = surface.GetTextSize(text) / 2
-	ServerTitle:SetText(text)
-	ServerTitle:SetPos(ScrW() / 2 - offset, (ScrH() / 2) * 0.3)
+	local Scroll = vgui.Create("DScrollPanel", self.Panel)
+	Scroll:SetSize(950, 550)
+	Scroll:SetPos(10, 30)
 
-	local bw = 50
-	local marge = 16
-	local IsEven = (#gPerks % 2) == 0
-	local MainCenterOffset = IsEven and (marge / 2) or ((bw / 2) + marge)
-	local b_x = ScrH() / 2
-	local b_y = ScrW() / 2
-	local b_w = 50
-	local b_h = 50
-	local WidthOfEachThingy = ScrW() / (#gPerks / 2)
-
-	local PerkButtons = {}
+	local List	= vgui.Create("DIconLayout", Scroll)
+	List:SetSize(900, 500)
+	List:SetPos(0, 0)
+	List:SetSpaceY(5)
+	List:SetSpaceX(5)
 
 	for k, v in pairs(gPerks) do
-		PerkButtons[#PerkButtons + 1] = vgui.Create("DButton", self.Panel)
-		PerkButtons[#PerkButtons]:SetText(v.Name)
-		PerkButtons[#PerkButtons]:SetTooltip(v.Desc)
-		PerkButtons[#PerkButtons]:SetPos(b_x, b_y)
-		PerkButtons[#PerkButtons]:SetSize(b_w, b_h)
-		PerkButtons[#PerkButtons].DoClick = function()
-			SetMyPerk(v.ID)
-			self:Destroy()
+		local ListPanel = List:Add("DPanel")
+		ListPanel:SetSize(250, 350)
+
+		local ListImage = List:Add("DImageButton")
+		ListImage:SetSize(250, 250)
+		ListImage:SetImage("vgui/perks/" .. v.Image)
+		ListImage.DoClick = function()
+			self:SendPerk(v.ID)
 		end
+
+		local ListLabel = List:Add("DLabel")
+		ListLabel:SetSize(250, 100)
+		ListLabel:SetText(v.Name .. "\n" .. v.Desc)
 	end
 end
 

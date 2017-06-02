@@ -1,8 +1,17 @@
 
+local PLAYER = FindMetaTable("Player")
+
+function PLAYER:GetPerk()
+	return self:GetNWString("ttt_perk", "agra")
+end
+
 gPerks = {}
 
 function RegisterPerk(tbl)
 	gPerks[tbl.ID] = tbl
+	if type(tbl.Init) == "function" then
+		tbl.Init()
+	end
 end
 
 RegisterPerk({
