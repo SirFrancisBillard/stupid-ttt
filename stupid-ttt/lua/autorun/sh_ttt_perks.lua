@@ -17,13 +17,15 @@ end
 RegisterPerk({
 	ID = "agra",
 	Name = "Agra",
-	Desc = [[Being the fatass you are, you always carry some chocolate around.
-		When you are low on health, you can eat chocolate to regenerate.]],
+	Desc = [[Being the fatass you are, you always carry some
+		chocolate around.
+		When you are low on health, you can eat chocolate
+		to regenerate.]],
 	Image = "agra.png",
 	Init = function()
 		timer.Create("StupidTTT.Perks.Agra", 2, 0, function()
 			for k, v in pairs(player.GetAll()) do
-				if IsValid(v) and v:IsPlayer() and v:GetPerk() == "agra" and v:GetHealth() < (v:GetMaxHealth() / 4) then
+				if IsValid(v) and v:IsPlayer() and v:GetPerk() == "agra" and v:Health() < (v:GetMaxHealth() / 4) then
 					v:SetHealth(math.min(v:Health() + 2, v:GetMaxHealth() / 4))
 				end
 			end
@@ -36,13 +38,15 @@ RegisterPerk({
 RegisterPerk({
 	ID = "billard",
 	Name = "Sir Francis Billard",
-	Desc = [[Being the fatass you are, you always carry some chocolate around.
-		When you are low on health, you can eat chocolate to regenerate.]],
+	Desc = [[Being the fatass you are, you always carry some
+		chocolate around.
+		When you are low on health, you can eat chocolate
+		to regenerate.]],
 	Image = "billard.png",
 	Init = function()
 		timer.Create("StupidTTT.Perks.Billard", 2, 0, function()
 			for k, v in pairs(player.GetAll()) do
-				if IsValid(v) and v:IsPlayer() and v:GetPerk() == "billard" and v:GetHealth() < (v:GetMaxHealth() / 4) then
+				if IsValid(v) and v:IsPlayer() and v:GetPerk() == "billard" and v:Health() < (v:GetMaxHealth() / 4) then
 					v:SetHealth(math.min(v:Health() + 2, v:GetMaxHealth() / 4))
 				end
 			end
@@ -55,8 +59,10 @@ RegisterPerk({
 RegisterPerk({
 	ID = "blaze",
 	Name = "Blaze Gambla",
-	Desc = [[It is your Jihadi instinct to carry explosives with you at all times.
-		There is a small chance that you may explode upon death.
+	Desc = [[It is your Jihadi instinct to carry explosives
+		with you at all times.
+		There is a small chance that you may explode upon
+		death.
 		Allahu akbar.]],
 	Image = "blaze.png",
 	Init = function()
@@ -111,8 +117,9 @@ RegisterPerk({
 	ID = "tielar",
 	Name = "Tielar",
 	Desc = [[Your internet is abysmal.
-		Occasionally, bullets that should have hit you will completely miss.]],
-	Image = "tayte.png",
+		Occasionally, bullets that should have hit you will
+		completely miss.]],
+	Image = "tielar.png",
 	Init = function()
 		hook.Add("EntityTakeDamage", "StupidTTT.Perks.Tielar", function(ply, dmg)
 			if IsValid(ply) and ply:IsPlayer() and ply:GetPerk() == "tielar" and dmg:IsBulletDamage() and math.random(1, 30) == 1 then

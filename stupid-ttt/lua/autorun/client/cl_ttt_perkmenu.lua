@@ -38,16 +38,18 @@ function PERKMENU:Build()
 		local ListPanel = List:Add("DPanel")
 		ListPanel:SetSize(250, 350)
 
-		local ListImage = List:Add("DImageButton")
+		local ListImage = vgui.Create("DImageButton", ListPanel)
 		ListImage:SetSize(250, 250)
 		ListImage:SetImage("vgui/perks/" .. v.Image)
 		ListImage.DoClick = function()
 			self:SendPerk(v.ID)
 		end
 
-		local ListLabel = List:Add("DLabel")
+		local ListLabel = vgui.Create("DLabel", ListPanel)
 		ListLabel:SetSize(250, 100)
+		ListLabel:SetPos(ListLabel:GetPos(), select(2, ListLabel:GetPos()) + 250)
 		ListLabel:SetText(v.Name .. "\n" .. v.Desc)
+		ListLabel:SetTextColor(color_black)
 	end
 end
 
