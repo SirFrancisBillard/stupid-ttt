@@ -67,7 +67,7 @@ RegisterPerk({
 	Image = "blaze.png",
 	Init = function()
 		hook.Add("DoPlayerDeath", "StupidTTT.Perks.Blaze", function(ply)
-			if IsValid(ply) and ply:IsPlayer() and ply:GetPerk() == "blaze" and math.random(1, 8) == 1 then
+			if IsValid(ply) and ply:IsPlayer() and ply:GetPerk() == "blaze" and math.random(1, 5) == 1 then
 				local pos = ply:GetPos()
 				ply:EmitSound("Jihad.Scream")
 
@@ -82,11 +82,7 @@ RegisterPerk({
 
 					util.BlastDamage(ply, ply, pos, math.random(64, 256), math.random(64, 128))
 
-					timer.Simple(1.2, function()
-						if not pos then return end
-
-						sound.Play(Sound("Jihad.Islam"), pos)
-					end)
+					sound.Play(Sound("Jihad.Islam"), pos)
 				end)
 			end
 		end)
@@ -122,7 +118,7 @@ RegisterPerk({
 	Image = "tielar.png",
 	Init = function()
 		hook.Add("EntityTakeDamage", "StupidTTT.Perks.Tielar", function(ply, dmg)
-			if IsValid(ply) and ply:IsPlayer() and ply:GetPerk() == "tielar" and dmg:IsBulletDamage() and math.random(1, 30) == 1 then
+			if IsValid(ply) and ply:IsPlayer() and ply:GetPerk() == "tielar" and dmg:IsBulletDamage() and math.random(1, 15) == 1 then
 				dmg:ScaleDamage(0)
 				ply:ChatPrint("Your internet protected you from a bullet!")
 			end
