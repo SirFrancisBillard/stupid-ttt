@@ -41,6 +41,7 @@ AccessorFunc(ENT, "Placer", "Placer")
 
 function ENT:SetupDataTables()
    self:DTVar("Int", 0, "StoredHealth")
+   self:NetworkVar("Bool", 0, "Trapped")
 end
 
 function ENT:Initialize()
@@ -124,6 +125,12 @@ function ENT:GiveHealth(ply, max_heal)
 		  if dmg > 0 then
 			 -- constant clamping, no risks
 			 local healed = self:TakeFromStorage(math.min(max_heal, dmg))
+             local new = math.min(ply:GetMaxHealth(), ply:Health() + healed)
+
+			 if self:GetTrapped() then
+				ply:SetHealth(new)
+				hook.Run("TTTPlayerUsedHealthStation", ply, self, healed)
+			 end
 
 			 if last_sound_time + 2 < CurTime() then
 				self:EmitSound(healsound)
@@ -197,8 +204,8 @@ if SERVER then
 
 	-- trap existing health stations (but only one)
 	function ENT:Touch(other)
-		if not self.poisoned_hstation and other.IsHealthStation then
-			self.poisoned_hstation = true
+		if (not self:GetTrapped()) and other.IsHealthStation then
+			self:SetTrapped(true)
 			SafeRemoveEntity(other)
 
 			-- save cpu

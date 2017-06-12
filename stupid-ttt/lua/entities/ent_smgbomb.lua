@@ -34,7 +34,7 @@ end
 
 if SERVER then
 	function ENT:Explode()
-		util.BlastDamage(self, self:GetOwner(), self:GetPos(), 256, 50)
+		util.BlastDamage(self, self:GetOwner(), self:GetPos(), 128, 30)
 
 		local boom = EffectData()
 		boom:SetOrigin(self:GetPos())

@@ -8,7 +8,7 @@ hook.Add("EntityTakeDamage", "StupidTTT.GrenadeJumping", function(ent, dmg)
 		local ply = wep:GetOwner()
 		-- gotta check if an entity is a number because garry
 		if IsValid(ply) and ply == ent then
-			dmg:ScaleDamage(0.05)
+			dmg:ScaleDamage(0.2)
 
 			local tpos = ply:LocalToWorld(ply:OBBCenter())
 			local pos = wep:GetPos()

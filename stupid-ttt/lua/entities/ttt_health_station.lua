@@ -35,6 +35,8 @@ ENT.NextHeal = 0
 ENT.HealRate = 1
 ENT.HealFreq = 0.2
 
+ENT.IsHealthStation = true
+
 AccessorFuncDT(ENT, "StoredHealth", "StoredHealth")
 
 AccessorFunc(ENT, "Placer", "Placer")
