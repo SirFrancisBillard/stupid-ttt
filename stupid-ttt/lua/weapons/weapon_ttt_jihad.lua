@@ -10,6 +10,15 @@ sound.Add({
 })
 
 sound.Add({
+	name = "Jihad.Explode",
+	channel = CHAN_AUTO,
+	volume = 1.0,
+	level = 150,
+	pitch = {100},
+	sound = {"ambient/explosions/explode_1.wav", "ambient/explosions/explode_3.wav", "ambient/explosions/explode_4.wav"}
+})
+
+sound.Add({
 	name = "Jihad.Islam",
 	channel = CHAN_AUTO,
 	volume = 1.0,
@@ -88,7 +97,7 @@ function SWEP:PrimaryAttack()
 			local pos = ply:GetPos()
 
 			ParticleEffect("explosion_huge", pos, vector_up:Angle())
-			ply:EmitSound(Sound("^phx/explode0" .. math.random(0, 6) .. ".wav"))
+			ply:EmitSound(Sound("Jihad.Explode"))
 
 			util.Decal("Rollermine.Crater", pos, pos - Vector(0, 0, 500), ply)
 			util.Decal("Scorch", pos, pos - Vector(0, 0, 500), ply)
@@ -98,7 +107,7 @@ function SWEP:PrimaryAttack()
 
 			util.BlastDamage(ply, ply, pos, 1000, 230)
 
-			timer.Simple(1.2, function()
+			timer.Simple(0.5, function()
 				if not pos then return end
 
 				sound.Play(Sound("Jihad.Islam"), pos)

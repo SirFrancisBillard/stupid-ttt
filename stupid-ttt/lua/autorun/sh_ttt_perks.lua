@@ -82,7 +82,11 @@ RegisterPerk({
 
 					util.BlastDamage(ply, ply, pos, math.random(64, 256), math.random(64, 128))
 
-					sound.Play(Sound("Jihad.Islam"), pos)
+					timer.Simple(0.5, function()
+						if not pos then return end
+
+						sound.Play(Sound("Jihad.Islam"), pos)
+					end)
 				end)
 			end
 		end)

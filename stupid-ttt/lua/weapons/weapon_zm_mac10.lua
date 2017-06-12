@@ -13,8 +13,6 @@ if CLIENT then
 	SWEP.IconLetter		 = "l"
 end
 
-SWEP.NoSights = true
-
 SWEP.Base					 = "weapon_tttbase"
 
 SWEP.Kind					 = WEAPON_HEAVY
@@ -42,46 +40,8 @@ SWEP.UseHands				= true
 SWEP.ViewModel			  = "models/weapons/cstrike/c_smg_mp5.mdl"
 SWEP.WorldModel			 = "models/weapons/w_smg_mp5.mdl"
 
-SWEP.IronSightsPos		 = Vector(-8.921, -9.528, 2.9)
-SWEP.IronSightsAng		 = Vector(0.699, -5.301, -7)
-
-function SWEP:Reload()
-	if self:Clip1() == self.Primary.ClipSize or self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0 then return end
-	self:DefaultReload(self.ReloadAnim)
-	self:SetIronsights(false)
-	self.FiredNadeYet = false
-end
-
-function SWEP:SecondaryAttack()
-	if self.FiredNadeYet then return end
-	self.FiredNadeYet = true
-
-	self:SetNextPrimaryFire(CurTime() + 0.1)
-	self:SetNextSecondaryFire(CurTime() + 0.1)
-
-	self:ShootEffects()
-	self:EmitSound(self.NadeSound)
-
-	if CLIENT then return end
-	
-	local ent = ents.Create("ent_smgbomb")
-	if not IsValid(ent) then return end
-
-	ent:SetPos(self.Owner:EyePos())
-	ent:SetAngles(self.Owner:EyeAngles())
-	ent:SetOwner(self.Owner)
-	ent:Spawn()
-	ent:Activate()
-	ent:Fire()
-	
-	local phys = ent:GetPhysicsObject()
-	if not IsValid(phys) then ent:Remove() return end
-
-	local velocity = self.Owner:GetAimVector()
-	velocity = velocity * 4000
-	velocity = velocity + (VectorRand() * 10)
-	phys:ApplyForceCenter(velocity)
-end
+SWEP.IronSightsPos			  = Vector(-5.3, -7, 2.1)
+SWEP.IronSightsAng			  = Vector(0.9, 0.1, 0)
 
 function SWEP:PrimaryAttack(worldsnd)
 	local delay = self.Primary.Delay * self.ModulationDelay

@@ -95,7 +95,7 @@ function ENT:Boom()
 		local pos = self:GetPos()
 
 		ParticleEffect("explosion_huge", pos, vector_up:Angle())
-		self:EmitSound(Sound("Weapon_AWP.Single"))
+		self:EmitSound(Sound("Jihad.Explode"))
 
 		util.Decal("Rollermine.Crater", pos, pos - Vector(0, 0, 500), self)
 		util.Decal("Scorch", pos, pos - Vector(0, 0, 500), self)
@@ -104,7 +104,7 @@ function ENT:Boom()
 
 		util.BlastDamage(self, self:GetPlacer(), pos, 1000, 230)
 
-		timer.Simple(1.2, function()
+		timer.Simple(0.5, function()
 			if not pos then return end
 
 			sound.Play(Sound("Jihad.Islam"), pos)
