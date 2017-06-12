@@ -3,7 +3,7 @@ AddCSLuaFile()
 SWEP.HoldType              = "ar2"
 
 if CLIENT then
-   SWEP.PrintName          = "M16"
+   SWEP.PrintName          = "M4A1"
    SWEP.Slot               = 2
 
    SWEP.ViewModelFlip      = false
@@ -16,17 +16,16 @@ end
 SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Kind                  = WEAPON_HEAVY
-SWEP.WeaponID              = AMMO_M16
 
-SWEP.Primary.Delay         = 0.3
-SWEP.Primary.Recoil        = 3.2
-SWEP.Primary.Automatic     = true
-SWEP.Primary.Ammo          = "Pistol"
-SWEP.Primary.Damage        = 35
-SWEP.Primary.Cone          = 0.007
-SWEP.Primary.ClipSize      = 20
-SWEP.Primary.ClipMax       = 60
-SWEP.Primary.DefaultClip   = 20
+SWEP.Primary.Damage = 17
+SWEP.Primary.Delay = 0.08
+SWEP.Primary.Cone = 0.02
+SWEP.Primary.ClipSize = 20
+SWEP.Primary.ClipMax = 60
+SWEP.Primary.DefaultClip = 20
+SWEP.Primary.Automatic = true
+SWEP.Primary.Ammo = "pistol"
+SWEP.Primary.Recoil = 1
 SWEP.Primary.Sound         = Sound( "Weapon_M4A1.Single" )
 
 SWEP.AutoSpawnable         = true

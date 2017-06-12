@@ -12,16 +12,17 @@ end
 SWEP.Base = "weapon_tttbase"
 
 SWEP.Kind = WEAPON_HEAVY
+SWEP.WeaponID = AMMO_M16
 
-SWEP.Primary.Damage = 17
-SWEP.Primary.Delay = 0.08
+SWEP.Primary.Damage = 30
+SWEP.Primary.Delay = 0.12
 SWEP.Primary.Cone = 0.02
 SWEP.Primary.ClipSize = 30
 SWEP.Primary.ClipMax = 60
 SWEP.Primary.DefaultClip = 30
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "smg1"
-SWEP.Primary.Recoil = 1
+SWEP.Primary.Recoil = 7
 SWEP.Primary.Sound = Sound("Weapon_ak47.Single")
 
 SWEP.AutoSpawnable = true

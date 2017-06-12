@@ -14,7 +14,7 @@ L.spectators = "Spectators"
 --- Round status messages
 L.round_minplayers = "Not enough players to start a new round..."
 L.round_voting     = "Vote in progress, delaying new round by {num} seconds..."
-L.round_begintime  = "A new round begins in {num} seconds. Prepare yourself."
+L.round_begintime  = "A new round begins in {num} seconds. Prepare your anus."
 L.round_selected   = "The Traitors have been selected."
 L.round_started    = "The round has begun!"
 L.round_restart    = "The round has been forced to restart by an admin."
@@ -39,7 +39,7 @@ L.credit_kill      = "You have received {num} credit(s) for killing a {role}."
 
 --- Karma
 L.karma_dmg_full   = "Your Karma is {amount}, so you deal full damage this round!"
-L.karma_dmg_other  = "Your Karma is {amount}. As a result all damage you deal is reduced by {num}%"
+L.karma_dmg_other  = "Your Karma is {amount}. As a result, all damage you deal is reduced by {num}%"
 
 --- Body identification messages
 L.body_found       = "{finder} found the body of {victim}. {role}"
@@ -820,22 +820,22 @@ L.ev_win_time    = "The traitors ran out of time and lost!"
 
 --- Awards/highlights
 
-L.aw_sui1_title = "Suicide Cult Leader"
+L.aw_sui1_title = "Jim Jones"
 L.aw_sui1_text  = "showed the other suiciders how to do it by being the first to go."
 
-L.aw_sui2_title = "Lonely and Depressed"
+L.aw_sui2_title = "Kurt Cobain"
 L.aw_sui2_text  = "was the only one who killed themselves."
 
 L.aw_exp1_title = "Explosives Research Grant"
 L.aw_exp1_text  = "was recognized for their research on explosions. {num} test subjects helped out."
 
-L.aw_exp2_title = "Field Research"
+L.aw_exp2_title = "Allahu akbar"
 L.aw_exp2_text  = "tested their own resistance to explosions. It was not high enough."
 
 L.aw_fst1_title = "First Blood"
 L.aw_fst1_text  = "delivered the first innocent death at a traitor's hands."
 
-L.aw_fst2_title = "First Bloody Stupid Kill"
+L.aw_fst2_title = "Stupid Motherfucker"
 L.aw_fst2_text  = "scored the first kill by shooting a fellow traitor. Good job."
 
 L.aw_fst3_title = "Someone Fucked Up"
@@ -856,7 +856,7 @@ L.aw_nkt1_text  = "managed to do one thing right in his goddamn life, finally."
 L.aw_nkt2_title = "A Bullet For Two"
 L.aw_nkt2_text  = "showed the first one was not a lucky shot by killing another."
 
-L.aw_nkt3_title = "Serial Traitor"
+L.aw_nkt3_title = "Cereal Traitor"
 L.aw_nkt3_text  = "ended three innocent lives of terrorism today."
 
 L.aw_nkt4_title = "Wolf Among More Sheep-Like Wolves"
@@ -871,7 +871,7 @@ L.aw_nki1_text  = "found a traitor. Shot a traitor. Easy FUCKING Peasy."
 L.aw_nki2_title = "Applied to the Justice Squad"
 L.aw_nki2_text  = "escorted two traitors to the great beyond."
 
-L.aw_nki3_title = "Do Traitors Wet Dream Of Fucking Sheep?"
+L.aw_nki3_title = "Do Traitors Fuck Sheep?"
 L.aw_nki3_text  = "sent three traitors to their 72 virgins."
 
 L.aw_nki4_title = "Internalized Oppression"
@@ -908,10 +908,10 @@ L.aw_pst2_title = "Small Caliber Slaughter"
 L.aw_pst2_text  = "killed a small army of {num} with a pistol. Presumably installed a tiny shotgun inside the barrel."
 
 L.aw_sgn1_title = "RAILGUN RIMJOB"
-L.aw_sgn1_text  = "applies the FUCKING PARTICLE ACCELERATOR where it hurts, SLAUGHTERING {num} targets."
+L.aw_sgn1_text  = "applies the PARTICLE ACCELERATOR where it hurts, SLAUGHTERING {num} targets."
 
-L.aw_sgn2_title = "A Thousand Little Pellets"
-L.aw_sgn2_text  = "didn't really like their buckshot, so they gave it all away. {num} recipients did not live to enjoy it."
+L.aw_sgn2_title = "Overpowered Piece of Shit"
+L.aw_sgn2_text  = "used their OP shotgun to kill {num} fuckboys."
 
 L.aw_rfl1_title = "Call of Duty Point and Click Adventure"
 L.aw_rfl1_text  = "shows all you need for {num} kills is a rifle and a steady hand."
@@ -925,14 +925,14 @@ L.aw_dgl1_text  = "is getting the hang of the Desert Eagle and killed {num} peop
 L.aw_dgl2_title = "Eagle Master"
 L.aw_dgl2_text  = "fucking blew away {num} people with the deagle."
 
-L.aw_mac1_title = "UNDERMOUNTED NADES MOTHERFUCKER"
-L.aw_mac1_text  = "killed {num} people with the MP5, but won't say how much ammo they needed."
+L.aw_mac1_title = "TUPAC THROWBACK"
+L.aw_mac1_text  = "blasted {num} people with the Uzi. 9/7/1996 NEVER FORGET."
 
-L.aw_mac2_title = "EVER MORE UNDERMOUNTED NADES MOTHERFUCKER"
-L.aw_mac2_text  = "wonders what would happen if they could wield two MP5s. {num} times two?"
+L.aw_mac2_title = "BRRRRRRRRRRRRRR"
+L.aw_mac2_text  = "wonders what would happen if they could wield two Uzis. {num} times two?"
 
 L.aw_sip1_title = "Be Quiet"
-L.aw_sip1_text  = "shut {num} people up with the silenced pistol."
+L.aw_sip1_text  = "shut {num} people the fuck up with the silenced pistol."
 
 L.aw_sip2_title = "Silenced Assassin"
 L.aw_sip2_text  = "killed {num} people who did not hear themselves die."
@@ -961,16 +961,16 @@ L.aw_hug1_text  = "was in tune with their Fuckin' H.U.G.E, somehow managing to m
 L.aw_hug2_title = "One Patient Motherfucker"
 L.aw_hug2_text  = "just kept firing, and saw their H.U.G.E patience rewarded with {num} kills."
 
-L.aw_msx1_title = "PUTT PUTT MOTHERFUCKER"
-L.aw_msx1_text  = "picked off {num} people with the M16."
+L.aw_msx1_title = "Blyat"
+L.aw_msx1_text  = "picked off {num} people with the AK-47."
 
-L.aw_msx2_title = "Mid-range Madness"
-L.aw_msx2_text  = "knows how to take down targets with the M16, scoring {num} kills."
+L.aw_msx2_title = "Recoil Control"
+L.aw_msx2_text  = "knows how to take down targets with the AK-47, scoring {num} kills."
 
-L.aw_tkl1_title = "Made An Oopsie"
+L.aw_tkl1_title = "Fucking Idiot"
 L.aw_tkl1_text  = "had their finger slip just when they were aiming at a buddy."
 
-L.aw_tkl2_title = "Double-Oops"
+L.aw_tkl2_title = "Double Moron"
 L.aw_tkl2_text  = "thought they got a Traitor twice, but was wrong both times."
 
 L.aw_tkl3_title = "Karma-conscious"

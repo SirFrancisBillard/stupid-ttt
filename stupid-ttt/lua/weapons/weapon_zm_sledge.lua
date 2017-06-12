@@ -24,9 +24,9 @@ SWEP.WeaponID				  = AMMO_M249
 SWEP.Primary.Damage		  = 15
 SWEP.Primary.Delay			= 0.1
 SWEP.Primary.Cone			 = 0
-SWEP.Primary.ClipSize		= 15000
-SWEP.Primary.ClipMax		 = 15000
-SWEP.Primary.DefaultClip	= 15000
+SWEP.Primary.ClipSize		= 250
+SWEP.Primary.ClipMax		 = 250
+SWEP.Primary.DefaultClip	= 250
 SWEP.Primary.Automatic	  = true
 SWEP.Primary.Ammo			 = "AirboatGun"
 SWEP.Primary.Recoil		  = 0.5
@@ -44,9 +44,13 @@ SWEP.IronSightsAng			= Vector(0, 0, 0)
 SWEP.Primary.ConeMin = 0
 SWEP.Primary.ConeMax = 0.5
 
+SWEP.LastShot = 0
+
 function SWEP:PrimaryAttack(worldsnd)
 	self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
 	self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
+
+	self.LastShot = CurTime()
 
 	if not self:CanPrimaryAttack() then return end
 
@@ -65,11 +69,11 @@ function SWEP:PrimaryAttack(worldsnd)
 
 	owner:ViewPunch( Angle( math.Rand(-0.2,-0.1) * self.Primary.Recoil, math.Rand(-0.1,0.1) * self.Primary.Recoil, 0 ) )
 
-	self.Primary.Cone = math.Clamp(self.Primary.Cone + 0.02, self.Primary.ConeMin, self.Primary.ConeMax)
+	self.Primary.Cone = math.Clamp(self.Primary.Cone + 0.0025, self.Primary.ConeMin, self.Primary.ConeMax)
 end
 
 function SWEP:Think()
-	if self:GetNextPrimaryFire() < (CurTime() + 0.5) then
-		self.Primary.Cone = math.Clamp(self.Primary.Cone - 0.04, self.Primary.ConeMin, self.Primary.ConeMax)
+	if (CurTime() - self.LastShot) > 0.5 then
+		self.Primary.Cone = math.Clamp(self.Primary.Cone - 0.02, self.Primary.ConeMin, self.Primary.ConeMax)
 	end
 end
