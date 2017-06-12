@@ -90,14 +90,25 @@ function ENT:TakeFromStorage(amount)
 end
 
 function ENT:Boom()
-	self:EmitSound("stupid-ttt/allahu/akbar_" .. math.random(1, 10) .. ".wav")
+	self:EmitSound("Jihad.Scream")
 	timer.Simple(1, function()
-		if not IsValid(self) then return end
-		util.BlastDamage(self, self, self:GetPos(), 300, 150)
-		local boom = EffectData()
-		boom:SetOrigin(self:GetPos())
-		util.Effect("Explosion", boom)
+		local pos = self:GetPos()
+
+		ParticleEffect("explosion_huge", pos, vector_up:Angle())
+		self:EmitSound(Sound("Weapon_AWP.Single"))
+
+		util.Decal("Rollermine.Crater", pos, pos - Vector(0, 0, 500), self)
+		util.Decal("Scorch", pos, pos - Vector(0, 0, 500), self)
+
 		SafeRemoveEntity(self)
+
+		util.BlastDamage(self, self:GetPlacer(), pos, 1000, 230)
+
+		timer.Simple(1.2, function()
+			if not pos then return end
+
+			sound.Play(Sound("Jihad.Islam"), pos)
+		end)
 	end)
 end
 

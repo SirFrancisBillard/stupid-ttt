@@ -18,7 +18,7 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Kind                  = WEAPON_HEAVY
 
 SWEP.Primary.Damage = 17
-SWEP.Primary.Delay = 0.08
+SWEP.Primary.Delay = 0.12
 SWEP.Primary.Cone = 0.02
 SWEP.Primary.ClipSize = 20
 SWEP.Primary.ClipMax = 60

@@ -42,6 +42,7 @@ function PERKMENU:Build()
 		ListImage:SetSize(250, 250)
 		ListImage:SetImage("vgui/perks/" .. v.Image)
 		ListImage.DoClick = function()
+			chat.AddText("Perk has been set. You can change your perk at any time by typing \"ttt_perkmenu\" in console.")
 			self:SendPerk(v.ID)
 		end
 

@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 if CLIENT then
-	SWEP.PrintName = "Pump Rifle"
+	SWEP.PrintName = "Pump Shotgun"
 
 	SWEP.Slot = 2
 	SWEP.Icon = "vgui/ttt/icon_boomstick.png"
@@ -17,15 +17,15 @@ SWEP.Spawnable = false
 
 SWEP.Kind = WEAPON_HEAVY
 
-SWEP.Primary.Ammo = "Buckshot"
-SWEP.Primary.Damage = 50
-SWEP.Primary.Cone = 0.01
-SWEP.Primary.Delay = 0.9
-SWEP.Primary.ClipSize = 8
-SWEP.Primary.ClipMax = 24
-SWEP.Primary.DefaultClip = 8
-SWEP.Primary.Automatic = true
-SWEP.Primary.NumShots = 1
+SWEP.Primary.Ammo          = "Buckshot"
+SWEP.Primary.Damage        = 14
+SWEP.Primary.Cone          = 0.085
+SWEP.Primary.Delay         = 1
+SWEP.Primary.ClipSize      = 8
+SWEP.Primary.ClipMax       = 24
+SWEP.Primary.DefaultClip   = 8
+SWEP.Primary.Automatic     = true
+SWEP.Primary.NumShots      = 8
 SWEP.AmmoEnt = "item_box_buckshot_ttt"
 
 SWEP.UseHands			= true
