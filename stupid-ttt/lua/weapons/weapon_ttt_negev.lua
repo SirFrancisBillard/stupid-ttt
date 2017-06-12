@@ -16,7 +16,7 @@ end
 SWEP.Base                  = "weapon_tttbase"
 
 SWEP.Spawnable             = true
-SWEP.AutoSpawnable         = true
+SWEP.AutoSpawnable         = false -- DISABLED
 
 SWEP.Kind                  = WEAPON_HEAVY
 

@@ -32,7 +32,7 @@ SWEP.Primary.NumShots      = 1
 SWEP.Primary.Sound         = Sound("ambient/energy/weld2.wav")
 SWEP.Primary.Recoil        = 22
 
-SWEP.AutoSpawnable         = true
+SWEP.AutoSpawnable         = false -- DISABLED
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
 

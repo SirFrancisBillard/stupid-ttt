@@ -17,15 +17,16 @@ SWEP.Base                = "weapon_tttbase"
 
 SWEP.Kind                = WEAPON_HEAVY
 
-SWEP.Primary.Damage      = 24
-SWEP.Primary.Delay       = 0.150
-SWEP.Primary.Cone        = 0.01
+SWEP.Primary.Damage      = 19
+SWEP.Primary.Delay       = 0.12
+SWEP.Primary.DelayZoom   = 0.22
+SWEP.Primary.Cone        = 0.03
 SWEP.Primary.ClipSize    = 20
 SWEP.Primary.ClipMax     = 60
 SWEP.Primary.DefaultClip = 20
 SWEP.Primary.Automatic   = true
-SWEP.Primary.Ammo        = "Pistol"
-SWEP.Primary.Recoil      = 4
+SWEP.Primary.Ammo        = "pistol"
+SWEP.Primary.Recoil      = 0.9
 SWEP.Primary.Sound       = Sound( "Weapon_Aug.Single" )
 
 SWEP.Secondary.Sound       = Sound("Default.Zoom")
