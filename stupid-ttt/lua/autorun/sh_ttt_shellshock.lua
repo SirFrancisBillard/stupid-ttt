@@ -51,7 +51,7 @@ else -- CLIENT
 	net.Receive( "ShotAt", function()
 		if not IsValid( LocalPlayer() ) or CurTime() - lastCrack < crackDelay then return end
 		lastCrack = CurTime()
-		surface.PlaySound( "stupid-ttt/bullets/snap_" .. math.random(1, 5) .. ".wav")
+		surface.PlaySound( "stupid-ttt/bullets/snap_" .. math.random(1, 4) .. ".wav")
 	end)
 	
 	-- Draws the screen effects

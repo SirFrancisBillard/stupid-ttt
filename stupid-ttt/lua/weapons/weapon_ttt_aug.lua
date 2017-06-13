@@ -44,17 +44,19 @@ SWEP.IronSightsAng = Vector( 2.2, -0.1, 0 )
 SWEP.DeploySpeed         = 1
 
 function SWEP:SetZoom(state)
-   if CLIENT then
-      return
-   elseif IsValid(self.Owner) and self.Owner:IsPlayer() then
+   if IsValid(self.Owner) and self.Owner:IsPlayer() then
       if state then
-		 self.Primary.Cone = 0
-	     self.Owner:DrawViewModel(false)
-         self.Owner:SetFOV(20, 0.3)
+		   self.Primary.Cone = 0
+		if SERVER then
+	       self.Owner:DrawViewModel(false)
+           self.Owner:SetFOV(20, 0.3)
+		end
       else
-	     self.Primary.Cone = 0.03
-	     self.Owner:DrawViewModel(true)
-         self.Owner:SetFOV(0, 0.2)
+	       self.Primary.Cone = 0.03
+		if SERVER then
+	       self.Owner:DrawViewModel(true)
+           self.Owner:SetFOV(0, 0.2)
+		end
       end
    end
 end

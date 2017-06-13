@@ -100,8 +100,10 @@ function SWEP:PrimaryAttack()
             -- do a bullet just to make blood decals work sanely
             -- need to disable lagcomp because firebullets does its own
             self.Owner:LagCompensation(false)
-            hitEnt:SetVelocity(Vector(0, 0, 4000))
+			print(hitEnt)
+            hitEnt:SetVelocity(Vector(0, 0, 2500))
 			self.Owner:EmitSound("Bat.Homerun")
+			hitEnt.was_pushed = {att=self.Owner, t=CurTime(), wep=self:GetClass()} --, infl=self}
          else
             util.Effect("Impact", edata)
          end

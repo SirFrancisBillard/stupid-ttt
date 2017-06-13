@@ -194,6 +194,7 @@ function SWEP:Throw()
       self:CreateGrenade(src, Angle(0,0,0), thr, Vector(600, math.random(-1200, 1200), 0), ply)
 
       self:SetThrowTime(0)
+	  self.Owner:ConCommand("lastinv")
       self:Remove()
    end
 end
