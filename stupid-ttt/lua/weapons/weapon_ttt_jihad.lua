@@ -79,13 +79,13 @@ end
 function SWEP:PrimaryAttack()
 	self:SetNextPrimaryFire(CurTime() + 2)
 
-	self.Owner:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)
+	-- self.Owner:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)
 
 	if SERVER then
 		-- todo: consider moving these first four functions outside of SERVER to minimize networking?
 		-- update: moved the gesture to shared but kept the sound to sync which sound it plays
 
-		-- BroadcastLua([[Entity(]] .. self.Owner:EntIndex() .. [[):AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)]])
+		BroadcastLua([[Entity(]] .. self.Owner:EntIndex() .. [[):AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)]])
 
 		self:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
 		self.Owner:EmitSound("Jihad.Scream")

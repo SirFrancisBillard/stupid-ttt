@@ -92,9 +92,8 @@ end
 
 function ENT:Boom()
 	self:EmitSound("Jihad.Scream")
+	local pos = self:GetPos()
 	timer.Simple(1, function()
-		local pos = self:GetPos()
-
 		ParticleEffect("explosion_huge", pos, vector_up:Angle())
 		self:EmitSound(Sound("Jihad.Explode"))
 

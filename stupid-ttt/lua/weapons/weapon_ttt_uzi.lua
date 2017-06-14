@@ -37,7 +37,6 @@ SWEP.IronSightsPos = Vector(-8.921, -9.528, 2.9)
 SWEP.IronSightsAng = Vector(0.699, -5.301, -7)
 
 function SWEP:ShootBullet( dmg, recoil, numbul, cone )
-
    self:SendWeaponAnim(self.PrimaryAnim)
 
    self.Owner:MuzzleFlash()
