@@ -42,6 +42,7 @@ resource.AddFile("sound/stupid-ttt/music/islam.wav")
 -- Sounds
 resource.AddFile("sound/stupid-ttt/headshot.wav")
 resource.AddFile("sound/stupid-ttt/homerun.wav")
+resource.AddFile("sound/stupid-ttt/railgun.wav")
 
 -- Icons
 resource.AddFile("materials/vgui/ttt/icon_ak47.png")
@@ -66,6 +67,7 @@ resource.AddFile("materials/vgui/ttt/icon_negev.png")
 resource.AddFile("materials/vgui/ttt/icon_p90.png")
 resource.AddFile("materials/vgui/ttt/icon_pdrank.png")
 resource.AddFile("materials/vgui/ttt/icon_pepper.png")
+resource.AddFile("materials/vgui/ttt/icon_pocketrifle.png")
 resource.AddFile("materials/vgui/ttt/icon_python.png")
 resource.AddFile("materials/vgui/ttt/icon_slam.png")
 resource.AddFile("materials/vgui/ttt/icon_taser.png")

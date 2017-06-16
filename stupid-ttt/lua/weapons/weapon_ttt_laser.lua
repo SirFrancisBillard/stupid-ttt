@@ -32,7 +32,7 @@ SWEP.Primary.NumShots      = 1
 SWEP.Primary.Sound         = Sound("weapons/ar2/npc_ar2_altfire.wav")
 SWEP.Primary.Recoil        = 0
 
-SWEP.AutoSpawnable         = true
+SWEP.AutoSpawnable         = false -- DISABLED
 SWEP.Spawnable             = true
 
 SWEP.UseHands              = true
