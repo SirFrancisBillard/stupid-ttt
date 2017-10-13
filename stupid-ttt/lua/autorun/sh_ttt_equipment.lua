@@ -1,18 +1,21 @@
 
-EQUIP_THING = GenerateNewEquipmentID
+EQUIP_JEST = GenerateNewEquipmentID()
 
 local function AddCustomEquipment()
-	local item = {
-		id = EQUIP_THING,
+	local jest = {
+		id = EQUIP_JEST,
 		loadout = false,
 		type = "item_passive",
-		material = "vgui/ttt/icon_thing",
-		name = "fucking acecool remover",
-		desc = "removes all acecools"
+		material = "vgui/ttt/icon_nades",
+		name = "Jest",
+		desc = [[You will deal no damage.
+			However, when killed, you will explode spectacularly.
+			This cannot be undone.]]
 	}
 
-	-- table.insert(EquipmentItems[ROLE_TRAITOR], item)
-	-- table.insert(EquipmentItems[ROLE_DETECTIVE], item)
+	table.insert(EquipmentItems[ROLE_TRAITOR], jest)
 end
+
+AddCustomEquipment() -- idk
 
 hook.Add("InitPostEntity", "StupidTTT.Equipment", AddCustomEquipment)
