@@ -37,6 +37,28 @@ function ENT:Initialize()
    end
 end
 
+function ENT:Boom()
+	self:EmitSound("Jihad.Scream")
+	local pos = self:GetPos()
+	timer.Simple(1, function()
+		ParticleEffect("explosion_huge", pos, vector_up:Angle())
+		self:EmitSound(Sound("Jihad.Explode"))
+
+		util.Decal("Rollermine.Crater", pos, pos - Vector(0, 0, 500), self)
+		util.Decal("Scorch", pos, pos - Vector(0, 0, 500), self)
+
+		SafeRemoveEntity(self)
+
+		util.BlastDamage(self, self:GetPlacer(), pos, 1000, 230)
+
+		timer.Simple(0.5, function()
+			if not pos then return end
+
+			sound.Play(Sound("Jihad.Islam"), pos)
+		end)
+	end)
+end
+
 function ENT:UseOverride(activator)
    if IsValid(activator) and self:GetOwner() == activator then
 
@@ -48,9 +70,10 @@ function ENT:UseOverride(activator)
       activator:Give("weapon_ttt_decoy")
 
       self:Remove()
+   elseif not activator:IsTraitor() then
+      self:Boom()
    end
 end
-
 
 local zapsound = Sound("npc/assassin/ball_zap1.wav")
 function ENT:OnTakeDamage(dmginfo)
