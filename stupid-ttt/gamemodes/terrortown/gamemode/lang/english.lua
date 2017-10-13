@@ -8,7 +8,7 @@ L.detective  = "Detective"
 L.innocent   = "Innocent"
 L.last_words = "Last Words"
 
-L.terrorists = "Terrorists"
+L.terrorists = "Players"
 L.spectators = "Spectators"
 
 --- Round status messages
@@ -19,10 +19,10 @@ L.round_selected   = "The Traitors have been selected."
 L.round_started    = "The round has begun!"
 L.round_restart    = "The round has been forced to restart by an admin."
 
-L.round_traitors_one  = "Traitor, you stand alone."
+L.round_traitors_one  = "Traitor, you're lonely. Lmao beta cuck."
 L.round_traitors_more = "Traitor, these are your allies: {names}"
 
-L.win_time         = "Time has run out. The Traitors lose."
+L.win_time         = "Time has run out. Thanks for camping, asshole."
 L.win_traitor      = "The Traitors have won!"
 L.win_innocent     = "The Traitors have been defeated!"
 L.win_showreport   = "Let's look at the round report for {num} seconds."
@@ -54,8 +54,8 @@ L.body_confirm     = "{finder} confirmed the death of {victim}."
 L.body_call        = "{player} called a Detective to the body of {victim}!"
 L.body_call_error  = "You must confirm the death of this player before calling a Detective!"
 
-L.body_burning     = "Ouch! This corpse is on fire!"
-L.body_credits     = "You found {num} credit(s) on the body!"
+L.body_burning     = "You can't identify a flaming corpse, you fucking idiot!"
+L.body_credits     = "You found {num} shekel(s) on the body!"
 
 --- Menus and windows
 L.close = "Close"
@@ -66,17 +66,17 @@ L.next = "Next"
 L.prev = "Previous"
 
 -- Equipment buying menu
-L.equip_title     = "Equipment"
-L.equip_tabtitle  = "Order Equipment"
+L.equip_title     = "Shit to Buy"
+L.equip_tabtitle  = "Buy Shit"
 
 L.equip_status    = "Ordering status"
-L.equip_cost      = "You have {num} credit(s) remaining."
-L.equip_help_cost = "Every piece of equipment you buy costs 1 credit."
+L.equip_cost      = "You have {num} shekel(s) remaining."
+L.equip_help_cost = "Every piece of equipment you buy costs 1 shekel."
 
-L.equip_help_carry = "You can only buy things for which you have room."
-L.equip_carry      = "You can carry this equipment."
-L.equip_carry_own  = "You are already carrying this item."
-L.equip_carry_slot = "You are already carrying a weapon in slot {slot}."
+L.equip_help_carry = "You can only buy shit you can carry."
+L.equip_carry      = "You can carry this shit. Good job."
+L.equip_carry_own  = "You are already carrying some of this shit."
+L.equip_carry_slot = "You are already carrying shit in slot {slot}."
 
 L.equip_help_stock = "Of certain items you can only buy one per round."
 L.equip_stock_deny = "This item is no longer in stock."
@@ -103,8 +103,8 @@ L.disg_help2     = "Press Numpad Enter to toggle the disguise without using the 
 L.radar_name      = "Radar"
 L.radar_menutitle = "Radar control"
 L.radar_not_owned = "You are not carrying a Radar!"
-L.radar_scan      = "Perform scan"
-L.radar_auto      = "Auto-repeat scan"
+L.radar_scan      = "Activate wallhacks"
+L.radar_auto      = "Scan spammer"
 L.radar_help      = "Scan results show for {num} seconds, after which the Radar will have recharged and can be used again."
 L.radar_charging  = "Your Radar is still charging!"
 
@@ -116,7 +116,7 @@ L.xfer_send       = "Send a credit"
 L.xfer_help       = "You can only transfer credits to fellow {role} players."
 
 L.xfer_no_recip   = "Recipient not valid, credit transfer aborted."
-L.xfer_no_credits = "Insufficient credits for transfer."
+L.xfer_no_credits = "Insufficient credits for transfer. What are you, Jewish?"
 L.xfer_success    = "Credit transfer to {player} completed."
 L.xfer_received   = "{player} has given you {num} credit."
 
@@ -131,17 +131,17 @@ L.radio_button_expl    = "Explosion"
 L.radio_button_pistol  = "Pistol shots"
 L.radio_button_m16     = "M16 shots"
 L.radio_button_deagle  = "Deagle shots"
-L.radio_button_mac10   = "MAC10 shots"
+L.radio_button_mac10   = "Drive-by shots"
 L.radio_button_shotgun = "Shotgun shots"
 L.radio_button_rifle   = "Rifle shot"
-L.radio_button_huge    = "H.U.G.E burst"
+L.radio_button_huge    = "John Rambo"
 L.radio_button_c4      = "C4 beeping"
 L.radio_button_burn    = "Burning"
 L.radio_button_steps   = "Footsteps"
 
 
 -- Intro screen shown after joining
-L.intro_help     = "If you're new to the game, press F1 for instructions!"
+L.intro_help     = "If you're somehow new to this decade-old game, press F1 for instructions!"
 
 -- Radiocommands/quickchat
 L.quick_title   = "Quickchat keys"
@@ -149,17 +149,17 @@ L.quick_title   = "Quickchat keys"
 L.quick_yes     = "Yes."
 L.quick_no      = "No."
 L.quick_help    = "Help!"
-L.quick_imwith  = "I'm with {player}."
-L.quick_see     = "I see {player}."
+L.quick_imwith  = "I'm with {player}. His breath smells like a ginger's ass."
+L.quick_see     = "I see {player}. He's ugly as shit."
 L.quick_suspect = "{player} acts suspicious."
 L.quick_traitor = "{player} is a Traitor!"
 L.quick_inno    = "{player} is innocent."
-L.quick_check   = "Anyone still alive?"
+L.quick_check   = "Are any of you useless fucks still alive?"
 
 -- {player} in the quickchat text normally becomes a player nickname, but can
 -- also be one of the below.  Keep these lowercase.
 L.quick_nobody    = "nobody"
-L.quick_disg      = "someone in disguise"
+L.quick_disg      = "some faggot in disguise"
 L.quick_corpse    = "an unidentified body"
 L.quick_corpse_id = "{player}'s corpse"
 
@@ -178,20 +178,20 @@ L.search_role_d = "This person was a Detective."
 L.search_role_i = "This person was an innocent terrorist."
 
 L.search_words  = "Something tells you some of this person's last words were: '{lastwords}'"
-L.search_armor  = "They were wearing nonstandard body armor."
-L.search_disg   = "They were carrying a device that could hide their identity."
-L.search_radar  = "They were carrying some sort of radar. It is no longer functioning."
-L.search_c4     = "In a pocket you found a note. It states that cutting wire {num} will safely disarm the bomb."
+L.search_armor  = "They were wearing nonstandard body armor. On fleek TBH."
+L.search_disg   = "They were carrying a badly made KKK hood."
+L.search_radar  = "They were carrying a phone with MPGH open in Safari. The browser was open to both 'Lesbian Midget Porn' and 'Garry's Mod Wallhack.'"
+L.search_c4     = "In a pocket you found a note. It states that cutting your wrist {num} times will safely disarm the bomb."
 
-L.search_dmg_crush  = "Many of their bones are broken. It seems the impact of a heavy object killed them."
-L.search_dmg_bullet = "It is obvious they were shot to death."
-L.search_dmg_fall   = "They fell to their death."
+L.search_dmg_crush  = "Many of their bones are broken. It seems the impact of some fat fuck killed them."
+L.search_dmg_bullet = "It is obvious they shot themself."
+L.search_dmg_fall   = "They fell to their death. Fucking idiot."
 L.search_dmg_boom   = "Their wounds and singed clothes indicate an explosion caused their end."
 L.search_dmg_club   = "The body is bruised and battered. Clearly they were clubbed to death."
 L.search_dmg_drown  = "The body shows the telltale signs of drowning."
-L.search_dmg_stab   = "They were stabbed and cut before quickly bleeding to death."
+L.search_dmg_stab   = "The wrists are slit multiple times and their tumblr username is tattooed on their lower back."
 L.search_dmg_burn   = "Smells like roasted terrorist around here..."
-L.search_dmg_tele   = "It looks like their DNA was scrambled by tachyon emissions!"
+L.search_dmg_tele   = "DIS NIGG WAS KILL BY MC RIDE"
 L.search_dmg_car    = "When this terrorist crossed the road, they were run over by a reckless driver."
 L.search_dmg_other  = "You cannot find a specific cause of this terrorist's death."
 
@@ -209,8 +209,8 @@ L.search_eyes   = "Using your detective skills, you identified the last person t
 L.sb_playing    = "You are playing on..."
 L.sb_mapchange  = "Map changes in {num} rounds or in {time}"
 
-L.sb_mia        = "Missing In Action"
-L.sb_confirmed  = "Confirmed Dead"
+L.sb_mia        = "Kinda Dead"
+L.sb_confirmed  = "Dead as Fuck"
 
 L.sb_ping       = "Ping"
 L.sb_deaths     = "Deaths"
@@ -245,7 +245,7 @@ L.set_startpopup = "Start of round info popup duration"
 L.set_startpopup_tip = "When the round starts, a small popup appears at the bottom of your screen for a few seconds. Change the time it displays for here."
 
 L.set_cross_opacity   = "Ironsight crosshair opacity"
-L.set_cross_disable   = "Disable crosshair completely"
+L.set_cross_disable   = "Disable crosshair completely (why?)"
 L.set_minimal_id      = "Minimalist Target ID under crosshair (no karma text, hints, etc)"
 L.set_healthlabel     = "Show health status label on health bar"
 L.set_lowsights       = "Lower weapon when using ironsights"
@@ -258,7 +258,6 @@ L.set_wswitch         = "Disable weapon switch menu auto-closing"
 L.set_wswitch_tip     = "By default the weapon switcher automatically closes a few seconds after you last scroll. Enable this to make it stay up."
 L.set_cues            = "Play sound cue when a round begins or ends"
 
-
 L.set_title_play    = "Gameplay settings"
 
 L.set_specmode      = "Spectate-only mode (always stay spectator)"
@@ -266,13 +265,11 @@ L.set_specmode_tip  = "Spectate-only mode will prevent you from respawning when 
 L.set_mute          = "Mute living players when dead"
 L.set_mute_tip      = "Enable to mute living players while you are dead/spectator."
 
-
 L.set_title_lang    = "Language settings"
 
 -- It may be best to leave this next one english, so english players can always
 -- find the language setting even if it's set to a language they don't know.
 L.set_lang          = "Select language:"
-
 
 --- Weapons and equipment, HUD and messages
 
@@ -314,10 +311,10 @@ or press Numpad Enter.]]
 -- C4
 L.c4_hint         = "Press {usekey} to arm or disarm."
 L.c4_no_disarm    = "You cannot disarm another Traitor's C4 unless they are dead."
-L.c4_disarm_warn  = "A C4 explosive you planted has been disarmed."
-L.c4_armed        = "You have successfully armed the bomb."
-L.c4_disarmed     = "You have successfully disarmed the bomb."
-L.c4_no_room      = "You cannot carry this C4."
+L.c4_disarm_warn  = "A C4 explosive you planted has been disarmed. Fucking infidel."
+L.c4_armed        = "You have successfully armed the bomb. Allahu akbar."
+L.c4_disarmed     = "You have successfully disarmed the bomb. Bism'Allah"
+L.c4_no_room      = "You cannot carry this C4. Maybe hit the gym more often, fatass."
 
 L.c4_desc         = "Powerful timed explosive."
 
@@ -334,7 +331,7 @@ L.c4_remove_destroy2 = "Confirm: destroy"
 L.c4_disarm       = "Disarm C4"
 L.c4_disarm_cut   = "Click to cut wire {num}"
 
-L.c4_disarm_t     = "Cut a wire to disarm the bomb. As you are Traitor, every wire is safe. Innocents don't have it so easy!"
+L.c4_disarm_t     = "Cut a wire to disarm the bomb. As you are Traitor, every wire is safe. Innocents are slightly more homosexual!"
 L.c4_disarm_owned = "Cut a wire to disarm the bomb. It's your bomb, so every wire will disarm it."
 L.c4_disarm_other = "Cut a safe wire to disarm the bomb. It will explode if you get it wrong!"
 
@@ -556,10 +553,10 @@ L.hp_death     = "Near Death"
 
 -- TargetID karma status
 L.karma_max    = "Reputable"
-L.karma_high   = "Crude"
-L.karma_med    = "Trigger-happy"
-L.karma_low    = "Dangerous"
-L.karma_min    = "Liability"
+L.karma_high   = "Killed a few kids"
+L.karma_med    = "Killed a lot of kids"
+L.karma_low    = "LOVES KILLING KIDS"
+L.karma_min    = "FUCKED"
 
 -- TargetID misc
 L.corpse       = "Corpse"
@@ -642,7 +639,7 @@ L.tips_panel_tip   = "Tip:"
 
 -- Tip texts
 
-L.tip1 = "Traitors can search a corpse silently, without confirming the death, by holding {walkkey} and pressing {usekey} on the corpse."
+L.tip1 = "Traitors can search a corpse silently, without confirming the death, by holding {walkkey} and pressing {usekey} on the corpse. It's almost as if this is written on the fucking HUD."
 
 L.tip2 = "Arming a C4 explosive with a longer timer will increase the number of wires that cause it to explode instantly when an innocent attempts to disarm it. It will also beep softer and less often."
 
