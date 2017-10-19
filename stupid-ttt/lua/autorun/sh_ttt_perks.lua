@@ -17,10 +17,10 @@ end
 RegisterPerk({
 	ID = "agra",
 	Name = "Agra",
-	Desc = [[Being the fatass you are, you always carry some
-		chocolate around.
-		When you are low on health, you can eat chocolate
-		to regenerate.]],
+	Desc = [[Ability: Fatass
+
+		Regenerate health automatically by eating bits of
+		chocolate stuck in your fat folds.]],
 	Image = "agra.png",
 	Init = function()
 		timer.Create("StupidTTT.Perks.Agra", 2, 0, function()
@@ -38,10 +38,10 @@ RegisterPerk({
 RegisterPerk({
 	ID = "billard",
 	Name = "Sir Francis Billard",
-	Desc = [[Being the fatass you are, you always carry some
-		chocolate around.
-		When you are low on health, you can eat chocolate
-		to regenerate.]],
+	Desc = [[Ability: The Billard
+
+		100% increase in blaming other people for your
+		actions.]],
 	Image = "billard.png",
 	Init = function()
 		timer.Create("StupidTTT.Perks.Billard", 2, 0, function()
@@ -59,10 +59,8 @@ RegisterPerk({
 RegisterPerk({
 	ID = "blaze",
 	Name = "Blaze Gambla",
-	Desc = [[It is your Jihadi instinct to carry explosives
-		with you at all times.
-		There is a small chance that you may explode upon
-		death.
+	Desc = [[Ability: Jihad
+
 		Allahu akbar.]],
 	Image = "blaze.png",
 	Init = function()
@@ -98,8 +96,9 @@ RegisterPerk({
 RegisterPerk({
 	ID = "tayte",
 	Name = "Tayte",
-	Desc = [[You were born with an incredibly thick skull.
-		Occasionally, headshots will deal less damage.]],
+	Desc = [[Ability: Thick Skull
+
+		Take less damage from headshots.]],
 	Image = "tayte.png",
 	Init = function()
 		hook.Add("EntityTakeDamage", "StupidTTT.Perks.Tayte", function(ply, dmg)
@@ -116,9 +115,9 @@ RegisterPerk({
 RegisterPerk({
 	ID = "tielar",
 	Name = "Tielar",
-	Desc = [[Your internet is abysmal.
-		Occasionally, bullets that should have hit you will
-		completely miss.]],
+	Desc = [[Ability: Latency
+		
+		Bullets that hit you only sometimes do damage.]],
 	Image = "tielar.png",
 	Init = function()
 		hook.Add("EntityTakeDamage", "StupidTTT.Perks.Tielar", function(ply, dmg)
