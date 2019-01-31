@@ -1,4 +1,3 @@
-AddCSLuaFile()
 
 hook.Add("CreateMove", "StupidTTT.Autohop", function(ucmd)
 	if ucmd:KeyDown(IN_JUMP) then

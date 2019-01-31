@@ -1,6 +1,4 @@
 
-AddCSLuaFile()
-
 hook.Add("DoPlayerDeath", "StupidTTT.Equipment.Jest", function(ply)
 	if IsValid(ply) and ply:IsPlayer() and ply:HasEquipmentItem(EQUIP_JEST) then
 		ply:EmitSound("Jihad.Scream")

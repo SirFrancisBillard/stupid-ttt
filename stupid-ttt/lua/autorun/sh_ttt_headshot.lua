@@ -1,4 +1,3 @@
-AddCSLuaFile()
 
 sound.Add({
 	name = "Player.Headshot",

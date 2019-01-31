@@ -1,4 +1,3 @@
-AddCSLuaFile()
 
 -- these are the stats for the default TTT weapons
 -- i put them here so they can be used to achieve proportionally balanced stats for custom weapons
